@@ -1,0 +1,14 @@
+server:
+  port: 9122
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/shoppe
+    username: postgres
+    password: postgres
+    driver-class-name: org.postgresql.Driver
+  flyway:
+    url: jdbc:postgresql://localhost:5432/shoppe
+    locations: classpath:db/migration
+    user: postgres
+    password: postgres

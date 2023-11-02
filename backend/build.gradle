@@ -1,0 +1,62 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version "$springBootVersion"
+    id 'io.spring.dependency-management' version "$springDependencyManagementVersion"
+}
+
+group = 'dev.danilbel'
+version = '1.0.0'
+
+java {
+    sourceCompatibility = '17'
+}
+
+repositories {
+    mavenCentral()
+}
+
+// Spring
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+}
+
+// SpringDoc
+dependencies {
+    implementation "org.springdoc:springdoc-openapi-starter-webmvc-ui:$springDocVersion"
+}
+
+// Postgres
+dependencies {
+    implementation "org.postgresql:postgresql:$postgreSqlVersion"
+}
+
+// Flyway
+dependencies {
+    implementation "org.flywaydb:flyway-core:$flywayVersion"
+}
+
+// Lombok
+dependencies {
+    compileOnly "org.projectlombok:lombok:$lombokVersion"
+    annotationProcessor "org.projectlombok:lombok:$lombokVersion"
+}
+
+// mapStruct
+dependencies {
+    implementation "org.mapstruct:mapstruct:$mapStructVersion"
+    annotationProcessor "org.mapstruct:mapstruct-processor:$mapStructVersion"
+}
+
+// jwt
+dependencies {
+    implementation "io.jsonwebtoken:jjwt-jackson:$jsonWebTokenVersion"
+    implementation "io.jsonwebtoken:jjwt-impl:$jsonWebTokenVersion"
+    implementation "io.jsonwebtoken:jjwt-api:$jsonWebTokenVersion"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
