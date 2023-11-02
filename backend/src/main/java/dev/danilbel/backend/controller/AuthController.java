@@ -46,9 +46,6 @@ public class AuthController {
                     @ApiResponse(responseCode = "401", description = "Unauthorized. Invalid email or password",
                             content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
                     ),
-                    @ApiResponse(responseCode = "404", description = "Not Found. User not found",
-                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
-                    ),
                     @ApiResponse(responseCode = "405", description = "Method Not Allowed",
                             content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
                     )
