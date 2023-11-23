@@ -1,4 +1,4 @@
-package dev.danilbel.backend.dto.auth;
+package dev.danilbel.backend.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
