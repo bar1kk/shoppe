@@ -1,5 +1,6 @@
 package dev.danilbel.backend.security;
 
+import dev.danilbel.backend.enums.UserStatus;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -19,6 +20,8 @@ public class JwtUser implements UserDetails {
     String email;
 
     String password;
+
+    UserStatus status;
 
     Collection<? extends GrantedAuthority> authorities;
 
@@ -44,7 +47,7 @@ public class JwtUser implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return status == UserStatus.ACTIVE;
     }
 
     @Override
