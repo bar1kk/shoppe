@@ -7,8 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
 import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Data
 @Builder
@@ -22,6 +22,6 @@ public class RegistrationRequestDto {
     String email;
 
     @NotBlank(message = "Password cannot be blank")
-    @Min(value = 8, message = "Password should be at least 8 characters long")
+    @Size(min = 6, message = "Password should be at least 8 characters long")
     String password;
 }
