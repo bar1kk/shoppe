@@ -1,6 +1,7 @@
 package dev.danilbel.backend.mapper;
 
 import dev.danilbel.backend.entity.UserEntity;
+import dev.danilbel.backend.enums.UserStatus;
 import dev.danilbel.backend.security.JwtUser;
 import org.mapstruct.Mapper;
 import org.springframework.security.core.GrantedAuthority;
@@ -24,7 +25,8 @@ public interface JwtUserMapper {
                 .stream()
                 .map(role -> new SimpleGrantedAuthority(role.getName()))
                 .collect(Collectors.toList());
+        UserStatus status = userEntity.getStatus();
 
-        return new JwtUser(id, email, password, authorities);
+        return new JwtUser(id, email, password, status, authorities);
     }
 }

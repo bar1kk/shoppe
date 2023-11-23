@@ -4,7 +4,10 @@ import dev.danilbel.backend.controller.helper.ControllerHelper;
 import dev.danilbel.backend.dto.auth.JwtRequestDto;
 import dev.danilbel.backend.dto.auth.JwtResponseDto;
 import dev.danilbel.backend.dto.exception.ExceptionResponseDto;
+import dev.danilbel.backend.dto.user.RegistrationRequestDto;
+import dev.danilbel.backend.dto.user.UserDto;
 import dev.danilbel.backend.service.JwtTokenService;
+import dev.danilbel.backend.service.UserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -30,10 +33,12 @@ import jakarta.validation.Valid;
 public class AuthController {
 
     private static final String LOGIN = "api/v1/auth/login";
+    private static final String REGISTRATION = "api/v1/auth/registration";
 
     ControllerHelper controllerHelper;
 
     JwtTokenService jwtTokenService;
+    UserService userService;
 
     @Operation(
             summary = "Login",
@@ -60,5 +65,32 @@ public class AuthController {
         JwtResponseDto jwtResponseDto = jwtTokenService.getToken(jwtRequestDto);
 
         return ResponseEntity.ok(jwtResponseDto);
+    }
+
+    @Operation(
+            summary = "Registration",
+            description = "Registration a new user",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Ok. User has been successfully registered"),
+                    @ApiResponse(responseCode = "400", description = "Bad Request. Validation error RegistrationRequest",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "409", description = "Conflict. User with this email already exists",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "405", description = "Method Not Allowed",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    )
+            }
+    )
+    @PostMapping(REGISTRATION)
+    public ResponseEntity<UserDto> registration(@RequestBody @Valid RegistrationRequestDto registrationRequestDto,
+                                                BindingResult bindingResult) {
+
+        controllerHelper.checkBindingResultElseThrowException(bindingResult, "AuthController.registration");
+
+        UserDto userDto = userService.createUser(registrationRequestDto);
+
+        return ResponseEntity.ok(userDto);
     }
 }
