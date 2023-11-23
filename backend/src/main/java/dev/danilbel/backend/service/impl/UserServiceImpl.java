@@ -14,6 +14,7 @@ import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
@@ -29,6 +30,8 @@ public class UserServiceImpl implements UserService {
     RoleService roleService;
 
     UserMapper userMapper;
+
+    PasswordEncoder passwordEncoder;
 
     @Override
     public UserEntity getUserEntityByEmail(String email) {
@@ -62,7 +65,7 @@ public class UserServiceImpl implements UserService {
 
         UserEntity userEntity = UserEntity.builder()
                 .email(registrationRequestDto.getEmail())
-                .password(registrationRequestDto.getPassword())
+                .password(passwordEncoder.encode(registrationRequestDto.getPassword()))
                 .roles(Set.of(roleEntity))
                 .build();
 
