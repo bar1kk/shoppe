@@ -1,5 +1,6 @@
 package dev.danilbel.backend.entity;
 
+import dev.danilbel.backend.enums.UserStatus;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -9,6 +10,8 @@ import lombok.experimental.FieldDefaults;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
@@ -57,6 +60,11 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     Set<RoleEntity> roles;
+
+    @Column(name = "status")
+    @Enumerated(EnumType.STRING)
+    @Builder.Default
+    UserStatus status = UserStatus.ACTIVE;
 
     @Column(name = "created_at")
     @Builder.Default

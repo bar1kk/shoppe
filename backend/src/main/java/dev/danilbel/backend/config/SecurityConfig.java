@@ -35,7 +35,7 @@ public class SecurityConfig {
                 .exceptionHandling(exceptionHandling -> exceptionHandling
                         .authenticationEntryPoint((request, response, authException) -> response.sendError(
                                         HttpServletResponse.SC_UNAUTHORIZED,
-                                        "JWT token is expired or invalid"
+                                        authException.getMessage()
                                 )
                         )
                         .accessDeniedHandler((request, response, accessDeniedException) -> response.sendError(
