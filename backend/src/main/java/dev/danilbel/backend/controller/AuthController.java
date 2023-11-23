@@ -67,6 +67,22 @@ public class AuthController {
         return ResponseEntity.ok(jwtResponseDto);
     }
 
+    @Operation(
+            summary = "Registration",
+            description = "Registration a new user",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Ok. User has been successfully registered"),
+                    @ApiResponse(responseCode = "400", description = "Bad Request. Validation error RegistrationRequest",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "409", description = "Conflict. User with this email already exists",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "405", description = "Method Not Allowed",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    )
+            }
+    )
     @PostMapping(REGISTRATION)
     public ResponseEntity<UserDto> registration(@RequestBody @Valid RegistrationRequestDto registrationRequestDto,
                                                 BindingResult bindingResult) {
