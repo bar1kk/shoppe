@@ -108,6 +108,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    @Transactional
+    public List<UserDto> getAllAdmins() {
+
+        RoleEntity roleAdmin = roleService.getRoleAdmin();
+
+        Stream<UserEntity> userEntityStream = userRepository.streamAllByRolesContaining(roleAdmin);
+
+        List<UserDto> result = userEntityStream
+                .map(userMapper::toDto)
+                .toList();
+        log.info("IN UserServiceImpl.getAllAdmins - {} admins found", result.size());
+
+        return result;
+    }
+
+    @Override
     public UserDto createUser(RegistrationRequestDto registrationRequestDto) {
 
         userRepository.findByEmail(registrationRequestDto.getEmail()).ifPresent(
@@ -184,6 +200,48 @@ public class UserServiceImpl implements UserService {
         userEntity.setUpdatedAt(LocalDateTime.now());
         UserEntity savedUserEntity = userRepository.save(userEntity);
         log.info("IN UserServiceImpl.setActiveStatusForUserById - user with id '{}' status set to ACTIVE", id);
+
+        return userMapper.toDto(savedUserEntity);
+    }
+
+    @Override
+    public UserDto setAdminRoleForUserById(String id) {
+
+        UserEntity userEntity = getUserEntityById(id);
+
+        RoleEntity roleAdmin = roleService.getRoleAdmin();
+        if (userEntity.getRoles().contains(roleAdmin)) {
+            log.error("IN UserServiceImpl.setAdminRoleForUserById - user with id '{}' already has role ROLE_ADMIN", id);
+            throw new AlreadyExistsException(
+                    String.format("User with id '%s' already has role ROLE_ADMIN", id)
+            );
+        }
+
+        userEntity.getRoles().add(roleAdmin);
+        userEntity.setUpdatedAt(LocalDateTime.now());
+        UserEntity savedUserEntity = userRepository.save(userEntity);
+        log.info("IN UserServiceImpl.setAdminRoleForUserById - user with id '{}' role set to ROLE_ADMIN", id);
+
+        return userMapper.toDto(savedUserEntity);
+    }
+
+    @Override
+    public UserDto removeAdminRoleForUserById(String id) {
+
+        UserEntity userEntity = getUserEntityById(id);
+
+        RoleEntity roleAdmin = roleService.getRoleAdmin();
+        if (!userEntity.getRoles().contains(roleAdmin)) {
+            log.error("IN UserServiceImpl.removeAdminRoleForUserById - user with id '{}' does not have role ROLE_ADMIN", id);
+            throw new AlreadyExistsException(
+                    String.format("User with id '%s' does not have role ROLE_ADMIN", id)
+            );
+        }
+
+        userEntity.getRoles().remove(roleAdmin);
+        userEntity.setUpdatedAt(LocalDateTime.now());
+        UserEntity savedUserEntity = userRepository.save(userEntity);
+        log.info("IN UserServiceImpl.removeAdminRoleForUserById - user with id '{}' role removed ROLE_ADMIN", id);
 
         return userMapper.toDto(savedUserEntity);
     }
