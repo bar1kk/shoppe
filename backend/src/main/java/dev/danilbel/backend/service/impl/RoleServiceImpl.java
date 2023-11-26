@@ -33,4 +33,16 @@ public class RoleServiceImpl implements RoleService {
         log.info("IN RoleServiceImpl.getRoleEntityByName - role: {} found by name '{}'", result, name);
         return result;
     }
+
+    @Override
+    public RoleEntity getRoleUser() {
+
+        return getRoleEntityByName("ROLE_USER");
+    }
+
+    @Override
+    public RoleEntity getRoleAdmin() {
+
+        return getRoleEntityByName("ROLE_ADMIN");
+    }
 }
