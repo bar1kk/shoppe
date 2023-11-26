@@ -17,9 +17,15 @@ public interface UserService {
 
     List<UserDto> getAllUsersByStatus(UserStatus status);
 
+    List<UserDto> getAllAdmins();
+
     UserDto createUser(RegistrationRequestDto registrationRequestDto);
 
     UserDto setNotActiveStatusForUserById(String id);
 
     UserDto setActiveStatusForUserById(String id);
+
+    UserDto setAdminRoleForUserById(String id);
+
+    UserDto removeAdminRoleForUserById(String id);
 }
