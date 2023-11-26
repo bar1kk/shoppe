@@ -1,5 +1,6 @@
 package dev.danilbel.backend.repository;
 
+import dev.danilbel.backend.entity.RoleEntity;
 import dev.danilbel.backend.entity.UserEntity;
 import dev.danilbel.backend.enums.UserStatus;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -16,4 +17,6 @@ public interface UserRepository extends JpaRepository<UserEntity, String> {
     Stream<UserEntity> streamAllBy();
 
     Stream<UserEntity> streamAllByStatus(UserStatus status);
+
+    Stream<UserEntity> streamAllByRolesContaining(RoleEntity roleEntity);
 }
