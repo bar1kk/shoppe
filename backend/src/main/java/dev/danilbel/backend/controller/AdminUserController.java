@@ -1,8 +1,13 @@
 package dev.danilbel.backend.controller;
 
+import dev.danilbel.backend.dto.exception.ExceptionResponseDto;
 import dev.danilbel.backend.dto.user.UserDto;
 import dev.danilbel.backend.enums.UserStatus;
 import dev.danilbel.backend.service.UserService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -32,6 +37,19 @@ public class AdminUserController {
 
     UserService userService;
 
+    @Operation(
+            summary = "Get all users",
+            description = "Getting all users",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Ok. Users have been successfully received"),
+                    @ApiResponse(responseCode = "400", description = "Bad Request. Validation error UserStatus",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "405", description = "Method Not Allowed",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    )
+            }
+    )
     @GetMapping(USERS)
     public ResponseEntity<List<UserDto>> getAllUsers(
             @RequestParam(name = "status", required = false) Optional<UserStatus> status) {
@@ -43,6 +61,19 @@ public class AdminUserController {
         return ResponseEntity.ok(result);
     }
 
+    @Operation(
+            summary = "Get user by id",
+            description = "Getting user by id",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Ok. User has been successfully received"),
+                    @ApiResponse(responseCode = "404", description = "Not Found. User not found by id",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "405", description = "Method Not Allowed",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    )
+            }
+    )
     @GetMapping(USER)
     public ResponseEntity<UserDto> getUser(@PathVariable("id") String id) {
 
@@ -51,6 +82,25 @@ public class AdminUserController {
         return ResponseEntity.ok(result);
     }
 
+    @Operation(
+            summary = "Ban user by id",
+            description = "Setting the status of the user to 'NOT_ACTIVE'",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Ok. User has been successfully banned"),
+                    @ApiResponse(responseCode = "403", description = "Forbidden. User with id is admin",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "404", description = "Not Found. User not found by id",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "405", description = "Method Not Allowed",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "409", description = "Conflict. User already banned",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    )
+            }
+    )
     @PutMapping(USER_BAN)
     public ResponseEntity<UserDto> banUser(@PathVariable("id") String id) {
 
@@ -59,6 +109,25 @@ public class AdminUserController {
         return ResponseEntity.ok(result);
     }
 
+    @Operation(
+            summary = "Unban user by id",
+            description = "Setting the status of the user to 'ACTIVE'",
+            responses = {
+                    @ApiResponse(responseCode = "200", description = "Ok. User has been successfully unbanned"),
+                    @ApiResponse(responseCode = "403", description = "Forbidden. User with id is admin",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "404", description = "Not Found. User not found by id",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "405", description = "Method Not Allowed",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
+                    @ApiResponse(responseCode = "409", description = "Conflict. User already unbanned",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    )
+            }
+    )
     @PutMapping(USER_UNBAN)
     public ResponseEntity<UserDto> unbanUser(@PathVariable("id") String id) {
 
