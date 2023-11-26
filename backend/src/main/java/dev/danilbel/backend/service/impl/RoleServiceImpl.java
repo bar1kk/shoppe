@@ -45,4 +45,10 @@ public class RoleServiceImpl implements RoleService {
 
         return getRoleEntityByName("ROLE_ADMIN");
     }
+
+    @Override
+    public RoleEntity getRoleSuperAdmin() {
+
+        return getRoleEntityByName("ROLE_SUPER_ADMIN");
+    }
 }

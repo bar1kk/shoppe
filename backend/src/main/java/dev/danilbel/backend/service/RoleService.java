@@ -9,4 +9,6 @@ public interface RoleService {
     RoleEntity getRoleUser();
 
     RoleEntity getRoleAdmin();
+
+    RoleEntity getRoleSuperAdmin();
 }
