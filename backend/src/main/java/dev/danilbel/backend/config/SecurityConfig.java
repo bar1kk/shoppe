@@ -60,6 +60,8 @@ public class SecurityConfig {
                                 "/webjars/**",
                                 "/swagger-ui.html"
                         ).permitAll()
+                        .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
+                        .requestMatchers("/api/v1/super-admin/**").hasRole("SUPER_ADMIN")
                         .anyRequest().permitAll()
                 )
                 .apply(jwtConfigurer);
