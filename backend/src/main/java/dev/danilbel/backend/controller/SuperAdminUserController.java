@@ -58,6 +58,9 @@ public class SuperAdminUserController {
             description = "Setting admin role for user",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Ok. Admin role has been successfully set"),
+                    @ApiResponse(responseCode = "403", description = "Forbidden. User with id is super admin",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
                     @ApiResponse(responseCode = "404", description = "Not Found. User not found",
                             content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
                     ),
@@ -82,6 +85,9 @@ public class SuperAdminUserController {
             description = "Removing admin role for user",
             responses = {
                     @ApiResponse(responseCode = "200", description = "Ok. Admin role has been successfully removed"),
+                    @ApiResponse(responseCode = "403", description = "Forbidden. User with id is super admin",
+                            content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
+                    ),
                     @ApiResponse(responseCode = "404", description = "Not Found. User not found",
                             content = @Content(schema = @Schema(implementation = ExceptionResponseDto.class))
                     ),
