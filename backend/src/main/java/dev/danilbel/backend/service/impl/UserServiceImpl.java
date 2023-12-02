@@ -209,6 +209,14 @@ public class UserServiceImpl implements UserService {
 
         UserEntity userEntity = getUserEntityById(id);
 
+        RoleEntity roleSuperAdmin = roleService.getRoleSuperAdmin();
+        if (userEntity.getRoles().contains(roleSuperAdmin)) {
+            log.error("IN UserServiceImpl.setAdminRoleForUserById - user with id '{}' is super admin", id);
+            throw new AccessDeniedException(
+                    String.format("Cannot set admin role for user with id '%s' because he is super admin", id)
+            );
+        }
+
         RoleEntity roleAdmin = roleService.getRoleAdmin();
         if (userEntity.getRoles().contains(roleAdmin)) {
             log.error("IN UserServiceImpl.setAdminRoleForUserById - user with id '{}' already has role ROLE_ADMIN", id);
@@ -229,6 +237,14 @@ public class UserServiceImpl implements UserService {
     public UserDto removeAdminRoleForUserById(String id) {
 
         UserEntity userEntity = getUserEntityById(id);
+
+        RoleEntity roleSuperAdmin = roleService.getRoleSuperAdmin();
+        if (userEntity.getRoles().contains(roleSuperAdmin)) {
+            log.error("IN UserServiceImpl.removeAdminRoleForUserById - user with id '{}' is super admin", id);
+            throw new AccessDeniedException(
+                    String.format("Cannot remove admin role for user with id '%s' because he is super admin", id)
+            );
+        }
 
         RoleEntity roleAdmin = roleService.getRoleAdmin();
         if (!userEntity.getRoles().contains(roleAdmin)) {
