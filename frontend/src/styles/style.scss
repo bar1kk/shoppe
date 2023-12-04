@@ -1,0 +1,33 @@
+@import './reset.scss';
+
+@import url('https://fonts.googleapis.com/css2?family=Allerta+Stencil&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap');
+
+* {
+    font-family: 'Allerta Stencil', sans-serif;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.container {
+    width: 1250px;
+    margin: 0 auto;
+}
+
+.title {
+    color: #000;
+    font-size: 33px;
+    font-weight: 500;
+}
+
+.wrapper {
+    margin-top: 10px;
+    display: flex;
+    align-items: center; 
+    justify-content: space-between;
+}
+
+.view-all {
+    color:#A18A68;
+    font-size: 20px;
+    font-weight: 500;
+    line-height: 26px;
+}
