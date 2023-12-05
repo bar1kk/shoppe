@@ -11,7 +11,7 @@ const Header = ({ line }) => {
             <div className='container'>
                 <div className='header__row'>
                     <div className='header__logo'>
-                        <Link to={''}>
+                        <Link to={'/'}>
                             S<span>HOPPE</span>
                         </Link>
                     </div>
@@ -20,14 +20,14 @@ const Header = ({ line }) => {
                             <ul>
                                 <li>
                                     <NavLink
-                                        to={''}
+                                        to={'/shop'}
                                         className={({ isActive }) => [isActive ? 'header__link-active' : ''].join(' ')}>
                                         Shop
                                     </NavLink>
                                 </li>
                                 <li>
                                     <NavLink
-                                        to={''}
+                                        to={'/story'}
                                         className={({ isActive }) => [isActive ? 'header__link-active' : ''].join(' ')}>
                                         Our Story
                                     </NavLink>
@@ -36,17 +36,17 @@ const Header = ({ line }) => {
                         </nav>
                         <div className='header__btns'>
                             <NavLink
-                                to={''}
+                                to={'/search'}
                                 className={({ isActive }) => [isActive ? 'header__link-active' : ''].join(' ')}>
                                 <img src={searchIcon} alt='search' />
                             </NavLink>
                             <NavLink
-                                to={''}
+                                to={'/cart'}
                                 className={({ isActive }) => [isActive ? 'header__link-active' : ''].join(' ')}>
                                 <img src={cartIcon} alt='cart' />
                             </NavLink>
                             <NavLink
-                                to={''}
+                                to={'/auth'}
                                 className={({ isActive }) => [isActive ? 'header__link-active' : ''].join(' ')}>
                                 <img src={profileIcon} alt='profile' />
                             </NavLink>

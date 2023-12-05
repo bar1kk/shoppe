@@ -1,14 +1,16 @@
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
-import Header from '../header/Header';
-import Footer from '../footer/Footer';
+import MainPage from '../pages/MainPage';
+import AuthorizationPage from '../pages/authorizationPage/AuthorizationPage';
 
 const App = () => {
     return (
         <Router>
             <div className='App'>
-                <Header line={true}/>
-                <Footer />
+                <Routes>
+                    <Route path={'/'} element={<MainPage />} />
+                    <Route path={'/auth'} element={<AuthorizationPage />} />
+                </Routes>
             </div>
         </Router>
     );
