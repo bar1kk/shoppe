@@ -5,6 +5,7 @@ import { addedUserHeader, changeFilter } from './UserAccountSlice';
 
 import './userAccount.scss';
 import Dashboard from './dashboard/Dashboard';
+import Orders from './orders/Orders';
 
 const UserAccount = () => {
     const { filter } = useSelector((state) => state.userAccount);
@@ -88,6 +89,7 @@ const UserAccount = () => {
                     </ul>
                     <div className='account__nav-line'></div>
                     {filter === 'dashboard' ? <Dashboard onChangeFilter={onChangeFilter}/> : null}
+                    {filter === 'orders' ? <Orders /> : null}
                 </div>
             </div>
         </div>

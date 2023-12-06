@@ -1,22 +1,42 @@
 {
-  "tocken": {
-    "tocken": "24.5e4b8d3f3b4d4f3b8d3f3b4d4f3b8d3f3b4d4f3b8d3f3b4d4f3b4d4f3b4d4f3.2592000.1541511510.282335-14467861"
-  },
-  "users": [
-    {
-      "email": "barbariska.v44@gmail.com",
-      "password": "12345678",
-      "id": 1
+    "tocken": {
+        "tocken": "24.5e4b8d3f3b4d4f3b8d3f3b4d4f3b8d3f3b4d4f3b8d3f3b4d4f3b4d4f3b4d4f3.2592000.1541511510.282335-14467861"
     },
-    {
-      "email": "barbariska.v44@gmail.com",
-      "password": "1334234444",
-      "id": 2
-    },
-    {
-      "email": "barbar.vladyslav@lll.kpi.ua",
-      "password": "123456789",
-      "id": 3
-    }
-  ]
+    "users": [
+        {
+            "email": "barbariska.v44@gmail.com",
+            "password": "12345678",
+            "id": 1
+        },
+        {
+            "email": "barbariska.v44@gmail.com",
+            "password": "1334234444",
+            "id": 2
+        },
+        {
+            "email": "barbar.vladyslav@lll.kpi.ua",
+            "password": "123456789",
+            "id": 3
+        }
+    ],
+    "orders": [
+        {
+            "id": "7643980998990",
+            "date": "October 8,2021",
+            "status": "Delivered",
+            "total": "105"
+        },
+        {
+            "id": "943980998990",
+            "date": "October 8,2021",
+            "status": "Processing",
+            "total": "100"
+        },
+        {
+            "id": "879980998990",
+            "date": "October 8,2021",
+            "status": "Delivered",
+            "total": "65"
+        }
+    ]
 }
