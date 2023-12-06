@@ -46,7 +46,7 @@ const Header = ({ line }) => {
                                 <img src={cartIcon} alt='cart' />
                             </NavLink>
                             <NavLink
-                                to={'/auth'}
+                                to={'/user'}
                                 className={({ isActive }) => [isActive ? 'header__link-active' : ''].join(' ')}>
                                 <img src={profileIcon} alt='profile' />
                             </NavLink>
