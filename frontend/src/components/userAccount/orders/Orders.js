@@ -33,7 +33,7 @@ const Orders = () => {
                     <span>Total</span>
                     <span>Actions</span>
                   </div>
-                  <div className='header__line'></div>
+                  <div className='header__item-line'></div>
                   {orders.map((order) => (
                     <div className="orders__item" key={order.id}>
                         <div className='orders__item-wrapper' >
@@ -45,7 +45,7 @@ const Orders = () => {
                             View Order
                           </Link>
                         </div>
-                        <div className='orders__line'></div>
+                        <div className='orders__item-line'></div>
                     </div>
                     
                   ))}

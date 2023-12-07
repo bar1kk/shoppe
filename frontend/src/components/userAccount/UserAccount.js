@@ -6,6 +6,7 @@ import { addedUserHeader, changeFilter } from './UserAccountSlice';
 import './userAccount.scss';
 import Dashboard from './dashboard/Dashboard';
 import Orders from './orders/Orders';
+import AccountDetails from './accountDetails/AccountDetails';
 
 const UserAccount = () => {
     const { filter } = useSelector((state) => state.userAccount);
@@ -34,7 +35,7 @@ const UserAccount = () => {
                     <ul className='account__nav-wrapper'>
                         <li>
                             <a
-                                href='#!'
+                                href='#'
                                 onClick={() => onChangeFilter('dashboard')}
                                 className={
                                     filter === 'dashboard'
@@ -46,7 +47,7 @@ const UserAccount = () => {
                         </li>
                         <li>
                             <a
-                                href='#!'
+                                href='#'
                                 onClick={() => onChangeFilter('orders')}
                                 className={
                                     filter === 'orders' ? 'account__nav-link account__nav-active' : 'account__nav-link'
@@ -56,7 +57,7 @@ const UserAccount = () => {
                         </li>
                         <li>
                             <a
-                                href='#!'
+                                href='#'
                                 onClick={() => onChangeFilter('addresses')}
                                 className={
                                     filter === 'addresses'
@@ -68,7 +69,7 @@ const UserAccount = () => {
                         </li>
                         <li>
                             <a
-                                href='#!'
+                                href='#'
                                 onClick={() => onChangeFilter('details')}
                                 className={
                                     filter === 'details' ? 'account__nav-link account__nav-active' : 'account__nav-link'
@@ -78,7 +79,7 @@ const UserAccount = () => {
                         </li>
                         <li>
                             <a
-                                href='#!'
+                                href='#'
                                 onClick={() => onChangeFilter('logout')}
                                 className={
                                     filter === 'logout' ? 'account__nav-link account__nav-active' : 'account__nav-link'
@@ -90,6 +91,7 @@ const UserAccount = () => {
                     <div className='account__nav-line'></div>
                     {filter === 'dashboard' ? <Dashboard onChangeFilter={onChangeFilter}/> : null}
                     {filter === 'orders' ? <Orders /> : null}
+                    {filter === 'details' ? <AccountDetails /> : null}
                 </div>
             </div>
         </div>

@@ -1,6 +1,5 @@
 .orders__wrapper {
     width: 100%;
-    margin-top: 39px;
 }
 
 .orders__empty {
@@ -68,13 +67,14 @@
     font-weight: 700;
 }
 
-.header__line {
+.header__item-line {
     width: 100%;
     height: 1px;
     background: #000;
+    margin-top: 16px;
 }
 
-.orders__line {
+.orders__item-line {
     width: 100%;
     height: 1px;
     background: #d8d8d8;
