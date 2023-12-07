@@ -16,7 +16,6 @@ const UserAccount = () => {
     const signOut = useSignOut();
     const navigate = useNavigate();
 
-
     useEffect(() => {
         // dispatch(addedUserHeader(authHeader));
         dispatch(changeFilter('dashboard'));
@@ -29,7 +28,7 @@ const UserAccount = () => {
     return (
         <div className='account'>
             <div className='container'>
-                {filter === 'dashboard' && ( // Використовуємо умовний оператор для відображення заголовка
+                {filter === 'dashboard' && (
                     <div className='account__title'>
                         <h1>My Account</h1>
                     </div>
@@ -89,9 +88,7 @@ const UserAccount = () => {
                                     signOut();
                                     navigate('/');
                                 }}
-                                className={
-                                    filter === 'logout' ? 'account__nav-link account__nav-active' : 'account__nav-link'
-                                }>
+                                className={'account__nav-link'}>
                                 Logout
                             </a>
                         </li>
