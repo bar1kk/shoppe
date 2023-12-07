@@ -1,4 +1,4 @@
-import { useAuthHeader } from 'react-auth-kit';
+import { useAuthHeader, useSignOut } from 'react-auth-kit';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { addedUserHeader, changeFilter } from './UserAccountSlice';
@@ -7,11 +7,15 @@ import './userAccount.scss';
 import Dashboard from './dashboard/Dashboard';
 import Orders from './orders/Orders';
 import AccountDetails from './accountDetails/AccountDetails';
+import { useNavigate } from 'react-router-dom';
 
 const UserAccount = () => {
     const { filter } = useSelector((state) => state.userAccount);
     const dispatch = useDispatch();
     const authHeader = useAuthHeader();
+    const signOut = useSignOut();
+    const navigate = useNavigate();
+
 
     useEffect(() => {
         // dispatch(addedUserHeader(authHeader));
@@ -80,7 +84,11 @@ const UserAccount = () => {
                         <li>
                             <a
                                 href='#'
-                                onClick={() => onChangeFilter('logout')}
+                                onClick={() => {
+                                    onChangeFilter('logout');
+                                    signOut();
+                                    navigate('/');
+                                }}
                                 className={
                                     filter === 'logout' ? 'account__nav-link account__nav-active' : 'account__nav-link'
                                 }>
@@ -89,7 +97,7 @@ const UserAccount = () => {
                         </li>
                     </ul>
                     <div className='account__nav-line'></div>
-                    {filter === 'dashboard' ? <Dashboard onChangeFilter={onChangeFilter}/> : null}
+                    {filter === 'dashboard' ? <Dashboard onChangeFilter={onChangeFilter} /> : null}
                     {filter === 'orders' ? <Orders /> : null}
                     {filter === 'details' ? <AccountDetails /> : null}
                 </div>
