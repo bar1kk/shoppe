@@ -1,14 +1,19 @@
+import { Link } from 'react-router-dom';
+
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
+import Slider from '../slider/Slider';
 
 const MainPage = () => {
     return (
         <>
-            <Header line={true} />
-            <div style={{width: "1250px", margin: '50px auto'}}>
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla iusto repellendus perspiciatis harum cum eius
-                labore odio non nam esse, voluptates dicta amet? Rem suscipit doloremque necessitatibus, dolore itaque
-                repellat.
+            <Header/>
+            <Slider/>
+            <div className="container">
+                <div className="wrapper">
+                    <div className="title">Shop The Latest</div>
+                    <Link to="/shop" className="view-all">View All</Link>
+                </div>
             </div>
             <Footer />
         </>

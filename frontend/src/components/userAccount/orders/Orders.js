@@ -4,9 +4,11 @@ import { fetchOrders } from '../UserAccountSlice';
 import { Link } from 'react-router-dom';
 
 import './orders.scss';
+import Spinner from '../../spinner/Spinner';
 
 const Orders = () => {
-    const { orders } = useSelector((state) => state.userAccount);
+    const { orders, ordersLoadingStatus } = useSelector((state) => state.userAccount);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -55,6 +57,13 @@ const Orders = () => {
     };
 
     const ordersList = renderOrdersList(orders);
+
+    if(ordersLoadingStatus === 'loading') {
+        return <Spinner />
+    }else if (ordersLoadingStatus === 'error') {
+        return  <h5 className='no-results-message'>An error occurred while loading the data</h5>
+    }
+
     return <div className='orders__wrapper'>{ordersList}</div>;
 };
 
