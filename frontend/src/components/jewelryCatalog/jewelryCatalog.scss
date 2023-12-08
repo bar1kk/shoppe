@@ -1,0 +1,13 @@
+
+.catalog {
+    padding-top: 40px;
+    padding-bottom: 253px;
+}
+
+.catalog__wrapper {
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 380px);
+    row-gap: 86px;
+    column-gap: 54px;
+}

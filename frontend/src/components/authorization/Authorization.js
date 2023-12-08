@@ -59,15 +59,15 @@ const Login = () => {
                 })}
                 onSubmit={(values, { resetForm }) => {
                     resetForm({ values: '' });
-                    const data = { email: values.email, password: values.password };
-                    request('http://localhost:9122/api/v1/auth/login', 'POST', JSON.stringify(data))
+                    const userData = { email: values.email, password: values.password };
+                    request('http://localhost:9122/api/v1/auth/login', 'POST', JSON.stringify(userData))
                         .then((data) => {
                             if (
                                 signIn({
                                     token: data.token,
                                     expiresIn: 120,
                                     tokenType: 'Bearer',
-                                    authState: values.email
+                                    authState: userData
                                 })
                             ) {
                                 navigate('/');
@@ -102,7 +102,7 @@ const Login = () => {
                             </label>
                         </div>
                         <button type='submit' className='authorization__sign-in' disabled={isSubmitting}>
-                            SIGN IN
+                            Sign in
                         </button>
                     </Form>
                 )}
@@ -160,7 +160,7 @@ const Register = () => {
     );
 };
 
-const TextInput = ({ ...props }) => {
+export const TextInput = ({ ...props }) => {
     const [field, meta] = useField(props);
     return (
         <>
@@ -170,7 +170,7 @@ const TextInput = ({ ...props }) => {
     );
 };
 
-const PasswordInput = ({ ...props }) => {
+export const PasswordInput = ({ ...props }) => {
     const [field, meta] = useField(props);
     const [showPassword, setShowPassword] = useState(false);
 
