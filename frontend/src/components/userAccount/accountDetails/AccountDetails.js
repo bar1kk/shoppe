@@ -68,7 +68,7 @@ const AccountDetails = () => {
                     confirmNewPassword: ''
                 }}
                 validationSchema={Yup.object({
-                    currentPassword: Yup.string().oneOf([auth().password, null], 'Invalid current password').required('Invalid current password'),
+                    currentPassword: Yup.string().required('Required field'),
                     newPassword: Yup.string().min(8, 'Must be 8 characters or more').required('Required field'),
                     confirmNewPassword: Yup.string()
                         .oneOf([Yup.ref('newPassword'), null], 'Passwords must match')
@@ -76,7 +76,7 @@ const AccountDetails = () => {
                 })}
                 onSubmit={(values, { resetForm }) => {
                     resetForm({ values: '' });
-                    const data = { password: values.newPassword };
+                    const data = {currentPassword: values.currentPassword, password: values.newPassword };
                     request('http://localhost:3001/password', 'POST', JSON.stringify(data))
                         .then((res) => {
                             console.log(res);

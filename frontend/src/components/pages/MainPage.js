@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import Slider from '../slider/Slider';
+import JewelryCatalogPromo from '../jewelryCatalog/JewelryCatalogPromo';
 
 const MainPage = () => {
     return (
@@ -14,6 +15,7 @@ const MainPage = () => {
                     <div className="title">Shop The Latest</div>
                     <Link to="/shop" className="view-all">View All</Link>
                 </div>
+                <JewelryCatalogPromo />
             </div>
             <Footer />
         </>
