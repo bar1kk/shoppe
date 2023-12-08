@@ -2,12 +2,21 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from '../../hooks/http.hook';
 
 const initialState = {
+    promoGoods: [],
     goods: [],
     goodsLoadingStatus: 'idle',
     orderedGoods: [],
     orderedCounters: [],
     selectedItemId: 0
 }
+
+export const fetchPromoGoods = createAsyncThunk(
+    'goods/fetchPromoGoods',
+    async () => {
+        const { request } = useHttp();
+        return await request('http://localhost:3001/promoGoods', 'GET');
+    }
+);
 
 export const fetchGoods = createAsyncThunk(
     'goods/fetchGoods',
@@ -74,6 +83,12 @@ const JewelryCatalogSlice = createSlice({
                 state.goods = action.payload;
             })
             .addCase(fetchGoods.rejected, state => {state.goodsLoadingStatus = 'error'})
+            .addCase(fetchPromoGoods.pending, state => {state.goodsLoadingStatus = 'loading'})
+            .addCase(fetchPromoGoods.fulfilled, (state, action) => {
+                state.goodsLoadingStatus = 'idle';
+                state.promoGoods = action.payload;
+            })
+            .addCase(fetchPromoGoods.rejected, state => {state.goodsLoadingStatus = 'error'})
             .addDefaultCase(() => {})
     }
 });
@@ -83,9 +98,6 @@ const {actions, reducer} = JewelryCatalogSlice;
 export default reducer;
 
 export const {
-    goodsFetching,
-    goodsFetched,
-    goodsFetchingError,
     addedGoods,
     removeGoods,
     plusCounter,

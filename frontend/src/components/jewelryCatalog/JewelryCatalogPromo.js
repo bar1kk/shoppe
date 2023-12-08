@@ -1,17 +1,18 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchGoods } from './JewelryCatalogSlice';
+import { fetchPromoGoods } from './JewelryCatalogSlice';
 
 import './jewelryCatalog.scss';
 import JewelryItemPromo from '../jewelryItem/JewelryItemPromo';
 import Spinner from '../spinner/Spinner';
 
 const JewelryCatalogPromo = () => {
-    const { goods, goodsLoadingStatus } = useSelector((state) => state.goods);
+    const { promoGoods, goodsLoadingStatus } = useSelector((state) => state.goods);
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(fetchGoods());
+        dispatch(fetchPromoGoods());
+        //eslint-disable-next-line
     }, []);
 
     if (goodsLoadingStatus === 'loading') {
@@ -27,12 +28,12 @@ const JewelryCatalogPromo = () => {
         return goodsList;
     };
 
-    const goodsList = renderCatalog(goods);
+    const promGoodsList = renderCatalog(promoGoods);
 
     return (
-        <div className='catalog' onClick={() => console.log(goods[0])}>
+        <div className='catalog'>
             
-            <div className='catalog__wrapper'>{goodsList}</div>
+            <div className='catalog__wrapper'>{promGoodsList}</div>
         </div>
     );
 };
