@@ -60,7 +60,10 @@ public class SecurityConfig {
                                 "/webjars/**",
                                 "/swagger-ui.html"
                         ).permitAll()
-                        .requestMatchers("/api/v1/user/**").hasAnyRole("USER")
+                        .requestMatchers(
+                                "/api/v1/user/**",
+                                "/api/v1/products",
+                                "/api/v1/products/**").hasAnyRole("USER")
                         .requestMatchers("/api/v1/admin/**").hasRole("ADMIN")
                         .requestMatchers("/api/v1/super-admin/**").hasRole("SUPER_ADMIN")
                         .anyRequest().permitAll()
