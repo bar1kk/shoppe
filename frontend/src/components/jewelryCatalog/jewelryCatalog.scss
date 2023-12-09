@@ -11,3 +11,12 @@
     row-gap: 86px;
     column-gap: 54px;
 }
+
+.catalog__wrapper-shop {
+    padding-top: 40px;
+    position: relative;
+    display: grid;
+    grid-template-columns: repeat(3, 300px);
+    row-gap: 70px;
+    column-gap: 24px;
+}  
