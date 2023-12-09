@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 
 import './jewelryItem.scss';
+//import image from '../../assets/image/1.webp';
+
 
 const JewelryItemShop = ({ id, name, price, availability, imagePath, onBuy }) => {
     const status = availability == 0 ? <div className='catalog__item-status'>Sold out</div> : null;

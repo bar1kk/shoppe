@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import './jewelryItem.scss';
+//import image from '../../assets/image/1.webp';
 
 const JewelryPromoItem = ({ name, price, id, imagePath }) => {
     return (
