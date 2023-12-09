@@ -67,7 +67,7 @@ const Login = () => {
                                     token: data.token,
                                     expiresIn: 120,
                                     tokenType: 'Bearer',
-                                    authState: userData
+                                    authState: values.email
                                 })
                             ) {
                                 navigate('/');

@@ -10,7 +10,7 @@ const Dashboard = ({ onChangeFilter }) => {
     return (
         <div className='dashboard__wrapper'>
             <p>
-                Hello {auth().email} (not {auth().email}?{' '}
+                Hello {auth()} (not {auth()}?{' '}
                 <span
                     onClick={() => {
                         signOut();

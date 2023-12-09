@@ -4,7 +4,7 @@ const Notification = (props) => {
     return (
         <div className='notification'>
             <div className='container'>
-                <div className='notification__wrapper'>
+                <div className='notification__wrapper' style={{width: `${props.width}`}}>
                     <div className='notification__info'>
                         <div className='notification__img'>
                             <img src={props.icon} alt="check mark icon" />
