@@ -13,7 +13,7 @@ const JewelryItemShop = ({ id, name, price, availability, imagePath, onBuy }) =>
                     <img src={imagePath} alt={name} className='catalog__item-img' />
                 </Link>
                 {availability === 0 ? null : (
-                    <div className='catalog__item-hover' onClick={onBuy}>
+                    <div className='catalog__item-hover' onClick={() => onBuy(id)}>
                         <button >ADD TO CARD</button>
                     </div>
                 )}
