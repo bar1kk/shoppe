@@ -2,7 +2,6 @@ package dev.danilbel.backend.controller;
 
 import dev.danilbel.backend.dto.product.ProductDto;
 import dev.danilbel.backend.service.ProductService;
-import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -19,7 +18,6 @@ import java.util.List;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 @Slf4j
-@SecurityRequirement(name = "bearerAuth")
 @Tag(name = "Product")
 public class ProductController {
 
