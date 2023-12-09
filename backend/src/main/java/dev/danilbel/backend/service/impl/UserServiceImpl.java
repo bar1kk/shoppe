@@ -1,6 +1,8 @@
 package dev.danilbel.backend.service.impl;
 
+import dev.danilbel.backend.dto.user.ChangePasswordRequestDto;
 import dev.danilbel.backend.dto.user.RegistrationRequestDto;
+import dev.danilbel.backend.dto.user.UserDetailsRequestDto;
 import dev.danilbel.backend.dto.user.UserDto;
 import dev.danilbel.backend.entity.RoleEntity;
 import dev.danilbel.backend.entity.UserEntity;
@@ -54,6 +56,14 @@ public class UserServiceImpl implements UserService {
 
         log.info("IN UserServiceImpl.getUserEntityByEmail - user: {} found by email '{}'", result, email);
         return result;
+    }
+
+    @Override
+    public UserDto getUserByEmail(String email) {
+
+        UserEntity userEntity = getUserEntityByEmail(email);
+
+        return userMapper.toDto(userEntity);
     }
 
     private UserEntity getUserEntityById(String id) {
@@ -144,6 +154,45 @@ public class UserServiceImpl implements UserService {
                 .build();
 
         UserEntity savedUserEntity = userRepository.save(userEntity);
+
+        return userMapper.toDto(savedUserEntity);
+    }
+
+    @Override
+    public UserDto updateUserDetailsByEmail(String email, UserDetailsRequestDto userDetailsRequestDto) {
+
+        UserEntity userEntity = getUserEntityByEmail(email);
+
+        userEntity.setFirstName(userDetailsRequestDto.getFirstName());
+        userEntity.setLastName(userDetailsRequestDto.getLastName());
+
+        if (userDetailsRequestDto.getPhoneNumber() != null) {
+            userEntity.setPhoneNumber(userDetailsRequestDto.getPhoneNumber());
+        }
+
+        userEntity.setUpdatedAt(LocalDateTime.now());
+        UserEntity savedUserEntity = userRepository.save(userEntity);
+        log.info("IN UserServiceImpl.setUserDetailsByEmail - user with email '{}' details set", email);
+
+        return userMapper.toDto(savedUserEntity);
+    }
+
+    @Override
+    public UserDto updateUserPasswordByEmail(String email, ChangePasswordRequestDto changePasswordRequestDto) {
+
+        UserEntity userEntity = getUserEntityByEmail(email);
+
+        if (!passwordEncoder.matches(changePasswordRequestDto.getOldPassword(), userEntity.getPassword())) {
+            log.error("IN UserServiceImpl.updateUserPasswordByEmail - user with email '{}' old password is incorrect", email);
+            throw new AccessDeniedException(
+                    String.format("User with email '%s' old password is incorrect", email)
+            );
+        }
+
+        userEntity.setPassword(passwordEncoder.encode(changePasswordRequestDto.getNewPassword()));
+        userEntity.setUpdatedAt(LocalDateTime.now());
+        UserEntity savedUserEntity = userRepository.save(userEntity);
+        log.info("IN UserServiceImpl.updateUserPasswordByEmail - user with email '{}' password updated", email);
 
         return userMapper.toDto(savedUserEntity);
     }
