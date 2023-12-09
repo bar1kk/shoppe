@@ -24,3 +24,9 @@ jwt:
 
 cors:
   allowed-origin: http://localhost:3000
+
+app:
+  image:
+    bucket: D:\MyProjects\shoppe\images
+    api:
+      url: http://localhost:9122/api/v1/images/
