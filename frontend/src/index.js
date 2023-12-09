@@ -15,9 +15,9 @@ root.render(
             authName={'_auth'}
             cookieDomain={window.location.hostname}
             cookieSecure={window.location.protocol === 'https:'}>
-            <React.StrictMode>
+            {/* <React.StrictMode> */}
                 <App />
-            </React.StrictMode>
+            {/* </React.StrictMode> */}
         </AuthProvider>
     </Provider>
 );
