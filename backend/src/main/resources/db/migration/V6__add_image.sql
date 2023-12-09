@@ -1,0 +1,7 @@
+CREATE TABLE images
+(
+    id SERIAL PRIMARY KEY,
+    path VARCHAR(255) UNIQUE NOT NULL,
+
+    product_id VARCHAR(36) REFERENCES products(id) ON DELETE CASCADE
+);
