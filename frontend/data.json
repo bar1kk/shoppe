@@ -418,5 +418,23 @@
         }
       ]
     }
+  ],
+  "addresses": [
+    {
+      "id": 2,
+      "fullName": "Beba Barbar",
+      "contactsItem": "beba@gmail.com 380681239045",
+      "localAddress": "5 Borshagivska Street",
+      "regionAddress": "Kyiv 32094",
+      "country": "Ukraine"
+    },
+    {
+      "fullName": "Vladyslav Barbar",
+      "contactsItem": "barbariska.v44@gmail.com 380681239045",
+      "localAddress": "Hanover 96 11",
+      "regionAddress": "Munhich 78934",
+      "country": "Europe",
+      "id": 3
+    }
   ]
 }
