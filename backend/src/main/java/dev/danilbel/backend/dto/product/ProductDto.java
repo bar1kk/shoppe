@@ -6,6 +6,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+import java.util.List;
+
 @Data
 @Builder
 @NoArgsConstructor
@@ -24,4 +26,6 @@ public class ProductDto {
     Integer availability;
 
     ProductDescriptionDto productDescription;
+
+    List<String> images;
 }
