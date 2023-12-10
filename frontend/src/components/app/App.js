@@ -6,10 +6,13 @@ import UserPage from '../pages/userPage/UserPage';
 import PrivateRoute from '../privateRoute/PrivateRoute';
 import Shop from '../pages/shop/Shop';
 import SelectedOrderPage from '../pages/SelectedOrderPage';
+import UnloadListener from '../unloadListener/UnloadListener';
 
 const App = () => {
+
     return (
         <Router>
+            <UnloadListener />
             <div className='App'>
                 <Routes>
                     <Route path={'/'} element={<MainPage />} />

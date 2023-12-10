@@ -19,7 +19,7 @@ const UserAccount = () => {
 
     useEffect(() => {
         // dispatch(addedUserHeader(authHeader));
-        // dispatch(changeFilter('dashboard'));
+        dispatch(changeFilter('dashboard'));
     }, []);
 
     const onChangeFilter = (filter) => {
