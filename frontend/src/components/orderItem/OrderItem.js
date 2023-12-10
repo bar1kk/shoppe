@@ -98,7 +98,7 @@ const OrderItem = () => {
                         </div>
                         <div className='order__summary_footer-wrapper'>
                             <span className='order__summary-footer'>Total</span>
-                            <span className='order__summary-footer'>{totalPrice}</span>
+                            <span className='order__summary-footer'>$ {totalPrice}</span>
                         </div>
                     </div>
                 </div>

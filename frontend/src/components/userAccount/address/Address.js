@@ -46,7 +46,8 @@ const Address = () => {
     };
 
     const renderAddresses = (addresses) => {
-        return addresses.map(({id, fullName, contactsItem, localAddress, regionAddress, country}) => {
+        if (addresses.length === 0) return <div className='no-results-message'>You have not set up address yet.</div>;
+        return addresses.map(({ id, fullName, contactsItem, localAddress, regionAddress, country }) => {
             return (
                 <div className='address__list-item' key={id}>
                     <span>{fullName}</span>
@@ -55,7 +56,7 @@ const Address = () => {
                     <span>{regionAddress}</span>
                     <span>{country}</span>
                     <div onClick={() => handleRemoveAddress(id)} className='address__list-item-delete'>
-                        <img src={removeIcon} alt="remove address" />
+                        <img src={removeIcon} alt='remove address' />
                     </div>
                 </div>
             );
@@ -63,10 +64,6 @@ const Address = () => {
     };
 
     const addressesList = renderAddresses(addresses);
-
-    if (addresses.length === 0) {
-        return <div className='no-results-message'>You have not set up address yet.</div>;
-    }
 
     return (
         <div className='address'>
