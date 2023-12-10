@@ -46,7 +46,7 @@ const Address = () => {
     };
 
     const renderAddresses = (addresses) => {
-        if (addresses.length === 0) return <div className='no-results-message'>You have not set up address yet.</div>;
+        if (addresses.length === 0) return <div style={{marginTop: '10px'}}>You have not set up address yet.</div>;
         return addresses.map(({ id, fullName, contactsItem, localAddress, regionAddress, country }) => {
             return (
                 <div className='address__list-item' key={id}>
