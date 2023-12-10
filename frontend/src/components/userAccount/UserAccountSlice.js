@@ -5,6 +5,7 @@ const initialState = {
     userHeader: '',
     filter: 'dashboard',
     orders: [],
+    selectedOrder:[],
     addresses: [],
     ordersLoadingStatus: 'idle',
     addressesLoadingStatus: 'idle',
@@ -30,21 +31,26 @@ const UserAccountSlice = createSlice({
     name: 'userAccount',
     initialState,
     reducers: {
-        addedUserHeader(state, action){
+        addedUserHeader: (state, action) => {
             state.userHeader = action.payload;
         },
 
-        changeFilter(state, action) {
+        changeFilter: (state, action) => {
             state.filter = action.payload;
         },
 
-        addedNewAddress(state, action) {
+        addedNewAddress: (state, action) => {
             state.addresses.push(action.payload);
         },
 
-        removeAddress(state, action) {
+        removeAddress: ( state, action) => {
             state.addresses = state.addresses.filter((address) => address.id !== action.payload);
+        },
+
+        fetchSelectedOrder:(state, action) => {
+            state.selectedOrder = {...action.payload};
         }
+
     },
     extraReducers: (builder) => {
         builder
@@ -74,7 +80,7 @@ const UserAccountSlice = createSlice({
 
 const { actions, reducer } = UserAccountSlice;
 export default reducer;
-export const { addedUserHeader, changeFilter, addedNewAddress, removeAddress } = actions;
+export const { addedUserHeader, changeFilter, addedNewAddress, removeAddress, fetchSelectedOrder } = actions;
 
 
 

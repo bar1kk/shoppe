@@ -1,440 +1,505 @@
 {
-  "tocken": {
-    "tocken": "24.5e4b8d3f3b4d4f3b8d3f3b4d4f3b8d3f3b4d4f3b8d3f3b4d4f3b4d4f3b4d4f3.2592000.1541511510.282335-14467861"
-  },
-  "users": [
-    {
-      "email": "barbariska.v44@gmail.com",
-      "password": "12345678",
-      "id": 1
+    "tocken": {
+        "tocken": "24.5e4b8d3f3b4d4f3b8d3f3b4d4f3b8d3f3b4d4f3b8d3f3b4d4f3b4d4f3b4d4f3.2592000.1541511510.282335-14467861"
     },
-    {
-      "email": "barbariska.v44@gmail.com",
-      "password": "1334234444",
-      "id": 2
-    },
-    {
-      "email": "barbar.vladyslav@lll.kpi.ua",
-      "password": "123456789",
-      "id": 3
-    }
-  ],
-  "orders": [
-    {
-      "id": "7643980998990",
-      "date": "October 8,2021",
-      "status": "Delivered",
-      "total": "105"
-    },
-    {
-      "id": "943980998990",
-      "date": "October 8,2021",
-      "status": "Processing",
-      "total": "100"
-    },
-    {
-      "id": "879980998990",
-      "date": "October 8,2021",
-      "status": "Delivered",
-      "total": "65"
-    }
-  ],
-  "names": [
-    {
-      "email": "Vladyslav",
-      "password": "Barbar",
-      "id": 1
-    },
-    {
-      "email": "Vladyslav",
-      "password": "Barbar",
-      "id": 2
-    },
-    {
-      "email": "Vladyslav",
-      "password": "Barbar",
-      "id": 3
-    },
-    {
-      "email": "Vladyslav",
-      "password": "Barbar",
-      "id": 4
-    },
-    {
-      "email": "Vladyslav",
-      "password": "Barbar",
-      "phoneNumber": "380682451676",
-      "id": 5
-    }
-  ],
-  "password": [
-    {
-      "password": "12345678",
-      "id": 1
-    },
-    {
-      "password": "123121312313",
-      "id": 2
-    }
-  ],
-  "promoGoods": [
-    {
-      "id": 1,
-      "name": "Lira Earrings",
-      "price": "20.00",
-      "type": "Earrings",
-      "availability": 4,
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
-      "imagePath": {
-        "main": "https://i.postimg.cc/SsB8LJhM/01.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
+    "users": [
         {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+            "email": "barbariska.v44@gmail.com",
+            "password": "12345678",
+            "id": 1
         },
         {
-          "name": "Scarlet withch",
-          "rating": 2,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat."
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Kaede Hair Pin Set Of 3",
-      "price": "30.00",
-      "type": "Hairpin",
-      "availability": 4,
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
-      "imagePath": {
-        "main": "https://i.postimg.cc/FRLkKNLs/03.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
-        {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
-        }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Hal Earrings",
-      "price": "25.00",
-      "type": "Earrings",
-      "availability": 4,
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
-      "imagePath": {
-        "main": "https://i.postimg.cc/KY4gdncT/02.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
-        {
-          "name": "Scarlet withch",
-          "rating": 1,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+            "email": "barbariska.v44@gmail.com",
+            "password": "1334234444",
+            "id": 2
         },
         {
-          "name": "Scarlet withch",
-          "rating": 4,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat."
+            "email": "barbar.vladyslav@lll.kpi.ua",
+            "password": "123456789",
+            "id": 3
         }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Yuki Hair Pin Set of 3",
-      "price": "29.00",
-      "type": "Hairpin",
-      "availability": "4",
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "imagePath": {
-        "main": "https://i.postimg.cc/Tw6fr6sP/06.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
+    ],
+    "orders": [
         {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Plaine Necklace",
-      "price": "19.00",
-      "type": "Necklace",
-      "availability": "4",
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "imagePath": {
-        "main": "https://i.postimg.cc/zGyzNpWq/05.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
-        {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Hair Pin Set of 3",
-      "price": "30.00",
-      "type": "Hairpin",
-      "availability": 0,
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "imagePath": {
-        "main": "https://i.postimg.cc/j5Hq95fN/04.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
-        {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
-        }
-      ]
-    }
-  ],
-  "goods": [
-    {
-      "id": 1,
-      "name": "Lira Earrings",
-      "price": "20.00",
-      "type": "Earrings",
-      "availability": 4,
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
-      "imagePath": {
-        "main": "https://i.postimg.cc/SsB8LJhM/01.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
-        {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+            "id": "7643980998990",
+            "details": {
+                "date": "October 8, 2021",
+                "status": "Delivered",
+                "paymentMethod": "Cash on delivery",
+                "deliveryOptions": "Standard delivery",
+                "deliveryAddress": {
+                    "fullName": "Vladyslav Barbar",
+                    "contactsItem": "barbariska.v44@gmail.com 380681239045",
+                    "localAddress": "Hanover 96 11",
+                    "regionAddress": "Munhich 78934",
+                    "country": "Europe"
+                }
+            },
+            "summary": {
+                "goods": [
+                    {
+                        "id": 1,
+                        "name": "Lira Earrings",
+                        "price": 25,
+                        "quantity": 2,
+                        "total": 50
+                    },
+                    {
+                        "id": 2,
+                        "name": "Hal Earrings",
+                        "price": 25,
+                        "quantity": 1,
+                        "total": 25
+                    },
+                    {
+                        "id": 3,
+                        "name": "Kaede Hair Pin Set Of 3",
+                        "price": 30,
+                        "quantity": 2,
+                        "total": 60
+                    }
+                ],
+                "subTotal": 135,
+                "shippingCost": 0,
+
+                "totalPrice": 135
+            }
         },
         {
-          "name": "Scarlet withch",
-          "rating": 2,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat."
+            "id": "943980998990",
+            "details": {
+                "date": "October 8, 2021",
+                "status": "Processing",
+                "paymentMethod": "Cash on delivery",
+                "deliveryOptions": "Standard delivery",
+                "deliveryAddress": {
+                    "fullName": "Oleksandr Sapozhnikov",
+                    "contactsItem": "grigoriy.artichoke@gmail.com 380681239045",
+                    "localAddress": "22 Shevchenka Street",
+                    "regionAddress": "Bilogorodka 08140",
+                    "country": "Ukraine"
+                }
+            },
+            "summary": {
+                "goods": [
+                    {
+                        "id": 1,
+                        "name": "Yuki Hair Pin Set of 3",
+                        "price": 19,
+                        "quantity": 1,
+                        "total": 19
+                    },
+                    {
+                        "id": 2,
+                        "name": "Plaine Necklace",
+                        "price": 30,
+                        "quantity": 3,
+                        "total": 90
+                    }
+                ],
+                "subTotal": 109,
+                "shippingCost": 0,
+
+                "totalPrice": 109
+            }
         }
-      ]
-    },
-    {
-      "id": 2,
-      "name": "Hal Earrings",
-      "price": "25.00",
-      "type": "Earrings",
-      "availability": 4,
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
-      "imagePath": {
-        "main": "https://i.postimg.cc/KY4gdncT/02.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
+    ],
+    "names": [
         {
-          "name": "Scarlet withch",
-          "rating": 1,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+            "email": "Vladyslav",
+            "password": "Barbar",
+            "id": 1
         },
         {
-          "name": "Scarlet withch",
-          "rating": 4,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat."
-        }
-      ]
-    },
-    {
-      "id": 3,
-      "name": "Kaede Hair Pin Set Of 3",
-      "price": "30.00",
-      "type": "Hairpin",
-      "availability": 4,
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
-      "imagePath": {
-        "main": "https://i.postimg.cc/FRLkKNLs/03.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
+            "email": "Vladyslav",
+            "password": "Barbar",
+            "id": 2
+        },
         {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
-        }
-      ]
-    },
-    {
-      "id": 4,
-      "name": "Hair Pin Set of 3",
-      "price": "30.00",
-      "type": "Hairpin",
-      "availability": 0,
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "imagePath": {
-        "main": "https://i.postimg.cc/j5Hq95fN/04.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
+            "email": "Vladyslav",
+            "password": "Barbar",
+            "id": 3
+        },
         {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
-        }
-      ]
-    },
-    {
-      "id": 5,
-      "name": "Plaine Necklace",
-      "price": "19.00",
-      "type": "Necklace",
-      "availability": "4",
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "imagePath": {
-        "main": "https://i.postimg.cc/zGyzNpWq/05.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
+            "email": "Vladyslav",
+            "password": "Barbar",
+            "id": 4
+        },
         {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+            "email": "Vladyslav",
+            "password": "Barbar",
+            "phoneNumber": "380682451676",
+            "id": 5
         }
-      ]
-    },
-    {
-      "id": 6,
-      "name": "Yuki Hair Pin Set of 3",
-      "price": "29.00",
-      "type": "Hairpin",
-      "availability": "4",
-      "categories": "Fashion, Style",
-      "sku": "12",
-      "imagePath": {
-        "main": "https://i.postimg.cc/Tw6fr6sP/06.jpg",
-        "additional": []
-      },
-      "info": {
-        "weight": "0.3 kg",
-        "dimentions": "15 x 10 x 1 cm",
-        "colours": "Black, Browns, White",
-        "material": "Metal"
-      },
-      "reviews": [
+    ],
+    "password": [
         {
-          "name": "Scarlet withch",
-          "rating": 5,
-          "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+            "password": "12345678",
+            "id": 1
+        },
+        {
+            "password": "123121312313",
+            "id": 2
         }
-      ]
-    }
-  ],
-  "addresses": [
-    {
-      "id": 2,
-      "fullName": "Beba Barbar",
-      "contactsItem": "beba@gmail.com 380681239045",
-      "localAddress": "5 Borshagivska Street",
-      "regionAddress": "Kyiv 32094",
-      "country": "Ukraine"
-    },
-    {
-      "fullName": "Vladyslav Barbar",
-      "contactsItem": "barbariska.v44@gmail.com 380681239045",
-      "localAddress": "Hanover 96 11",
-      "regionAddress": "Munhich 78934",
-      "country": "Europe",
-      "id": 3
-    }
-  ]
+    ],
+    "promoGoods": [
+        {
+            "id": 1,
+            "name": "Lira Earrings",
+            "price": "20.00",
+            "type": "Earrings",
+            "availability": 4,
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+            "imagePath": {
+                "main": "https://i.postimg.cc/SsB8LJhM/01.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                },
+                {
+                    "name": "Scarlet withch",
+                    "rating": 2,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat."
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Kaede Hair Pin Set Of 3",
+            "price": "30.00",
+            "type": "Hairpin",
+            "availability": 4,
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+            "imagePath": {
+                "main": "https://i.postimg.cc/FRLkKNLs/03.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "type": "Earrings",
+            "availability": 4,
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+            "imagePath": {
+                "main": "https://i.postimg.cc/KY4gdncT/02.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 1,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                },
+                {
+                    "name": "Scarlet withch",
+                    "rating": 4,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat."
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Yuki Hair Pin Set of 3",
+            "price": "29.00",
+            "type": "Hairpin",
+            "availability": "4",
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "imagePath": {
+                "main": "https://i.postimg.cc/Tw6fr6sP/06.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Plaine Necklace",
+            "price": "19.00",
+            "type": "Necklace",
+            "availability": "4",
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "imagePath": {
+                "main": "https://i.postimg.cc/zGyzNpWq/05.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Hair Pin Set of 3",
+            "price": "30.00",
+            "type": "Hairpin",
+            "availability": 0,
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "imagePath": {
+                "main": "https://i.postimg.cc/j5Hq95fN/04.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                }
+            ]
+        }
+    ],
+    "goods": [
+        {
+            "id": 1,
+            "name": "Lira Earrings",
+            "price": "20.00",
+            "type": "Earrings",
+            "availability": 4,
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+            "imagePath": {
+                "main": "https://i.postimg.cc/SsB8LJhM/01.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                },
+                {
+                    "name": "Scarlet withch",
+                    "rating": 2,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat."
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "type": "Earrings",
+            "availability": 4,
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+            "imagePath": {
+                "main": "https://i.postimg.cc/KY4gdncT/02.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 1,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                },
+                {
+                    "name": "Scarlet withch",
+                    "rating": 4,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat."
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Kaede Hair Pin Set Of 3",
+            "price": "30.00",
+            "type": "Hairpin",
+            "availability": 4,
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+            "imagePath": {
+                "main": "https://i.postimg.cc/FRLkKNLs/03.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Hair Pin Set of 3",
+            "price": "30.00",
+            "type": "Hairpin",
+            "availability": 0,
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "imagePath": {
+                "main": "https://i.postimg.cc/j5Hq95fN/04.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Plaine Necklace",
+            "price": "19.00",
+            "type": "Necklace",
+            "availability": "4",
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "imagePath": {
+                "main": "https://i.postimg.cc/zGyzNpWq/05.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Yuki Hair Pin Set of 3",
+            "price": "29.00",
+            "type": "Hairpin",
+            "availability": "4",
+            "categories": "Fashion, Style",
+            "sku": "12",
+            "imagePath": {
+                "main": "https://i.postimg.cc/Tw6fr6sP/06.jpg",
+                "additional": []
+            },
+            "info": {
+                "weight": "0.3 kg",
+                "dimentions": "15 x 10 x 1 cm",
+                "colours": "Black, Browns, White",
+                "material": "Metal"
+            },
+            "reviews": [
+                {
+                    "name": "Scarlet withch",
+                    "rating": 5,
+                    "descr": "Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet."
+                }
+            ]
+        }
+    ],
+    "addresses": [
+        {
+            "id": 2,
+            "fullName": "Beba Barbar",
+            "contactsItem": "beba@gmail.com 380681239045",
+            "localAddress": "5 Borshagivska Street",
+            "regionAddress": "Kyiv 32094",
+            "country": "Ukraine"
+        },
+        {
+            "fullName": "Vladyslav Barbar",
+            "contactsItem": "barbariska.v44@gmail.com 380681239045",
+            "localAddress": "Hanover 96 11",
+            "regionAddress": "Munhich 78934",
+            "country": "Europe",
+            "id": 3
+        }
+    ]
 }

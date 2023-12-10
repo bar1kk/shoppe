@@ -46,15 +46,15 @@ const Address = () => {
     };
 
     const renderAddresses = (addresses) => {
-        return addresses.map((address) => {
+        return addresses.map(({id, fullName, contactsItem, localAddress, regionAddress, country}) => {
             return (
-                <div className='address__list-item' key={address.id}>
-                    <span>{address.fullName}</span>
-                    <span>{address.contactsItem}</span>
-                    <span>{address.localAddress}</span>
-                    <span>{address.regionAddress}</span>
-                    <span>{address.country}</span>
-                    <div onClick={() => handleRemoveAddress(address.id)} className='address__list-item-delete'>
+                <div className='address__list-item' key={id}>
+                    <span>{fullName}</span>
+                    <span>{contactsItem}</span>
+                    <span>{localAddress}</span>
+                    <span>{regionAddress}</span>
+                    <span>{country}</span>
+                    <div onClick={() => handleRemoveAddress(id)} className='address__list-item-delete'>
                         <img src={removeIcon} alt="remove address" />
                     </div>
                 </div>

@@ -5,14 +5,14 @@ import './jewelryItem.scss';
 
 
 const JewelryItemShop = ({ id, name, price, availability, imagePath, onBuy }) => {
-    const status = availability == 0 ? <div className='catalog__item-status'>Sold out</div> : null;
+    const status = availability === 0 ? <div className='catalog__item-status'>Sold out</div> : null;
 
     return(
         <div className='catalog__item'>
             <div className='catalog__item-shop-wrapper'>
                 {status}
                 <Link to={`shop/${id}`}>
-                    <img src={imagePath} alt={name} className='catalog__item-img' />
+                    <img src={imagePath} alt={name} className='catalog__item-img'/>
                 </Link>
                 {availability === 0 ? null : (
                     <div className='catalog__item-hover' onClick={() => onBuy(id)}>

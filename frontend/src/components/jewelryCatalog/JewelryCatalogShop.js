@@ -61,16 +61,15 @@ const JewelryCatalogShop = () => {
     };
 
     const renderCatalog = (goods) => {
-        const goodsList = goods.map((item) => {
+        const goodsList = goods.map(({id, name, price, imagePath, availability}) => {
             return (
                 <JewelryItemShop
-                    id={item.id}
-                    key={item.id}
-                    item={item}
-                    name={item.name}
-                    price={item.price}
-                    imagePath={item.imagePath.main}
-                    availability={item.availability}
+                    id={id}
+                    key={id}
+                    name={name}
+                    price={price}
+                    imagePath={imagePath.main}
+                    availability={availability}
                     onBuy={onBuy}
                 />
             );
