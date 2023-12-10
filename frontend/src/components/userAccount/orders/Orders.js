@@ -16,7 +16,7 @@ const Orders = () => {
     }, []);
 
     const renderOrdersList = (orders) => {
-        if (!orders.length) {
+        if (orders.length === 0) {
             return (
                 <div className='orders__empty'>
                     <span className='orders__empty-text'>No order has been made yet.</span>
@@ -36,14 +36,14 @@ const Orders = () => {
                     <span>Actions</span>
                   </div>
                   <div className='header__item-line'></div>
-                  {orders.map((order) => (
-                    <div className="orders__item" key={order.id}>
+                  {orders.map(({id, details:{date, status}, summary:{totalPrice}}) => (
+                    <div className="orders__item" key={id}>
                         <div className='orders__item-wrapper' >
-                          <span>{order.id}</span>
-                          <span>{order.date}</span>
-                          <span>{order.status}</span>
-                          <span>$ {order.total}</span>
-                          <Link className='orders__item-link' to={'/'}>
+                          <span>{id}</span>
+                          <span>{date}</span>
+                          <span>{status}</span>
+                          <span>$ {totalPrice}</span>
+                          <Link className='orders__item-link' to={`order/${id}`}>
                             View Order
                           </Link>
                         </div>

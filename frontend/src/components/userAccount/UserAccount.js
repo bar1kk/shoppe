@@ -2,12 +2,13 @@ import { useAuthHeader, useSignOut } from 'react-auth-kit';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { addedUserHeader, changeFilter } from './UserAccountSlice';
+import { useNavigate } from 'react-router-dom';
 
 import './userAccount.scss';
 import Dashboard from './dashboard/Dashboard';
 import Orders from './orders/Orders';
 import AccountDetails from './accountDetails/AccountDetails';
-import { useNavigate } from 'react-router-dom';
+import Address from './address/Address';
 
 const UserAccount = () => {
     const { filter } = useSelector((state) => state.userAccount);
@@ -97,6 +98,7 @@ const UserAccount = () => {
                     {filter === 'dashboard' ? <Dashboard onChangeFilter={onChangeFilter} /> : null}
                     {filter === 'orders' ? <Orders /> : null}
                     {filter === 'details' ? <AccountDetails /> : null}
+                    {filter === 'addresses' ? <Address /> : null}
                 </div>
             </div>
         </div>
