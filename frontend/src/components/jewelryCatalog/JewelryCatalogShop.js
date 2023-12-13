@@ -68,7 +68,7 @@ const JewelryCatalogShop = () => {
                     key={id}
                     name={name}
                     price={price}
-                    imagePath={imagePath.main}
+                    imagePath={imagePath[0]}
                     availability={availability}
                     onBuy={onBuy}
                 />

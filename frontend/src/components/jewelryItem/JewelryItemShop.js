@@ -11,7 +11,7 @@ const JewelryItemShop = ({ id, name, price, availability, imagePath, onBuy }) =>
         <div className='catalog__item'>
             <div className='catalog__item-shop-wrapper'>
                 {status}
-                <Link to={`shop/${id}`}>
+                <Link to={`/shop/${id}`}>
                     <img src={imagePath} alt={name} className='catalog__item-img'/>
                 </Link>
                 {availability === 0 ? null : (
@@ -20,7 +20,7 @@ const JewelryItemShop = ({ id, name, price, availability, imagePath, onBuy }) =>
                     </div>
                 )}
             </div>
-            <Link to={`shop/${id}`} className='catalog__item-title'>
+            <Link to={`/shop/${id}`} className='catalog__item-title'>
                 {name}
             </Link>
             <div className='catalog__item-price'>$ {price}</div>
