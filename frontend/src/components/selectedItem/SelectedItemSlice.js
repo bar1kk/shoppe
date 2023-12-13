@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     selectedItemId: [],
-    filter: 'descr',
+    filter: 'additionalInfo',
     review: '',
     name: '',
     rating: 0,

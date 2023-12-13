@@ -4,7 +4,6 @@ import Header from '../header/Header';
 import Footer from '../footer/Footer';
 import Slider from '../slider/Slider';
 import JewelryCatalogPromo from '../jewelryCatalog/JewelryCatalogPromo';
-import nonActiveStarIcon from '../../assets/icons/nonActiveStar.svg';
 
 const MainPage = () => {
     return (
