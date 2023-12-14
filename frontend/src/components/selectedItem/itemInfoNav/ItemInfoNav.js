@@ -23,7 +23,7 @@ const ItemInfoNav = () => {
         <div className="item-nav">
         <div className="container">
             <ul className="item-nav__wrapper">
-                <li><a href="#!" onClick={() => onChangeFilter('additionalInfo')} className={filter === 'info' ? 'item-nav__link item-nav-active' : 'item-nav__link'}>Aditional information</a></li>
+                <li><a href="#!" onClick={() => onChangeFilter('additionalInfo')} className={filter === 'additionalInfo' ? 'item-nav__link item-nav-active' : 'item-nav__link'}>Aditional information</a></li>
                 <li><a href="#!" onClick={() => onChangeFilter('reviews')} className={filter === 'reviews' ? 'item-nav__link item-nav-active' : 'item-nav__link'}>Reviews({selectedItemId.reviews ? selectedItemId.reviews.length : 0})</a></li>
             </ul>
             <div className="nav__line"></div>
