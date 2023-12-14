@@ -3,8 +3,8 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState = {
     selectedItemId: [],
     filter: 'additionalInfo',
-    review: '',
-    name: '',
+    // review: '',
+    // name: '',
     rating: 0,
     slides: 4,
     activeSlideIndex: 1
@@ -33,12 +33,12 @@ const SelectedItemSlice = createSlice({
         addReview: (state, action) => {
             state.selectedItemId.reviews.push(action.payload);
         },
-        changeName: (state, action) => {
-            state.name = action.payload;
-        },
-        changeReview: (state, action) => {
-            state.review = action.payload;
-        },
+        // changeName: (state, action) => {
+        //     state.name = action.payload;
+        // },
+        // changeReview: (state, action) => {
+        //     state.review = action.payload;
+        // },
         changeRating: (state, action) => {
             state.rating = action.payload
         },
@@ -58,8 +58,8 @@ export const {
     counterMinus,
     changeFilter,
     addReview,
-    changeName,
+    // changeName,
     changeRating,
-    changeReview,
+    // changeReview,
     changeActiveSlideIndex
 } = actions;

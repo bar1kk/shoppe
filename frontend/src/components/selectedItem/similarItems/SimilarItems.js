@@ -1,7 +1,7 @@
-import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 
-import JewelryItemPromo from '../../../jewelryItem/JewelryItemPromo';
+import JewelryItemPromo from '../../jewelryItem/JewelryItemPromo';
 import './similarItems.scss';
 
 const SimilarItems = () => {

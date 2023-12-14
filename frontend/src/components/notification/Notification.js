@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import './notification.scss';
 
 const Notification = (props) => {
@@ -11,6 +13,7 @@ const Notification = (props) => {
                         </div>
                         <div className='notification__text'>{props.text}</div>
                     </div>
+                    {props.link === true ? (<Link to="/cart" className="notification__link">VIEW CART</Link>) : null}
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ const Shop = () => {
         <>
             <Header line={true}/>
             <div className="shop__notification">
-                {notificationStatus ? <Notification text={addedGoodText} icon={checkMarkIcon}/> : null}
+                {notificationStatus ? <Notification text={addedGoodText} icon={checkMarkIcon} link={true}/>  : null}
             </div>
             <div className="container">
                 <div className='shop__wrapper'>
