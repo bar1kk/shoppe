@@ -17,9 +17,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -60,6 +62,10 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id")
     )
     Set<RoleEntity> roles;
+
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id")
+    List<ShippingAddressEntity> shippingAddresses;
 
     @Column(name = "status")
     @Enumerated(EnumType.STRING)
