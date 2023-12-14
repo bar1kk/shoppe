@@ -5,6 +5,7 @@ import Footer from '../footer/Footer';
 import Notification from '../notification/Notification';
 import ItemInfoSection from '../selectedItem/itemInfoSection/ItemInfoSection';
 import ItemInfoNav from '../selectedItem/itemInfoNav/ItemInfoNav';
+import SimilarItems from '../selectedItem/itemInfoNav/similarItems/SimilarItems';
 
 import checkMarkIcon from '../../assets/icons/checkMark.svg';
 
@@ -19,6 +20,7 @@ const SelectedItemPage = () => {
             </div>
             <ItemInfoSection />
             <ItemInfoNav />
+            <SimilarItems />
             <Footer />
         </>
     );
