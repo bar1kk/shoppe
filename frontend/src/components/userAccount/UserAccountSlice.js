@@ -1,36 +1,37 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { useHttp } from "../../hooks/http.hook";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { useHttp } from '../../hooks/http.hook';
 
 const initialState = {
     userHeader: '',
     filter: 'dashboard',
     orders: [],
-    selectedOrder:[],
-    addresses: [],
+    selectedOrder: [],
     ordersLoadingStatus: 'idle',
-    addressesLoadingStatus: 'idle',
+    addresses: [],
+    selectedAddress: [],
+    addressesLoadingStatus: 'idle'
 };
 
-export const fetchOrders = createAsyncThunk(
-    'userAccount/fetchOrders',
-    async () => {
-        const {request} = useHttp();
-        return await request("http://localhost:3001/orders")// request("http://localhost:9122/api/v1/orders", "GET", null, state.userHeader))})
-    }
-);
+export const fetchOrders = createAsyncThunk('userAccount/fetchOrders', async () => {
+    const { request } = useHttp();
+    return await request('http://localhost:3001/orders'); // request("http://localhost:9122/api/v1/orders", "GET", null, state.userHeader))})
+});
 
-export const fetchAddresses = createAsyncThunk(
-    'userAccount/fetchAddresses',
-    async () => {
-        const {request} = useHttp();
-        return await request("http://localhost:3001/addresses")// request("http://localhost:9122/api/v1/addresses", "GET", null, state.userHeader))})
-    }
-);
+export const fetchAddresses = createAsyncThunk('userAccount/fetchAddresses', async () => {
+    const { request } = useHttp();
+    return await request('http://localhost:3001/addresses'); // request("http://localhost:9122/api/v1/addresses", "GET", null, state.userHeader))})
+});
 
 const UserAccountSlice = createSlice({
     name: 'userAccount',
     initialState,
     reducers: {
+        resetUserAccount: () => initialState,
+
+        fetchSelectedAddress: (state, action) => {
+            state.selectedAddress = { ...action.payload };
+        },
+
         addedUserHeader: (state, action) => {
             state.userHeader = action.payload;
         },
@@ -43,44 +44,53 @@ const UserAccountSlice = createSlice({
             state.addresses.push(action.payload);
         },
 
-        removeAddress: ( state, action) => {
+        addedNewOrder: (state, action) => {
+            state.orders.push(action.payload);
+        },
+        
+        removeAddress: (state, action) => {
             state.addresses = state.addresses.filter((address) => address.id !== action.payload);
         },
 
-        fetchSelectedOrder:(state, action) => {
-            state.selectedOrder = {...action.payload};
+        fetchSelectedOrder: (state, action) => {
+            state.selectedOrder = { ...action.payload };
         }
-
     },
     extraReducers: (builder) => {
         builder
-        .addCase(fetchOrders.pending, (state) => {
-            state.ordersLoadingStatus = 'loading';
-        })
-        .addCase(fetchOrders.fulfilled, (state, action) => {
-            state.ordersLoadingStatus = 'idle';
-            state.orders = action.payload;
-        })
-        .addCase(fetchOrders.rejected, (state, action) => {
-            state.ordersLoadingStatus = 'error';
-        })
-        .addCase(fetchAddresses.pending, (state) => {
-            state.addressesLoadingStatus = 'loading';
-        })
-        .addCase(fetchAddresses.fulfilled, (state, action) => {
-            state.addressesLoadingStatus = 'idle';
-            state.addresses = action.payload;
-        })
-        .addCase(fetchAddresses.rejected, (state, action) => {
-            state.addressesLoadingStatus = 'error';
-        })
-        .addDefaultCase(() => {})
+            .addCase(fetchOrders.pending, (state) => {
+                state.ordersLoadingStatus = 'loading';
+            })
+            .addCase(fetchOrders.fulfilled, (state, action) => {
+                state.ordersLoadingStatus = 'idle';
+                state.orders = action.payload;
+            })
+            .addCase(fetchOrders.rejected, (state, action) => {
+                state.ordersLoadingStatus = 'error';
+            })
+            .addCase(fetchAddresses.pending, (state) => {
+                state.addressesLoadingStatus = 'loading';
+            })
+            .addCase(fetchAddresses.fulfilled, (state, action) => {
+                state.addressesLoadingStatus = 'idle';
+                state.addresses = action.payload;
+            })
+            .addCase(fetchAddresses.rejected, (state, action) => {
+                state.addressesLoadingStatus = 'error';
+            })
+            .addDefaultCase(() => {});
     }
 });
 
 const { actions, reducer } = UserAccountSlice;
 export default reducer;
-export const { addedUserHeader, changeFilter, addedNewAddress, removeAddress, fetchSelectedOrder } = actions;
-
-
-
+export const {
+    addedUserHeader,
+    changeFilter,
+    addedNewAddress,
+    removeAddress,
+    fetchSelectedOrder,
+    fetchSelectedAddress,
+    addedNewOrder,
+    resetUserAccount
+} = actions;

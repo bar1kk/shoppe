@@ -39,7 +39,7 @@ const Orders = () => {
                   {orders.map(({id, details:{date, status}, summary:{totalPrice}}) => (
                     <div className="orders__item" key={id}>
                         <div className='orders__item-wrapper' >
-                          <span>{id}</span>
+                          <span>{id.substring(24)}</span>
                           <span>{date}</span>
                           <span>{status}</span>
                           <span>$ {totalPrice}</span>

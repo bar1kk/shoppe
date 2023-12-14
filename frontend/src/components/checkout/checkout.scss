@@ -1,0 +1,87 @@
+.checkout {
+    padding-top: 96px;
+    padding-bottom: 250px;
+}
+
+.checkout__title {
+    color: #000;
+    font-size: 33px;
+    font-weight: 500;
+    line-height: 43px;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.checkout__wrapper {
+    margin-top: 50px;
+    display: grid;
+    grid-template-columns: repeat(2, 580px);
+    column-gap: 88px;
+}
+
+.checkout__subtitle {
+    font-size: 26px;
+    font-weight: 400;
+    line-height: 35px;
+    color: #000;
+}
+
+.checkout__address-item {
+    border: 1px solid transparent;
+    padding: 10px;
+    transition: all 0.3s ease;
+    margin-top: 37px;
+    cursor: pointer;
+
+    &:hover {
+        background-color: #f0f0f0;
+    }
+
+    span {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 22px;
+        color: #707070;
+        display: block;
+    }
+}
+
+.checkout__address-item-selected {
+    border-color: #707070;
+    background-color: #efefef;
+}
+
+.checkout__order-btn {
+    margin-top: 56px;
+    width: 100%;
+    height: 53px;
+    border-radius: 4px;
+    border: 1px solid #fff;
+    background: #000;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.order__summary-payment-wrapper {
+    margin-top: 45px;
+}
+
+.order__summary-payment {
+    margin-top: 18px;
+    input[type='radio'] {
+        margin-right: 8px;
+    }
+
+    label {
+        font-size: 16px;
+        font-weight: 400;
+        line-height: 27px;
+    }
+    
+}
+
+.order__summary-wrapper{
+    margin-top: 37px;
+}

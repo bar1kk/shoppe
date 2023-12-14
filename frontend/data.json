@@ -21,84 +21,96 @@
   ],
   "orders": [
     {
-      "id": "7643980998990",
+      "id": "89797391-5ab0-49a2-8682-1b774e41c927",
       "details": {
-        "date": "October 8, 2021",
-        "status": "Delivered",
+        "date": "14 Dec, 2023",
+        "status": "Processing",
         "paymentMethod": "Cash on delivery",
-        "deliveryOptions": "Standard delivery",
+        "deliveryOptions": "Standard Delivery",
         "deliveryAddress": {
           "fullName": "Vladyslav Barbar",
           "contactsItem": "barbariska.v44@gmail.com 380681239045",
-          "localAddress": "Hanover 96 11",
+          "localAddress": "Hanover 96 21",
           "regionAddress": "Munhich 78934",
-          "country": "Europe"
+          "country": "Ukraine",
+          "id": 1
         }
       },
       "summary": {
         "goods": [
-          {
-            "id": 1,
-            "name": "Lira Earrings",
-            "price": 25,
-            "quantity": 2,
-            "total": 50
-          },
           {
             "id": 2,
             "name": "Hal Earrings",
-            "price": 25,
-            "quantity": 1,
-            "total": 25
-          },
-          {
-            "id": 3,
-            "name": "Kaede Hair Pin Set Of 3",
-            "price": 30,
-            "quantity": 2,
-            "total": 60
+            "price": "25.00",
+            "quantity": 3,
+            "total": 75
           }
         ],
-        "subTotal": 135,
+        "subTotal": 75,
         "shippingCost": 0,
-        "totalPrice": 135
+        "totalPrice": 75
       }
     },
     {
-      "id": "943980998990",
+      "id": "54ddbad4-34b4-4fcf-a2ec-ebeba6f41233",
       "details": {
-        "date": "October 8, 2021",
+        "date": "14 Dec, 2023",
         "status": "Processing",
         "paymentMethod": "Cash on delivery",
-        "deliveryOptions": "Standard delivery",
+        "deliveryOptions": "Standard Delivery",
         "deliveryAddress": {
-          "fullName": "Oleksandr Sapozhnikov",
-          "contactsItem": "grigoriy.artichoke@gmail.com 380681239045",
-          "localAddress": "22 Shevchenka Street",
-          "regionAddress": "Bilogorodka 08140",
-          "country": "Ukraine"
+          "fullName": "User User",
+          "contactsItem": "admin@ex.com 12345678903242",
+          "localAddress": "Shdiuh 11",
+          "regionAddress": "Głogów Małopolski 21324234",
+          "country": "Europe",
+          "id": 2
         }
       },
       "summary": {
         "goods": [
           {
-            "id": 1,
-            "name": "Yuki Hair Pin Set of 3",
-            "price": 19,
-            "quantity": 1,
-            "total": 19
-          },
-          {
             "id": 2,
-            "name": "Plaine Necklace",
-            "price": 30,
+            "name": "Hal Earrings",
+            "price": "25.00",
             "quantity": 3,
-            "total": 90
+            "total": 75
           }
         ],
-        "subTotal": 109,
+        "subTotal": 75,
         "shippingCost": 0,
-        "totalPrice": 109
+        "totalPrice": 75
+      }
+    },
+    {
+      "id": "fb3c85f7-c677-4c26-be2c-9577f9531a50",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "Vladyslav Barbar",
+          "contactsItem": "barbariska.v44@gmail.com 380681239045",
+          "localAddress": "Hanover 96 21",
+          "regionAddress": "Munhich 78934",
+          "country": "Ukraine",
+          "id": 1
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 3,
+            "total": 75
+          }
+        ],
+        "subTotal": 75,
+        "shippingCost": 0,
+        "totalPrice": 75
       }
     }
   ],
@@ -482,7 +494,24 @@
       ]
     }
   ],
-  "addresses": [],
+  "addresses": [
+    {
+      "fullName": "Vladyslav Barbar",
+      "contactsItem": "barbariska.v44@gmail.com 380681239045",
+      "localAddress": "Hanover 96 21",
+      "regionAddress": "Munhich 78934",
+      "country": "Ukraine",
+      "id": 1
+    },
+    {
+      "fullName": "User User",
+      "contactsItem": "admin@ex.com 12345678903242",
+      "localAddress": "Shdiuh 11",
+      "regionAddress": "Głogów Małopolski 21324234",
+      "country": "Europe",
+      "id": 2
+    }
+  ],
   "reviews": [
     {
       "id": "d0f9e09d-35d5-4d15-9e3b-42e1d6cf8e50",

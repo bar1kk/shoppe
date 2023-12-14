@@ -1,8 +1,11 @@
 import './dashboard.scss';
+import { useDispatch } from 'react-redux';
+import { resetUserAccount } from '../UserAccountSlice';
 import { useAuthUser, useSignOut } from 'react-auth-kit';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = ({ onChangeFilter }) => {
+    const dispatch = useDispatch();
     const auth = useAuthUser();
     const signOut = useSignOut();
     const navigate = useNavigate();
@@ -14,6 +17,7 @@ const Dashboard = ({ onChangeFilter }) => {
                 <span
                     onClick={() => {
                         signOut();
+                        dispatch(resetUserAccount());
                         navigate('/');
                     }}
                     className='dashboard__link'>

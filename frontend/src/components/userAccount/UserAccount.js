@@ -1,7 +1,7 @@
 import { useAuthHeader, useSignOut } from 'react-auth-kit';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { addedUserHeader, changeFilter } from './UserAccountSlice';
+import { addedUserHeader, changeFilter, resetUserAccount } from './UserAccountSlice';
 import { useNavigate } from 'react-router-dom';
 
 import './userAccount.scss';
@@ -87,6 +87,7 @@ const UserAccount = () => {
                                 onClick={() => {
                                     onChangeFilter('logout');
                                     signOut();
+                                    dispatch(resetUserAccount());
                                     navigate('/');
                                 }}
                                 className={'account__nav-link'}>

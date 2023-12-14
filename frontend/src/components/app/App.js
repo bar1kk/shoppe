@@ -9,6 +9,7 @@ import SelectedOrderPage from '../pages/SelectedOrderPage';
 import UnloadListener from '../unloadListener/UnloadListener';
 import SelectedItemPage from '../pages/SelectedItemPage';
 import CartPage from '../pages/CartPage';
+import CheckoutPage from '../pages/CheckoutPage';
 
 const App = () => {
 
@@ -26,6 +27,7 @@ const App = () => {
                     <Route path={'/shop/:id'} element={<SelectedItemPage />} />
                     <Route path={'/order/:id'} element={<SelectedOrderPage />} />
                     <Route path={'/cart'} element={<CartPage />} />
+                    <Route path={'/cart/checkout'} element={<PrivateRoute Component={CheckoutPage} />} />
                 </Routes>
             </div>
         </Router>
