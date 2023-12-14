@@ -72,6 +72,9 @@ const JewelryCatalogSlice = createSlice({
                     item.counter += counter;
                 }
             })
+        },
+        resetOrderedGoods: (state) => {
+            state.orderedGoods = [];
         }
         // fetchSelectedItem: (state, action) => {state.selectedItemId = action.payload}
     },
@@ -104,4 +107,5 @@ export const {
     minusCounter,
     addCounter,
     // fetchSelectedItem
+    resetOrderedGoods
 } = actions;

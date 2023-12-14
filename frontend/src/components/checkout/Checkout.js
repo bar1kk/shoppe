@@ -1,14 +1,20 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAddresses, fetchSelectedAddress, addedNewOrder } from '../userAccount/UserAccountSlice';
+import {
+    fetchAddresses,
+    fetchSelectedAddress,
+    addedNewOrder,
+    resetSelectedAddress
+} from '../userAccount/UserAccountSlice';
+import { resetOrderedGoods } from '../jewelryCatalog/JewelryCatalogSlice';
 import { showNotification } from '../notification/NotificationSlice';
 import { v4 as uuidv4 } from 'uuid';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
-
 import { useHttp } from '../../hooks/http.hook';
 
 import './checkout.scss';
+import payPalIcon from '../../assets/icons/paypal.svg';
 
 const Checkout = () => {
     const { addresses, selectedAddress } = useSelector((state) => state.userAccount);
@@ -33,6 +39,15 @@ const Checkout = () => {
     };
 
     const handlePlaceOrder = () => {
+        if (Object.keys(selectedAddress).length === 0) {
+            window.scrollTo(0, 0);
+            dispatch(showNotification(true));
+            setTimeout(() => {
+                dispatch(showNotification(false));
+            }, 2000);
+            return;
+        }
+
         const boughtGoods = orderedGoods.map(({ id, name, counter, price }) => {
             return {
                 id: id,
@@ -62,9 +77,10 @@ const Checkout = () => {
         request('http://localhost:3001/orders', 'POST', JSON.stringify(order))
             .then((data) => {
                 dispatch(addedNewOrder(order));
+                dispatch(resetSelectedAddress());
                 navigate(`/order/${order.id}`);
                 dispatch(showNotification(true));
-
+                dispatch(resetOrderedGoods());
                 setTimeout(() => {
                     dispatch(showNotification(false));
                 }, 2000);
@@ -78,7 +94,7 @@ const Checkout = () => {
             return (
                 <div
                     className={`checkout__address-item ${
-                        selectedAddress.id == id ? 'checkout__address-item-selected' : ''
+                        selectedAddress.id === id ? 'checkout__address-item-selected' : ''
                     }`}
                     key={id}
                     onClick={() => handleSelectedAddress(id)}>
@@ -146,6 +162,9 @@ const Checkout = () => {
                                         disabled
                                     />
                                     <label htmlFor='bank-transfer'>Direct bank transfer</label>
+                                    <div className='error' style={{ paddingLeft: '20px' }}>
+                                        Temporarily unavailable
+                                    </div>
                                 </div>
                                 <div className='order__summary-payment'>
                                     <input
@@ -156,16 +175,19 @@ const Checkout = () => {
                                         disabled
                                     />
                                     <label htmlFor='cash'>Check payments</label>
+                                    <div className='error' style={{ paddingLeft: '20px' }}>
+                                        Temporarily unavailable
+                                    </div>
                                 </div>
                                 <div className='order__summary-payment'>
                                     <input type='radio' id='paypal' name='paypal ' value='PayPal' disabled />
-                                    <label htmlFor='cash'>PayPal </label>
+                                    <label htmlFor='cash'>PayPal <img src={payPalIcon} alt="paypal icon" /></label>
+                                    <div className='error' style={{ paddingLeft: '20px' }}>
+                                        Temporarily unavailable
+                                    </div>
                                 </div>
                             </div>
-                            <button
-                                onClick={handlePlaceOrder}
-                                className='checkout__order-btn'
-                                disabled={Object.keys(selectedAddress).length == 0}>
+                            <button onClick={handlePlaceOrder} className='checkout__order-btn'>
                                 Place Order
                             </button>
                         </div>

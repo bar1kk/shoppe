@@ -44,6 +44,9 @@ const SelectedItemSlice = createSlice({
         },
         changeActiveSlideIndex: (state, action) => {
             state.activeSlideIndex = action.payload
+        },
+        resetSelectedItem: (state) => {
+            state.selectedItemId = [];
         }
     }    
 });
@@ -61,5 +64,6 @@ export const {
     // changeName,
     changeRating,
     // changeReview,
-    changeActiveSlideIndex
+    changeActiveSlideIndex,
+    resetSelectedItem
 } = actions;

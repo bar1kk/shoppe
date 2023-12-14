@@ -112,6 +112,161 @@
         "shippingCost": 0,
         "totalPrice": 75
       }
+    },
+    {
+      "id": "70c737ad-26c9-4602-9d2c-4370d466158d",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "User User",
+          "contactsItem": "admin@ex.com 12345678903242",
+          "localAddress": "Shdiuh 11",
+          "regionAddress": "Głogów Małopolski 21324234",
+          "country": "Europe",
+          "id": 2
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
+    },
+    {
+      "id": "ba297e79-015d-4258-96ea-e98506419791",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "User User",
+          "contactsItem": "barbariska.v44@gmail.com 12345678903242",
+          "localAddress": "Shdiuh 22",
+          "regionAddress": "Munhich 21324234",
+          "country": "Europe",
+          "id": 2
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
+    },
+    {
+      "id": "4880a404-3184-4b31-ad0d-bea60b9919c6",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "User User",
+          "contactsItem": "sportbet.ua@gmail.com 380681239045",
+          "localAddress": "Shdiuh 22",
+          "regionAddress": "Głogów Małopolski 21324234",
+          "country": "Europe",
+          "id": 2
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
+    },
+    {
+      "id": "b8db8467-ee94-4b59-853f-c6520dc77100",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "Vladyslav Barbar",
+          "contactsItem": "barbariska.v44@gmail.com 380681239045",
+          "localAddress": "Shdiuh 21",
+          "regionAddress": "Munhich 78934",
+          "country": "Ukraine",
+          "id": 1
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
+    },
+    {
+      "id": "7cd79b17-6849-49eb-a499-a8b344c245c8",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "Vladyslav Barbar",
+          "contactsItem": "barbariska.v44@gmail.com 380681239045",
+          "localAddress": "Shdiuh 21",
+          "regionAddress": "Munhich 78934",
+          "country": "Ukraine",
+          "id": 1
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
     }
   ],
   "names": [
@@ -494,24 +649,7 @@
       ]
     }
   ],
-  "addresses": [
-    {
-      "fullName": "Vladyslav Barbar",
-      "contactsItem": "barbariska.v44@gmail.com 380681239045",
-      "localAddress": "Hanover 96 21",
-      "regionAddress": "Munhich 78934",
-      "country": "Ukraine",
-      "id": 1
-    },
-    {
-      "fullName": "User User",
-      "contactsItem": "admin@ex.com 12345678903242",
-      "localAddress": "Shdiuh 11",
-      "regionAddress": "Głogów Małopolski 21324234",
-      "country": "Europe",
-      "id": 2
-    }
-  ],
+  "addresses": [],
   "reviews": [
     {
       "id": "d0f9e09d-35d5-4d15-9e3b-42e1d6cf8e50",

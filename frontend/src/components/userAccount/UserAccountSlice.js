@@ -26,10 +26,12 @@ const UserAccountSlice = createSlice({
     name: 'userAccount',
     initialState,
     reducers: {
-        resetUserAccount: () => initialState,
-
         fetchSelectedAddress: (state, action) => {
             state.selectedAddress = { ...action.payload };
+        },
+
+        fetchSelectedOrder: (state, action) => {
+            state.selectedOrder = { ...action.payload };
         },
 
         addedUserHeader: (state, action) => {
@@ -47,13 +49,15 @@ const UserAccountSlice = createSlice({
         addedNewOrder: (state, action) => {
             state.orders.push(action.payload);
         },
-        
+
         removeAddress: (state, action) => {
             state.addresses = state.addresses.filter((address) => address.id !== action.payload);
         },
 
-        fetchSelectedOrder: (state, action) => {
-            state.selectedOrder = { ...action.payload };
+        resetUserAccount: () => initialState,
+
+        resetSelectedAddress: (state) => {
+            state.selectedAddress = [];
         }
     },
     extraReducers: (builder) => {
@@ -92,5 +96,6 @@ export const {
     fetchSelectedOrder,
     fetchSelectedAddress,
     addedNewOrder,
-    resetUserAccount
+    resetUserAccount,
+    resetSelectedAddress
 } = actions;

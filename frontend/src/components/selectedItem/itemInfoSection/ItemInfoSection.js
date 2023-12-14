@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSelectedItem, counterPlus, counterMinus, changeActiveSlideIndex } from '../SelectedItemSlice';
+import { fetchSelectedItem, counterPlus, counterMinus, changeActiveSlideIndex, resetSelectedItem } from '../SelectedItemSlice';
 import { fetchGoods, addCounter, addedGoods } from '../../jewelryCatalog/JewelryCatalogSlice';
 import { showNotification } from '../../notification/NotificationSlice';
 
@@ -24,6 +24,7 @@ const ItemInfoSection = () => {
     }, [id]);
 
     useEffect(() => {
+        dispatch(resetSelectedItem());
         const selectedItem = goods.find((item) => item.id === +id);
         dispatch(fetchSelectedItem(selectedItem));
         dispatch(changeActiveSlideIndex(1));
@@ -124,14 +125,14 @@ const ItemInfoSection = () => {
                     key={i}
                     onClick={() => dispatch(changeActiveSlideIndex(i))}
                     src={imagePath[i - 1]}
-                    alt='selected item image'
+                    alt='selected item'
                     className={className}
                 />
             );
 
             if (activeSlideIndex === i) {
                 activeSlide.push(
-                    <img key={i} src={imagePath[i - 1]} alt='selected item main image' className='info__main-img' />
+                    <img key={i} src={imagePath[i - 1]} alt='selected item main' className='info__main-img' />
                 );
             }
         }
