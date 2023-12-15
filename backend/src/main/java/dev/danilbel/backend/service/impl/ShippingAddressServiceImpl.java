@@ -65,7 +65,7 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
     }
 
     @Override
-    public void removeShippingAddress(String id) {
+    public void deleteShippingAddress(String id) {
 
         ShippingAddressEntity shippingAddressEntity = getShippingAddressEntityById(id);
 

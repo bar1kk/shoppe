@@ -11,6 +11,7 @@ import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -35,7 +36,7 @@ public class ShippingAddressController {
 
     private static final String SHIPPING_ADDRESS_ID = "api/v1/shipping-address/{id}";
     private static final String SHIPPING_ADDRESS_CREATE = "api/v1/shipping-address/create";
-    private static final String SHIPPING_ADDRESS_REMOVE = "api/v1/shipping-address/remove/{id}";
+    private static final String SHIPPING_ADDRESS_DELETE = "api/v1/shipping-address/{id}/delete";
 
     @GetMapping(SHIPPING_ADDRESS_ID)
     public ResponseEntity<ShippingAddressDto> getShippingAddressById(@PathVariable("id") String id) {
@@ -59,10 +60,10 @@ public class ShippingAddressController {
         return ResponseEntity.ok(result);
     }
 
-    @PostMapping(SHIPPING_ADDRESS_REMOVE)
-    public ResponseEntity<ShippingAddressDto> removeShippingAddress(@PathVariable("id") String id) {
+    @DeleteMapping(SHIPPING_ADDRESS_DELETE)
+    public ResponseEntity<ShippingAddressDto> deleteShippingAddress(@PathVariable("id") String id) {
 
-        shippingAddressService.removeShippingAddress(id);
+        shippingAddressService.deleteShippingAddress(id);
 
         return ResponseEntity.ok().build();
     }

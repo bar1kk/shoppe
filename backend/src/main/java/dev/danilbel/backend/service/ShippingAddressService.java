@@ -8,5 +8,5 @@ public interface ShippingAddressService {
 
     ShippingAddressDto createShippingAddress(String userEmail, ShippingAddressDto shippingAddressDto);
 
-    void removeShippingAddress(String id);
+    void deleteShippingAddress(String id);
 }
