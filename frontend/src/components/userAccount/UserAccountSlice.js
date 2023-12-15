@@ -2,13 +2,14 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { useHttp } from '../../hooks/http.hook';
 
 const initialState = {
-    userHeader: '',
+    profile: {},
+    profileLoadingStatus: 'idle',
     filter: 'dashboard',
     orders: [],
-    selectedOrder: [],
+    selectedOrder: {},
     ordersLoadingStatus: 'idle',
     addresses: [],
-    selectedAddress: [],
+    selectedAddress: {},
     addressesLoadingStatus: 'idle'
 };
 
@@ -17,9 +18,15 @@ export const fetchOrders = createAsyncThunk('userAccount/fetchOrders', async () 
     return await request('http://localhost:3001/orders'); // request("http://localhost:9122/api/v1/orders", "GET", null, state.userHeader))})
 });
 
-export const fetchAddresses = createAsyncThunk('userAccount/fetchAddresses', async () => {
+export const fetchAddresses = createAsyncThunk('userAccount/fetchAddresses', async (header) => {
     const { request } = useHttp();
-    return await request('http://localhost:3001/addresses'); // request("http://localhost:9122/api/v1/addresses", "GET", null, state.userHeader))})
+    const profile = await request('http://localhost:9122/api/v1/user/profile', 'GET', null, header);
+    return profile?.shipping_addresses || [];
+});
+
+export const fetchProfile = createAsyncThunk('userAccount/fetchProfile', async (header) => {
+    const { request } = useHttp();
+    return await request('http://localhost:9122/api/v1/user/profile', 'GET', null, header);
 });
 
 const UserAccountSlice = createSlice({
@@ -34,25 +41,21 @@ const UserAccountSlice = createSlice({
             state.selectedOrder = { ...action.payload };
         },
 
-        addedUserHeader: (state, action) => {
-            state.userHeader = action.payload;
-        },
-
         changeFilter: (state, action) => {
             state.filter = action.payload;
         },
 
-        addedNewAddress: (state, action) => {
-            state.addresses.push(action.payload);
-        },
+        // addedNewAddress: (state, action) => {
+        //     state.addresses.push(action.payload);
+        // },
 
         addedNewOrder: (state, action) => {
             state.orders.push(action.payload);
         },
 
-        removeAddress: (state, action) => {
-            state.addresses = state.addresses.filter((address) => address.id !== action.payload);
-        },
+        // removeAddress: (state, action) => {
+        //     state.addresses = state.addresses.filter((address) => address.id !== action.payload);
+        // },
 
         resetUserAccount: () => initialState,
 
@@ -72,6 +75,7 @@ const UserAccountSlice = createSlice({
             .addCase(fetchOrders.rejected, (state, action) => {
                 state.ordersLoadingStatus = 'error';
             })
+
             .addCase(fetchAddresses.pending, (state) => {
                 state.addressesLoadingStatus = 'loading';
             })
@@ -82,6 +86,18 @@ const UserAccountSlice = createSlice({
             .addCase(fetchAddresses.rejected, (state, action) => {
                 state.addressesLoadingStatus = 'error';
             })
+
+            .addCase(fetchProfile.pending, (state) => {
+                state.profileLoadingStatus = 'loading';
+            })
+            .addCase(fetchProfile.fulfilled, (state, action) => {
+                state.profileLoadingStatus = 'idle';
+                state.profile = { ...action.payload };
+            })
+            .addCase(fetchProfile.rejected, (state, action) => {
+                state.profileLoadingStatus = 'error';
+                console.error('Error fetching profile:', action.error); 
+            })
             .addDefaultCase(() => {});
     }
 });
@@ -89,7 +105,6 @@ const UserAccountSlice = createSlice({
 const { actions, reducer } = UserAccountSlice;
 export default reducer;
 export const {
-    addedUserHeader,
     changeFilter,
     addedNewAddress,
     removeAddress,

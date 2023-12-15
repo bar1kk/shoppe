@@ -1,8 +1,9 @@
 import { useAuthHeader, useSignOut } from 'react-auth-kit';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { addedUserHeader, changeFilter, resetUserAccount } from './UserAccountSlice';
+import { changeFilter, resetUserAccount, fetchProfile } from './UserAccountSlice';
 import { useNavigate } from 'react-router-dom';
+import { useHeader } from '../../hooks/header';
 
 import './userAccount.scss';
 import Dashboard from './dashboard/Dashboard';
@@ -16,9 +17,15 @@ const UserAccount = () => {
     const authHeader = useAuthHeader();
     const signOut = useSignOut();
     const navigate = useNavigate();
+    // const header = useHeader();
+    const tocken = authHeader();
+    const header = {
+        'Content-Type': 'application/json',
+        Authorization: authHeader()
+    };
 
     useEffect(() => {
-        // dispatch(addedUserHeader(authHeader));
+        dispatch(fetchProfile(header));
         dispatch(changeFilter('dashboard'));
     }, []);
 

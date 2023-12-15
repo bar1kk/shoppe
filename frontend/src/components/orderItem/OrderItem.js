@@ -22,7 +22,7 @@ const OrderItem = () => {
     }, [orders]);
 
     const renderOrderItem = (selectedOrder) => {
-        if (Object.keys(selectedOrder).length == 0) return <Spinner />;
+        if (Object.keys(selectedOrder).length === 0) return <Spinner />;
 
         const {
             details: {

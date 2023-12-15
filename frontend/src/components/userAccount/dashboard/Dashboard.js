@@ -1,19 +1,19 @@
 import './dashboard.scss';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { resetUserAccount } from '../UserAccountSlice';
 import { useAuthUser, useSignOut } from 'react-auth-kit';
 import { useNavigate } from 'react-router-dom';
 
 const Dashboard = ({ onChangeFilter }) => {
+    const { profile } = useSelector((state) => state.userAccount);
     const dispatch = useDispatch();
-    const auth = useAuthUser();
     const signOut = useSignOut();
-    const navigate = useNavigate();
+    const navigate = useNavigate();    
 
     return (
         <div className='dashboard__wrapper'>
             <p>
-                Hello {auth().email} (not {auth().email}?{' '}
+                Hello {profile.first_name} {profile.last_name} (not {profile.first_name} ?   
                 <span
                     onClick={() => {
                         signOut();
@@ -21,7 +21,7 @@ const Dashboard = ({ onChangeFilter }) => {
                         navigate('/');
                     }}
                     className='dashboard__link'>
-                    Log out
+                        Log out
                 </span>
                 )
                 <br />

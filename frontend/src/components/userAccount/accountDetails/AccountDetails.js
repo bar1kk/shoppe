@@ -49,6 +49,7 @@ const AccountDetails = () => {
                         }
                         request('http://localhost:9122/api/v1/user/details', 'PUT', JSON.stringify(data), header)
                             .then((res) => {
+                                //dispatch(fetchProfile());
                                 console.log(res);
                             })
                             .catch((err) => {

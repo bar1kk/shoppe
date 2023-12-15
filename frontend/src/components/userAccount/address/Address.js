@@ -2,8 +2,10 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchAddresses, removeAddress, addedNewAddress } from '../UserAccountSlice';
+import { useAuthHeader } from 'react-auth-kit';
+import { fetchAddresses } from '../UserAccountSlice';
 import { useHttp } from '../../../hooks/http.hook';
+import { useHeader } from '../../../hooks/header';
 
 import './address.scss';
 import removeIcon from '../../../assets/icons/remove.svg';
@@ -13,54 +15,74 @@ const Address = () => {
     const { addresses } = useSelector((state) => state.userAccount);
     const dispatch = useDispatch();
     const { request } = useHttp();
+    const authHeader = useAuthHeader();
+    const {header} = useHeader();
 
     useEffect(() => {
-        dispatch(fetchAddresses());
+        dispatch(fetchAddresses(header));
         // eslint-disable-next-line
     }, []);
 
     const handleAddAddress = (values) => {
-        // if (values.apartment === '') {
-        //     delete values.apartment;
-        // }
+
         const newAddress = {
-            fullName: `${values.firstName} ${values.lastName}`,
-            contactsItem: `${values.email} ${values.phoneNumber}`,
-            localAddress: `${values.street} ${values.apartment}`,
-            regionAddress: `${values.city} ${values.postcode}`,
-            country: values.country
+            first_name: values.firstName,
+            last_name: values.lastName,
+            email: values.email,
+            phone_number: values.phoneNumber,
+            country: values.country,
+            city: values.city,
+            street: values.street,
+            apartment: values.apartment,
+            zip_code: values.postcode
         };
-        request('http://localhost:3001/addresses', 'POST', JSON.stringify(newAddress))
+
+        if (values.apartment === '') {
+            delete newAddress.apartment;
+        }
+
+        request('http://localhost:9122/api/v1/shipping-address/create', 'POST', JSON.stringify(newAddress), header)
             .then((data) => {
-                dispatch(addedNewAddress(data));
+                dispatch(fetchAddresses(header));
             })
             .catch((err) => console.log(err));
     };
 
     const handleRemoveAddress = (id) => {
-        request(`http://localhost:3001/addresses/${id}`, 'DELETE')
+        request(`http://localhost:9122/api/v1/shipping-address/${id}/delete`, 'DELETE', null, header)
             .then((data) => {
-                dispatch(removeAddress(id));
+                dispatch(fetchAddresses(header));
             })
             .catch((err) => console.log(err));
     };
 
     const renderAddresses = (addresses) => {
-        if (addresses.length === 0) return <div style={{marginTop: '10px'}}>You have not set up address yet.</div>;
-        return addresses.map(({ id, fullName, contactsItem, localAddress, regionAddress, country }) => {
-            return (
-                <div className='address__list-item' key={id}>
-                    <span>{fullName}</span>
-                    <span>{contactsItem}</span>
-                    <span>{localAddress}</span>
-                    <span>{regionAddress}</span>
-                    <span>{country}</span>
-                    <div onClick={() => handleRemoveAddress(id)} className='address__list-item-delete'>
-                        <img src={removeIcon} alt='remove address' />
+        if (addresses.length === 0) return <div style={{ marginTop: '10px' }}>You have not set up address yet.</div>;
+        return addresses.map(
+            ({ id, first_name, last_name, email, phone_number, country, city, street, apartment, zip_code }) => {
+                return (
+                    <div className='address__list-item' key={id}>
+                        <span>
+                            {first_name} {last_name}
+                        </span>
+                        <span>
+                            {email} {phone_number}
+                        </span>
+                        <span>
+                            {' '}
+                            {apartment} {street}
+                        </span>
+                        <span>
+                            {city} {zip_code}
+                        </span>
+                        <span>{country}</span>
+                        <div onClick={() => handleRemoveAddress(id)} className='address__list-item-delete'>
+                            <img src={removeIcon} alt='remove address' />
+                        </div>
                     </div>
-                </div>
-            );
-        });
+                );
+            }
+        );
     };
 
     const addressesList = renderAddresses(addresses);

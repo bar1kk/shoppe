@@ -658,6 +658,28 @@
       "name": "Vladyslav",
       "descr": "Very good product!",
       "email": "admin@ex.com"
+    },
+    {
+      "id": "e305e6d9-f074-4bf9-8e0b-20d17e819564",
+      "date": "15 Dec, 2023",
+      "rating": 5,
+      "descr": "Very good prod!",
+      "email": "barbariska.v44@gmail.com"
+    },
+    {
+      "id": "1c012c7d-f515-496d-8e52-9d8f76c6b8e6",
+      "date": "15 Dec, 2023",
+      "rating": 5,
+      "name": "Vladyslav Barbar",
+      "descr": "Very good product!2",
+      "email": "barbariska.v44@gmail.com"
     }
-  ]
+  ],
+  "profile": {
+    "id": "1",
+    "email": "barbariska.v44@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "phone_number": "380678671944"
+  }
 }

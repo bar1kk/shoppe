@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 import { changeFilter } from '../SelectedItemSlice';
 
 import AdditionalInfo from './additionalInfo/AdditionalInfo';
-import Reviws from './reviews/Reviews';
+import Reviews from './reviews/Reviews';
 import './itemInfoNav.scss';
 
 const ItemInfoNav = () => {
@@ -12,6 +12,7 @@ const ItemInfoNav = () => {
 
     useEffect(() => {
         dispatch(changeFilter('additionalInfo'));
+
         // eslint-disable-next-line
     }, []);
     
@@ -28,7 +29,7 @@ const ItemInfoNav = () => {
             </ul>
             <div className="nav__line"></div>
             {filter === 'additionalInfo' ? <AdditionalInfo /> : null}
-            {filter === 'reviews' ? <Reviws/> : null}
+            {filter === 'reviews' ? <Reviews/> : null}
         </div>
     </div>
     );

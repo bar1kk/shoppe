@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { fetchProfile } from '../userAccount/UserAccountSlice';
 import { changeActiveBtn } from './AuthorizationSlice';
 import { showNotification } from '../notification/NotificationSlice';
 import { Formik, Form, useField } from 'formik';
@@ -8,7 +9,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHttp } from '../../hooks/http.hook';
 import { useNavigate } from 'react-router-dom';
-import { useSignIn } from 'react-auth-kit';
+import { useSignIn, useAuthHeader } from 'react-auth-kit';
 
 import './authorization.scss';
 
@@ -44,6 +45,30 @@ const Login = () => {
     const { request } = useHttp();
     const signIn = useSignIn();
     const dispatch = useDispatch();
+
+    const handleLogin = (values) => {
+        const userData = { email: values.email, password: values.password };
+        request('http://localhost:9122/api/v1/auth/login', 'POST', JSON.stringify(userData))
+            .then((data) => {
+                if (
+                    signIn({
+                        token: data.token,
+                        expiresIn: 120,
+                        tokenType: 'Bearer',
+                        authState: { email: values.email, rememberMe: values.rememberMe }
+                    })
+                ) {
+                    navigate('/');
+                }
+            })
+            .catch((err) => {
+                dispatch(showNotification(true));
+                setTimeout(() => {
+                    dispatch(showNotification(false));
+                }, 2000);
+            });
+    };
+
     return (
         <>
             <Formik
@@ -58,27 +83,8 @@ const Login = () => {
                     rememberMe: Yup.boolean()
                 })}
                 onSubmit={(values, { resetForm }) => {
+                    handleLogin(values);
                     resetForm({ values: '' });
-                    const userData = { email: values.email, password: values.password };
-                    request('http://localhost:9122/api/v1/auth/login', 'POST', JSON.stringify(userData))
-                        .then((data) => {
-                            if (
-                                signIn({
-                                    token: data.token,
-                                    expiresIn: 120,
-                                    tokenType: 'Bearer',
-                                    authState: {'email': values.email, rememberMe: values.rememberMe}
-                                })
-                            ) {
-                                navigate('/');
-                            }
-                        })
-                        .catch((err) => {
-                            dispatch(showNotification(true));
-                            setTimeout(() => {
-                                dispatch(showNotification(false));
-                            }, 2000); 
-                        });
                 }}>
                 {({ isSubmitting }) => (
                     <Form>
@@ -119,6 +125,13 @@ const Login = () => {
 const Register = () => {
     const { request } = useHttp();
 
+    const handleRegister = (values) => {
+        const data = { email: values.email, password: values.password };
+        request('http://localhost:9122/api/v1/auth/registration', 'POST', JSON.stringify(data))
+            .then((data) => console.log(data))
+            .catch((err) => console.log(err));
+    };
+
     return (
         <Formik
             initialValues={{
@@ -134,10 +147,7 @@ const Register = () => {
                     .required('Passwords must match')
             })}
             onSubmit={(values, { resetForm }) => {
-                const data = { email: values.email, password: values.password };
-                request('http://localhost:9122/api/v1/auth/registration', 'POST', JSON.stringify(data))
-                    .then((data) => console.log(data))
-                    .catch((err) => console.log(err));
+                handleRegister(values);
                 resetForm({ values: '' });
             }}>
             {({ isSubmitting }) => (

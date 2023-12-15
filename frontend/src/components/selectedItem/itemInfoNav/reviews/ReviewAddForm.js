@@ -10,6 +10,7 @@ import { useAuthHeader, useAuthUser } from 'react-auth-kit';
 import { TextInput } from '../../../authorization/Authorization';
 
 const ReviewAddForm = () => {
+    const {profile} = useSelector((state) => state.userAccount);
     const { rating } = useSelector((state) => state.item);
     const dispatch = useDispatch();
     const { request } = useHttp();
@@ -29,9 +30,9 @@ const ReviewAddForm = () => {
             id: uuidv4(),
             date: formattedDate,
             rating: rating,
-            name: values.name,
+            name: profile.first_name + ' ' + profile.last_name,
             descr: values.review,
-            email: auth().email
+            email: profile.email
         };
 
         request('http://localhost:3001/reviews', 'POST', JSON.stringify(data))
@@ -107,11 +108,9 @@ const ReviewAddForm = () => {
             <Formik
                 initialValues={{
                     review: '',
-                    name: ''
                 }}
                 validationSchema={Yup.object({
                     review: Yup.string().min(10, 'Must be 10 characters or more').required('Required'),
-                    name: Yup.string().min(2, 'Must be 2 characters or more').required('Required')
                 })}
                 onSubmit={(values, { resetForm }) => {
                     resetForm({ values: '' });
@@ -123,16 +122,7 @@ const ReviewAddForm = () => {
                         <div className='input__wrapper'>
                             <TextInput id='review' name='review' type='text' className='add-review__form-input' />
                         </div>
-                        <div className='input__wrapper'>
-                            <TextInput
-                                id='name'
-                                name='name'
-                                type='text'
-                                placeholder='Enter your name*'
-                                className='add-review__form-input'
-                            />
-                        </div>
-                        <div className='add-review__form-text'>Your Rating*</div>
+                                                <div className='add-review__form-text'>Your Rating*</div>
                         <div className='add-review__form-rating'>{renderStars()}</div>
                         <button className='add-review__form-submit' disabled={isSubmitting}>
                             Submit
