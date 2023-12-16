@@ -9,7 +9,7 @@ const SimilarItems = () => {
         (state) => state.goods.goods,
         (state) => state.item.selectedItemId,
         (goods, selectedItemId) => {
-            return goods.filter(item => item.type === selectedItemId.type)
+            return goods.filter(item => item.type === selectedItemId.type && item.id !== selectedItemId.id)
         }
     )
     const items = useSelector(itemsSelector);

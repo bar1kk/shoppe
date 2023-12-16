@@ -267,6 +267,41 @@
         "shippingCost": 0,
         "totalPrice": 25
       }
+    },
+    {
+      "id": "8c4c69f4-7470-4eb8-89bb-167e6bf5bda0",
+      "details": {
+        "date": "16 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "id": "55e0efda-07f4-4cdb-a5db-5e090520908f",
+          "country": "Ukraine",
+          "city": "Munhich",
+          "street": "Shdiuh",
+          "apartment": "22",
+          "email": "barbar@gmail.com",
+          "first_name": "Vladyslav",
+          "last_name": "Barbar",
+          "zip_code": "78934",
+          "phone_number": "380681239045"
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
     }
   ],
   "names": [

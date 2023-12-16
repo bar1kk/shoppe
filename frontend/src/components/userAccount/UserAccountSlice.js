@@ -106,8 +106,8 @@ const { actions, reducer } = UserAccountSlice;
 export default reducer;
 export const {
     changeFilter,
-    addedNewAddress,
-    removeAddress,
+    // addedNewAddress,
+    // removeAddress,
     fetchSelectedOrder,
     fetchSelectedAddress,
     addedNewOrder,

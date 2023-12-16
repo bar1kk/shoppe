@@ -16,7 +16,7 @@ const Address = () => {
     const dispatch = useDispatch();
     const { request } = useHttp();
     const authHeader = useAuthHeader();
-    const {header} = useHeader();
+    const { header } = useHeader();
 
     useEffect(() => {
         dispatch(fetchAddresses(header));
@@ -24,7 +24,6 @@ const Address = () => {
     }, []);
 
     const handleAddAddress = (values) => {
-
         const newAddress = {
             first_name: values.firstName,
             last_name: values.lastName,
@@ -69,7 +68,6 @@ const Address = () => {
                             {email} {phone_number}
                         </span>
                         <span>
-                            {' '}
                             {apartment} {street}
                         </span>
                         <span>

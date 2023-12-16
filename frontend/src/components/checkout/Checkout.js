@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { useHttp } from '../../hooks/http.hook';
+import { useHeader } from '../../hooks/header';
 
 import './checkout.scss';
 import payPalIcon from '../../assets/icons/paypal.svg';
@@ -21,6 +22,7 @@ const Checkout = () => {
     const { orderedGoods } = useSelector((state) => state.goods);
     const dispatch = useDispatch();
     const { request } = useHttp();
+    const { header } = useHeader();
     const navigate = useNavigate();
 
     const currentDate = new Date();
@@ -29,7 +31,7 @@ const Checkout = () => {
     const subTotal = orderedGoods.reduce((acc, { counter, price }) => acc + counter * price, 0);
 
     useEffect(() => {
-        dispatch(fetchAddresses());
+        dispatch(fetchAddresses(header));
         // eslint-disable-next-line
     }, []);
 
@@ -90,22 +92,32 @@ const Checkout = () => {
 
     const renderAddresses = (addresses) => {
         if (addresses.length === 0) return <div style={{ marginTop: '10px' }}>You have not set up address yet.</div>;
-        return addresses.map(({ id, fullName, contactsItem, localAddress, regionAddress, country }) => {
-            return (
-                <div
-                    className={`checkout__address-item ${
-                        selectedAddress.id === id ? 'checkout__address-item-selected' : ''
-                    }`}
-                    key={id}
-                    onClick={() => handleSelectedAddress(id)}>
-                    <span>{fullName}</span>
-                    <span>{contactsItem}</span>
-                    <span>{localAddress}</span>
-                    <span>{regionAddress}</span>
-                    <span>{country}</span>
-                </div>
-            );
-        });
+        return addresses.map(
+            ({ id, first_name, last_name, email, phone_number, country, city, street, apartment, zip_code }) => {
+                return (
+                    <div
+                        className={`checkout__address-item ${
+                            selectedAddress.id === id ? 'checkout__address-item-selected' : ''
+                        }`}
+                        key={id}
+                        onClick={() => handleSelectedAddress(id)}>
+                        <span>
+                            {first_name} {last_name}
+                        </span>
+                        <span>
+                            {email} {phone_number}
+                        </span>
+                        <span>
+                            {apartment} {street}
+                        </span>
+                        <span>
+                            {city} {zip_code}
+                        </span>
+                        <span>{country}</span>
+                    </div>
+                );
+            }
+        );
     };
 
     const renderOrderList = (orderedGoods) => {
@@ -181,7 +193,9 @@ const Checkout = () => {
                                 </div>
                                 <div className='order__summary-payment'>
                                     <input type='radio' id='paypal' name='paypal ' value='PayPal' disabled />
-                                    <label htmlFor='cash'>PayPal <img src={payPalIcon} alt="paypal icon" /></label>
+                                    <label htmlFor='cash'>
+                                        PayPal <img src={payPalIcon} alt='paypal icon' />
+                                    </label>
                                     <div className='error' style={{ paddingLeft: '20px' }}>
                                         Temporarily unavailable
                                     </div>
