@@ -1,7 +1,13 @@
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchSelectedItem, counterPlus, counterMinus, changeActiveSlideIndex, resetSelectedItem } from '../SelectedItemSlice';
+import {
+    fetchSelectedItem,
+    counterPlus,
+    counterMinus,
+    changeActiveSlideIndex,
+    resetSelectedItem
+} from '../SelectedItemSlice';
 import { fetchGoods, addCounter, addedGoods } from '../../jewelryCatalog/JewelryCatalogSlice';
 import { showNotification } from '../../notification/NotificationSlice';
 
@@ -11,6 +17,7 @@ import './itemInfoSection.scss';
 const ItemInfoSection = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const isMounted = useRef(false);
 
     const { goods } = useSelector((state) => state.goods);
     const { selectedItemId, slides, activeSlideIndex } = useSelector((state) => state.item);
@@ -18,19 +25,22 @@ const ItemInfoSection = () => {
     useEffect(() => {
         dispatch(fetchGoods());
         dispatch(showNotification(false));
-        window.scrollTo(0, 0);
-
+        dispatch(changeActiveSlideIndex(1));
         // eslint-disable-next-line
-    }, [id]);
+    }, []);
 
     useEffect(() => {
-        dispatch(resetSelectedItem());
-        const selectedItem = goods.find((item) => item.id === +id);
-        dispatch(fetchSelectedItem(selectedItem));
-        dispatch(changeActiveSlideIndex(1));
+        if (isMounted.current) {
+            dispatch(resetSelectedItem());
+            const selectedItem = goods.find((item) => item.id === id);
+            dispatch(fetchSelectedItem(selectedItem));
+            window.scrollTo(0, 0);
+        } else {
+            isMounted.current = true;
+        }
 
         // eslint-disable-next-line
-    }, [goods]);
+    }, [goods, id]);
 
     const onPlus = () => {
         dispatch(counterPlus());
@@ -49,17 +59,6 @@ const ItemInfoSection = () => {
             dispatch(showNotification(false));
         }, 2000);
     };
-
-    const { name, price, imagePath, reviews, categories, sku, description } = selectedItemId;
-    let averageRating = 0;
-
-    if (reviews && reviews.length > 0) {
-        const totalRating = reviews.reduce((sum, review) => {
-            return sum + review.rating;
-        }, 0);
-
-        averageRating = Math.round(totalRating / reviews.length);
-    }
 
     const renderRatingStars = () => {
         const stars = [];
@@ -115,7 +114,6 @@ const ItemInfoSection = () => {
     };
 
     const renderSlider = () => {
-        if (Object.keys(selectedItemId).length <= 1) return <Spinner />;
         const sliders = [];
         const activeSlide = [];
         for (let i = 1; i < slides + 1; i++) {
@@ -124,7 +122,7 @@ const ItemInfoSection = () => {
                 <img
                     key={i}
                     onClick={() => dispatch(changeActiveSlideIndex(i))}
-                    src={imagePath[i - 1]}
+                    src={images[i - 1]}
                     alt='selected item'
                     className={className}
                 />
@@ -132,7 +130,7 @@ const ItemInfoSection = () => {
 
             if (activeSlideIndex === i) {
                 activeSlide.push(
-                    <img key={i} src={imagePath[i - 1]} alt='selected item main' className='info__main-img' />
+                    <img key={i} src={images[i - 1]} alt='selected item main' className='info__main-img' />
                 );
             }
         }
@@ -156,6 +154,26 @@ const ItemInfoSection = () => {
             </div>
         );
     };
+
+    if (Object.keys(selectedItemId).length <= 1) return <Spinner />;
+
+    const {
+        name,
+        price,
+        images,
+        reviews,
+        productDescription: { description }
+    } = selectedItemId;
+
+    let averageRating = 0;
+
+    if (reviews && reviews.length > 0) {
+        const totalRating = reviews.reduce((sum, review) => {
+            return sum + review.rating;
+        }, 0);
+
+        averageRating = Math.round(totalRating / reviews.length);
+    }
 
     return (
         <div className='info'>
@@ -188,10 +206,10 @@ const ItemInfoSection = () => {
                         </div>
                         <ul className='info__catgrs'>
                             <li className='info__catgrs-key'>
-                                SKU: <span className='info__catgrs-value'>{sku}</span>
+                                SKU: <span className='info__catgrs-value'>{id.substring(0, 8)}</span>
                             </li>
                             <li className='info__catgrs-key'>
-                                Categories: <span className='info__catgrs-value'>{categories}</span>
+                                Categories: <span className='info__catgrs-value'>Fashion</span>
                             </li>
                         </ul>
                     </div>

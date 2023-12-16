@@ -15,8 +15,8 @@ const SimilarItems = () => {
     const items = useSelector(itemsSelector);
 
     const renderItemsCatalog = (similarItems) => {
-        const itemsCatalog = similarItems.map(({id, name, price, imagePath}) => {
-            return(<JewelryItemPromo key={id} id={id} name={name} price={price} imagePath={imagePath[0]} />)
+        const itemsCatalog = similarItems.map(({id, name, price, images}) => {
+            return(<JewelryItemPromo key={id} id={id} name={name} price={price} imagePath={images[0]} />)
         })
         return <>
             {itemsCatalog}

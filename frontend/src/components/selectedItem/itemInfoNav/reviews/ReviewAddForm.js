@@ -2,42 +2,27 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addReview, changeRating } from '../../SelectedItemSlice';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
-import { v4 as uuidv4 } from 'uuid';
-import { format } from 'date-fns';
 import { useHttp } from '../../../../hooks/http.hook';
-import { useAuthHeader, useAuthUser } from 'react-auth-kit';
+import { useHeader } from '../../../../hooks/header';
 
 import { TextInput } from '../../../authorization/Authorization';
 
 const ReviewAddForm = () => {
-    const {profile} = useSelector((state) => state.userAccount);
-    const { rating } = useSelector((state) => state.item);
+    const { rating, selectedItemId } = useSelector((state) => state.item);
     const dispatch = useDispatch();
     const { request } = useHttp();
-    const authHeader = useAuthHeader();
-    const auth = useAuthUser();
-
-    const header = {
-        'Content-Type': 'application/json',
-        Authorization: authHeader()
-    };
-
-    const currentDate = new Date();
-    const formattedDate = format(currentDate, 'd MMM, yyyy');
+    const {header } = useHeader();
 
     const onHandleAddReview = (values) => {
         const data = {
-            id: uuidv4(),
-            date: formattedDate,
             rating: rating,
-            name: profile.first_name + ' ' + profile.last_name,
-            descr: values.review,
-            email: profile.email
+            description: values.review,
+            product_id: selectedItemId.id
         };
 
-        request('http://localhost:3001/reviews', 'POST', JSON.stringify(data))
+        request('http://localhost:9122/api/v1/reviews/create', 'POST', JSON.stringify(data), header)
             .then((res) => {
-                dispatch(addReview(data));
+                dispatch(addReview(res));
                 dispatch(changeRating(0));
             })
             .catch((err) => {

@@ -22,7 +22,7 @@ export const fetchGoods = createAsyncThunk(
     'goods/fetchGoods',
     async () => {
         const { request } = useHttp();
-        return await request('http://localhost:3001/goods', 'GET');
+        return await request('http://localhost:9122/api/v1/products', 'GET');
     }
 );
 

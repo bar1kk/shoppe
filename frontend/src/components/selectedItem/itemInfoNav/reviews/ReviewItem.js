@@ -1,4 +1,4 @@
-const ReviewItem = ({ name, rating, descr, date }) => {
+const ReviewItem = ({ firstName, lastName, rating, description, date }) => {
     const renderRatingStars = () => {
         const stars = [];
         for (let i = 1; i <= 5; i++) {
@@ -42,11 +42,11 @@ const ReviewItem = ({ name, rating, descr, date }) => {
     return (
         <div className='review__item'>
             <div className='review__wrapper'>
-                <div className='review__name'>{name}</div>
+                <div className='review__name'>{firstName} {lastName}</div>
                 <div className='review__data'>{date}</div>
             </div>
             <div className='review__rate'>{renderRatingStars()}</div>
-            <div className='review__descr'>{descr}</div>
+            <div className='review__descr'>{description}</div>
             <div className='review__line'></div>
         </div>
     );

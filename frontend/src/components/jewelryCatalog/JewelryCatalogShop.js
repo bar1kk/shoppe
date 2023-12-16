@@ -42,8 +42,10 @@ const JewelryCatalogShop = () => {
 
     const ITEMS_PER_PAGE = 9;
     const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
+
     const filteredGoods = useSelector(filteredGoodsSelector);
     const { goodsLoadingStatus } = useSelector((state) => state.goods);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -67,14 +69,14 @@ const JewelryCatalogShop = () => {
     };
 
     const renderCatalog = (goods) => {
-        const goodsList = goods.slice(0, displayedItems).map(({ id, name, price, imagePath, availability }) => {
+        const goodsList = goods.slice(0, displayedItems).map(({ id, name, price, images, availability }) => {
             return (
                 <JewelryItemShop
                     id={id}
                     key={id}
                     name={name}
                     price={price}
-                    imagePath={imagePath[0]}
+                    imagePath={images[0]}
                     availability={availability}
                     onBuy={onBuy}
                 />
