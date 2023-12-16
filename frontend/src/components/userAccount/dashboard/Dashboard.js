@@ -13,7 +13,7 @@ const Dashboard = ({ onChangeFilter }) => {
     return (
         <div className='dashboard__wrapper'>
             <p>
-                Hello {profile.first_name} {profile.last_name} (not {profile.first_name} ?   
+                Hello {profile.first_name} {profile.last_name} (not {profile.first_name} ?&nbsp;
                 <span
                     onClick={() => {
                         signOut();
