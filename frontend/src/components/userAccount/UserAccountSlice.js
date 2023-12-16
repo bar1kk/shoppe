@@ -41,21 +41,25 @@ const UserAccountSlice = createSlice({
             state.selectedOrder = { ...action.payload };
         },
 
+        changeProfile: (state, action) => {
+            state.profile = { ...action.payload };
+        },
+
         changeFilter: (state, action) => {
             state.filter = action.payload;
         },
 
-        // addedNewAddress: (state, action) => {
-        //     state.addresses.push(action.payload);
-        // },
+        addedNewAddress: (state, action) => {
+            state.addresses.push(action.payload);
+        },
 
         addedNewOrder: (state, action) => {
             state.orders.push(action.payload);
         },
 
-        // removeAddress: (state, action) => {
-        //     state.addresses = state.addresses.filter((address) => address.id !== action.payload);
-        // },
+        removeAddress: (state, action) => {
+            state.addresses = state.addresses.filter((address) => address.id !== action.payload);
+        },
 
         resetUserAccount: () => initialState,
 
@@ -106,11 +110,12 @@ const { actions, reducer } = UserAccountSlice;
 export default reducer;
 export const {
     changeFilter,
-    // addedNewAddress,
-    // removeAddress,
+    addedNewAddress,
+    removeAddress,
     fetchSelectedOrder,
     fetchSelectedAddress,
     addedNewOrder,
     resetUserAccount,
-    resetSelectedAddress
+    resetSelectedAddress,
+    changeProfile
 } = actions;

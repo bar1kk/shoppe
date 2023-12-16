@@ -1,11 +1,11 @@
-import { Formik, Form } from 'formik';
-import * as Yup from 'yup';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuthHeader } from 'react-auth-kit';
-import { fetchAddresses } from '../UserAccountSlice';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
 import { useHttp } from '../../../hooks/http.hook';
 import { useHeader } from '../../../hooks/header';
+
+import { fetchAddresses, removeAddress, addedNewAddress } from '../UserAccountSlice';
 
 import './address.scss';
 import removeIcon from '../../../assets/icons/remove.svg';
@@ -15,7 +15,6 @@ const Address = () => {
     const { addresses } = useSelector((state) => state.userAccount);
     const dispatch = useDispatch();
     const { request } = useHttp();
-    const authHeader = useAuthHeader();
     const { header } = useHeader();
 
     useEffect(() => {
@@ -42,7 +41,7 @@ const Address = () => {
 
         request('http://localhost:9122/api/v1/shipping-address/create', 'POST', JSON.stringify(newAddress), header)
             .then((data) => {
-                dispatch(fetchAddresses(header));
+                dispatch(addedNewAddress(data));
             })
             .catch((err) => console.log(err));
     };
@@ -50,7 +49,7 @@ const Address = () => {
     const handleRemoveAddress = (id) => {
         request(`http://localhost:9122/api/v1/shipping-address/${id}/delete`, 'DELETE', null, header)
             .then((data) => {
-                dispatch(fetchAddresses(header));
+                dispatch(removeAddress(id));
             })
             .catch((err) => console.log(err));
     };

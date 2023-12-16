@@ -1,23 +1,51 @@
-import './accountDetails.scss';
-import { TextInput, PasswordInput } from '../../authorization/Authorization';
-import * as Yup from 'yup';
-import { Formik, Form } from 'formik';
-import { useHttp } from '../../../hooks/http.hook';
-import Notification from '../../notification/Notification';
-import { showNotification } from '../../notification/NotificationSlice';
 import { useDispatch, useSelector } from 'react-redux';
+import { Formik, Form } from 'formik';
+import * as Yup from 'yup';
+import { useHeader } from '../../../hooks/header';
+import { useHttp } from '../../../hooks/http.hook';
+
+import { showNotification } from '../../notification/NotificationSlice';
+import { changeProfile } from '../UserAccountSlice';
+
+import './accountDetails.scss';
 import cancelMarkIcon from '../../../assets/icons/cancelMark.svg';
-import { useAuthHeader } from 'react-auth-kit';
+import { TextInput, PasswordInput } from '../../authorization/Authorization';
+import Notification from '../../notification/Notification';
 
 const AccountDetails = () => {
     const { request } = useHttp();
     const dispatch = useDispatch();
     const { notificationStatus } = useSelector((state) => state.notification);
     const badPasswordText = 'Current password is incorrect! Please try again.';
-    const authHeader = useAuthHeader();
-    const header = {
-        'Content-Type': 'application/json',
-        Authorization: authHeader()
+    const { header } = useHeader();
+
+    const handleChangeDetails = (values) => {
+        const data = { first_name: values.firstName, last_name: values.lastName };
+        if (values.phoneNumber.length !== 0) {
+            data.phone_number = values.phoneNumber;
+        }
+
+        request('http://localhost:9122/api/v1/user/details', 'PUT', JSON.stringify(data), header)
+            .then((res) => {
+                dispatch(changeProfile(res));
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+    };
+
+    const handleChangePassword = (values) => {
+        const data = { old_password: values.currentPassword, new_password: values.newPassword };
+
+        request('http://localhost:9122/api/v1/user/change-password', 'PUT', JSON.stringify(data), header)
+            .then((res) => {})
+            .catch((err) => {
+                console.log(err);
+                dispatch(showNotification(true));
+                setTimeout(() => {
+                    dispatch(showNotification(false));
+                }, 2000);
+            });
     };
 
     return (
@@ -41,20 +69,8 @@ const AccountDetails = () => {
                             .min(12, 'Must be 12 numbers or more')
                     })}
                     onSubmit={(values, { resetForm }) => {
-                        console.log(authHeader());
+                        handleChangeDetails(values);
                         resetForm({ values: '' });
-                        const data = { first_name: values.firstName, last_name: values.lastName };
-                        if (values.phoneNumber.length !== 0) {
-                            data.phone_number = values.phoneNumber;
-                        }
-                        request('http://localhost:9122/api/v1/user/details', 'PUT', JSON.stringify(data), header)
-                            .then((res) => {
-                                //dispatch(fetchProfile());
-                                console.log(res);
-                            })
-                            .catch((err) => {
-                                console.log(err);
-                            });
                     }}>
                     {({ isSubmitting }) => (
                         <Form>
@@ -106,24 +122,8 @@ const AccountDetails = () => {
                             .required('Passwords must match')
                     })}
                     onSubmit={(values, { resetForm }) => {
+                        handleChangePassword(values);
                         resetForm({ values: '' });
-                        const data = { old_password: values.currentPassword, new_password: values.newPassword };
-                        request(
-                            'http://localhost:9122/api/v1/user/change-password',
-                            'PUT',
-                            JSON.stringify(data),
-                            header
-                        )
-                            .then((res) => {
-                                console.log(res);
-                            })
-                            .catch((err) => {
-                                console.log(err);
-                                dispatch(showNotification(true));
-                                setTimeout(() => {
-                                    dispatch(showNotification(false));
-                                }, 2000);
-                            });
                     }}>
                     {({ isSubmitting }) => (
                         <Form>
