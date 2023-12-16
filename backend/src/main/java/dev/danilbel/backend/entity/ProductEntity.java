@@ -54,4 +54,8 @@ public class ProductEntity {
     @OneToMany
     @JoinColumn(name = "product_id")
     List<ProductImageEntity> images;
+
+    @OneToMany
+    @JoinColumn(name = "product_id")
+    List<ReviewEntity> reviews;
 }

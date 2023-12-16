@@ -26,7 +26,8 @@ public class ProductServiceImpl implements ProductService {
 
     ProductMapper productMapper;
 
-    private ProductEntity getProductEntityById(String id) {
+    @Override
+    public ProductEntity getProductEntityById(String id) {
 
         ProductEntity productEntity = productRepository.findById(id).orElseThrow(
                 () -> {

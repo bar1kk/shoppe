@@ -1,5 +1,6 @@
 package dev.danilbel.backend.dto.product;
 
+import dev.danilbel.backend.dto.review.ReviewDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -28,4 +29,6 @@ public class ProductDto {
     ProductDescriptionDto productDescription;
 
     List<String> images;
+
+    List<ReviewDto> reviews;
 }

@@ -1,6 +1,7 @@
 package dev.danilbel.backend.mapper;
 
 import dev.danilbel.backend.dto.user.UserDto;
+import dev.danilbel.backend.dto.user.UserSummaryDto;
 import dev.danilbel.backend.entity.UserEntity;
 import org.mapstruct.Mapper;
 
@@ -8,4 +9,6 @@ import org.mapstruct.Mapper;
 public interface UserMapper {
 
     UserDto toDto(UserEntity userEntity);
+
+    UserSummaryDto toSummaryDto(UserEntity userEntity);
 }
