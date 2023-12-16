@@ -7,10 +7,14 @@ import PrivateRoute from '../privateRoute/PrivateRoute';
 import Shop from '../pages/shop/Shop';
 import SelectedOrderPage from '../pages/SelectedOrderPage';
 import UnloadListener from '../unloadListener/UnloadListener';
+import SelectedItemPage from '../pages/SelectedItemPage';
+import CartPage from '../pages/CartPage';
+import CheckoutPage from '../pages/CheckoutPage';
 
 const App = () => {
 
     return (
+        
         <Router>
             <UnloadListener />
             <div className='App'>
@@ -20,7 +24,10 @@ const App = () => {
                     <Route path={'/user'} element={<PrivateRoute Component={UserPage} />} />
                     <Route path={'/user/order/:id'} element={<SelectedOrderPage />} />
                     <Route path={'/shop'} element={<Shop />} />
+                    <Route path={'/shop/:id'} element={<SelectedItemPage />} />
                     <Route path={'/order/:id'} element={<SelectedOrderPage />} />
+                    <Route path={'/cart'} element={<CartPage />} />
+                    <Route path={'/cart/checkout'} element={<PrivateRoute Component={CheckoutPage} />} />
                 </Routes>
             </div>
         </Router>

@@ -18,10 +18,11 @@ const OrderItem = () => {
     useEffect(() => {
         const selectedOrder = orders.find((order) => order.id == id);
         dispatch(fetchSelectedOrder(selectedOrder));
+        window.scrollTo(0, 0);
     }, [orders]);
 
     const renderOrderItem = (selectedOrder) => {
-        if (Object.keys(selectedOrder).length == 0) return <Spinner />;
+        if (Object.keys(selectedOrder).length === 0) return <Spinner />;
 
         const {
             details: {
@@ -41,7 +42,7 @@ const OrderItem = () => {
                         <div className='order__details-half'>
                             <div className='order__details_wrapper'>
                                 <span className='order__details-title'>Order number</span>
-                                <span className='order__details-value'>{id}</span>
+                                <span className='order__details-value'>{id.substring(24)}</span>
                             </div>
                             <div className='order__details_wrapper'>
                                 <span className='order__details-title'>Payment method</span>

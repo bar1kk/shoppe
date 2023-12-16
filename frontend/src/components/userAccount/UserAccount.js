@@ -1,8 +1,10 @@
-import { useAuthHeader, useSignOut } from 'react-auth-kit';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { addedUserHeader, changeFilter } from './UserAccountSlice';
 import { useNavigate } from 'react-router-dom';
+import {useSignOut } from 'react-auth-kit';
+import { useHeader } from '../../hooks/header';
+
+import { changeFilter, resetUserAccount, fetchProfile } from './UserAccountSlice';
 
 import './userAccount.scss';
 import Dashboard from './dashboard/Dashboard';
@@ -13,13 +15,14 @@ import Address from './address/Address';
 const UserAccount = () => {
     const { filter } = useSelector((state) => state.userAccount);
     const dispatch = useDispatch();
-    const authHeader = useAuthHeader();
     const signOut = useSignOut();
     const navigate = useNavigate();
+    const {header} = useHeader();
 
     useEffect(() => {
-        // dispatch(addedUserHeader(authHeader));
+        dispatch(fetchProfile(header));
         dispatch(changeFilter('dashboard'));
+        // eslint-disable-next-line
     }, []);
 
     const onChangeFilter = (filter) => {
@@ -39,7 +42,7 @@ const UserAccount = () => {
                     <ul className='account__nav-wrapper'>
                         <li>
                             <a
-                                href='#'
+                                href='#!'
                                 onClick={() => onChangeFilter('dashboard')}
                                 className={
                                     filter === 'dashboard'
@@ -51,7 +54,7 @@ const UserAccount = () => {
                         </li>
                         <li>
                             <a
-                                href='#'
+                                href='#!'
                                 onClick={() => onChangeFilter('orders')}
                                 className={
                                     filter === 'orders' ? 'account__nav-link account__nav-active' : 'account__nav-link'
@@ -61,7 +64,7 @@ const UserAccount = () => {
                         </li>
                         <li>
                             <a
-                                href='#'
+                                href='#!'
                                 onClick={() => onChangeFilter('addresses')}
                                 className={
                                     filter === 'addresses'
@@ -73,7 +76,7 @@ const UserAccount = () => {
                         </li>
                         <li>
                             <a
-                                href='#'
+                                href='#!'
                                 onClick={() => onChangeFilter('details')}
                                 className={
                                     filter === 'details' ? 'account__nav-link account__nav-active' : 'account__nav-link'
@@ -83,10 +86,11 @@ const UserAccount = () => {
                         </li>
                         <li>
                             <a
-                                href='#'
+                                href='#!'
                                 onClick={() => {
                                     onChangeFilter('logout');
                                     signOut();
+                                    dispatch(resetUserAccount());
                                     navigate('/');
                                 }}
                                 className={'account__nav-link'}>

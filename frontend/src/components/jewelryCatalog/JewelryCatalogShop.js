@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import { fetchGoods, addedGoods, plusCounter } from './JewelryCatalogSlice';
@@ -40,8 +40,12 @@ const JewelryCatalogShop = () => {
         }
     );
 
+    const ITEMS_PER_PAGE = 9;
+    const [displayedItems, setDisplayedItems] = useState(ITEMS_PER_PAGE);
+
     const filteredGoods = useSelector(filteredGoodsSelector);
     const { goodsLoadingStatus } = useSelector((state) => state.goods);
+
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -49,6 +53,10 @@ const JewelryCatalogShop = () => {
         dispatch(showNotification(false));
         // eslint-disable-next-line
     }, []);
+
+    const loadMoreItems = () => {
+        setDisplayedItems((prev) => prev + ITEMS_PER_PAGE);
+    };
 
     const onBuy = (id) => {
         dispatch(addedGoods(id));
@@ -61,14 +69,14 @@ const JewelryCatalogShop = () => {
     };
 
     const renderCatalog = (goods) => {
-        const goodsList = goods.map(({id, name, price, imagePath, availability}) => {
+        const goodsList = goods.slice(0, displayedItems).map(({ id, name, price, images, availability }) => {
             return (
                 <JewelryItemShop
                     id={id}
                     key={id}
                     name={name}
                     price={price}
-                    imagePath={imagePath.main}
+                    imagePath={images[0]}
                     availability={availability}
                     onBuy={onBuy}
                 />
@@ -92,7 +100,17 @@ const JewelryCatalogShop = () => {
 
     return (
         <>
-            <div className='catalog'>{goodsCatalog}</div>
+            <div className='catalog'>
+                {goodsCatalog}
+                {filteredGoods.length > displayedItems && (
+                    
+                    <div className="catalog__button-wrapper">
+                        <button onClick={loadMoreItems} className='catalog__load-more-button'>
+                            Load More
+                        </button>
+                    </div>
+                )}
+            </div>
         </>
     );
 };

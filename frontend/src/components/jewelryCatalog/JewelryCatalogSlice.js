@@ -6,8 +6,8 @@ const initialState = {
     goods: [],
     goodsLoadingStatus: 'idle',
     orderedGoods: [],
-    orderedCounters: [],
-    selectedItemId: 0
+    // orderedCounters: [],
+    // selectedItemId: 0
 }
 
 export const fetchPromoGoods = createAsyncThunk(
@@ -22,7 +22,7 @@ export const fetchGoods = createAsyncThunk(
     'goods/fetchGoods',
     async () => {
         const { request } = useHttp();
-        return await request('http://localhost:3001/goods', 'GET');
+        return await request('http://localhost:9122/api/v1/products', 'GET');
     }
 );
 
@@ -73,7 +73,10 @@ const JewelryCatalogSlice = createSlice({
                 }
             })
         },
-        fetchSelectedItem: (state, action) => {state.selectedItemId = action.payload}
+        resetOrderedGoods: (state) => {
+            state.orderedGoods = [];
+        }
+        // fetchSelectedItem: (state, action) => {state.selectedItemId = action.payload}
     },
     extraReducers: (builder) => {
         builder
@@ -103,5 +106,6 @@ export const {
     plusCounter,
     minusCounter,
     addCounter,
-    fetchSelectedItem
+    // fetchSelectedItem
+    resetOrderedGoods
 } = actions;

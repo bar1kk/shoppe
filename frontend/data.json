@@ -21,84 +21,286 @@
   ],
   "orders": [
     {
-      "id": "7643980998990",
+      "id": "89797391-5ab0-49a2-8682-1b774e41c927",
       "details": {
-        "date": "October 8, 2021",
-        "status": "Delivered",
+        "date": "14 Dec, 2023",
+        "status": "Processing",
         "paymentMethod": "Cash on delivery",
-        "deliveryOptions": "Standard delivery",
+        "deliveryOptions": "Standard Delivery",
         "deliveryAddress": {
           "fullName": "Vladyslav Barbar",
           "contactsItem": "barbariska.v44@gmail.com 380681239045",
-          "localAddress": "Hanover 96 11",
+          "localAddress": "Hanover 96 21",
           "regionAddress": "Munhich 78934",
-          "country": "Europe"
+          "country": "Ukraine",
+          "id": 1
         }
       },
       "summary": {
         "goods": [
-          {
-            "id": 1,
-            "name": "Lira Earrings",
-            "price": 25,
-            "quantity": 2,
-            "total": 50
-          },
           {
             "id": 2,
             "name": "Hal Earrings",
-            "price": 25,
-            "quantity": 1,
-            "total": 25
-          },
-          {
-            "id": 3,
-            "name": "Kaede Hair Pin Set Of 3",
-            "price": 30,
-            "quantity": 2,
-            "total": 60
+            "price": "25.00",
+            "quantity": 3,
+            "total": 75
           }
         ],
-        "subTotal": 135,
+        "subTotal": 75,
         "shippingCost": 0,
-        "totalPrice": 135
+        "totalPrice": 75
       }
     },
     {
-      "id": "943980998990",
+      "id": "54ddbad4-34b4-4fcf-a2ec-ebeba6f41233",
       "details": {
-        "date": "October 8, 2021",
+        "date": "14 Dec, 2023",
         "status": "Processing",
         "paymentMethod": "Cash on delivery",
-        "deliveryOptions": "Standard delivery",
+        "deliveryOptions": "Standard Delivery",
         "deliveryAddress": {
-          "fullName": "Oleksandr Sapozhnikov",
-          "contactsItem": "grigoriy.artichoke@gmail.com 380681239045",
-          "localAddress": "22 Shevchenka Street",
-          "regionAddress": "Bilogorodka 08140",
-          "country": "Ukraine"
+          "fullName": "User User",
+          "contactsItem": "admin@ex.com 12345678903242",
+          "localAddress": "Shdiuh 11",
+          "regionAddress": "Głogów Małopolski 21324234",
+          "country": "Europe",
+          "id": 2
         }
       },
       "summary": {
         "goods": [
           {
-            "id": 1,
-            "name": "Yuki Hair Pin Set of 3",
-            "price": 19,
-            "quantity": 1,
-            "total": 19
-          },
-          {
             "id": 2,
-            "name": "Plaine Necklace",
-            "price": 30,
+            "name": "Hal Earrings",
+            "price": "25.00",
             "quantity": 3,
-            "total": 90
+            "total": 75
           }
         ],
-        "subTotal": 109,
+        "subTotal": 75,
         "shippingCost": 0,
-        "totalPrice": 109
+        "totalPrice": 75
+      }
+    },
+    {
+      "id": "fb3c85f7-c677-4c26-be2c-9577f9531a50",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "Vladyslav Barbar",
+          "contactsItem": "barbariska.v44@gmail.com 380681239045",
+          "localAddress": "Hanover 96 21",
+          "regionAddress": "Munhich 78934",
+          "country": "Ukraine",
+          "id": 1
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 3,
+            "total": 75
+          }
+        ],
+        "subTotal": 75,
+        "shippingCost": 0,
+        "totalPrice": 75
+      }
+    },
+    {
+      "id": "70c737ad-26c9-4602-9d2c-4370d466158d",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "User User",
+          "contactsItem": "admin@ex.com 12345678903242",
+          "localAddress": "Shdiuh 11",
+          "regionAddress": "Głogów Małopolski 21324234",
+          "country": "Europe",
+          "id": 2
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
+    },
+    {
+      "id": "ba297e79-015d-4258-96ea-e98506419791",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "User User",
+          "contactsItem": "barbariska.v44@gmail.com 12345678903242",
+          "localAddress": "Shdiuh 22",
+          "regionAddress": "Munhich 21324234",
+          "country": "Europe",
+          "id": 2
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
+    },
+    {
+      "id": "4880a404-3184-4b31-ad0d-bea60b9919c6",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "User User",
+          "contactsItem": "sportbet.ua@gmail.com 380681239045",
+          "localAddress": "Shdiuh 22",
+          "regionAddress": "Głogów Małopolski 21324234",
+          "country": "Europe",
+          "id": 2
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
+    },
+    {
+      "id": "b8db8467-ee94-4b59-853f-c6520dc77100",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "Vladyslav Barbar",
+          "contactsItem": "barbariska.v44@gmail.com 380681239045",
+          "localAddress": "Shdiuh 21",
+          "regionAddress": "Munhich 78934",
+          "country": "Ukraine",
+          "id": 1
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
+    },
+    {
+      "id": "7cd79b17-6849-49eb-a499-a8b344c245c8",
+      "details": {
+        "date": "14 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "fullName": "Vladyslav Barbar",
+          "contactsItem": "barbariska.v44@gmail.com 380681239045",
+          "localAddress": "Shdiuh 21",
+          "regionAddress": "Munhich 78934",
+          "country": "Ukraine",
+          "id": 1
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
+      }
+    },
+    {
+      "id": "8c4c69f4-7470-4eb8-89bb-167e6bf5bda0",
+      "details": {
+        "date": "16 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "id": "55e0efda-07f4-4cdb-a5db-5e090520908f",
+          "country": "Ukraine",
+          "city": "Munhich",
+          "street": "Shdiuh",
+          "apartment": "22",
+          "email": "barbar@gmail.com",
+          "first_name": "Vladyslav",
+          "last_name": "Barbar",
+          "zip_code": "78934",
+          "phone_number": "380681239045"
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": 2,
+            "name": "Hal Earrings",
+            "price": "25.00",
+            "quantity": 1,
+            "total": 25
+          }
+        ],
+        "subTotal": 25,
+        "shippingCost": 0,
+        "totalPrice": 25
       }
     }
   ],
@@ -317,14 +519,16 @@
       "name": "Lira Earrings",
       "price": "20.00",
       "type": "Earrings",
-      "availability": 4,
+      "availability": 0,
       "categories": "Fashion, Style",
       "sku": "12",
       "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
-      "imagePath": {
-        "main": "https://i.postimg.cc/SsB8LJhM/01.jpg",
-        "additional": []
-      },
+      "imagePath": [
+        "https://zolotoyvek.ua/media/catalog/product/cache/7d867076b0c31e5e4acf36489cc1e4f1/2/1/21810-02-1-28____.webp",
+        "https://i.postimg.cc/SsB8LJhM/01.jpg",
+        "https://zolotoyvek.ua/media/catalog/product/cache/7d867076b0c31e5e4acf36489cc1e4f1/2/1/21810-02-1-28.webp",
+        "https://zolotoyvek.ua/media/catalog/product/cache/7d867076b0c31e5e4acf36489cc1e4f1/2/1/21810-02-1-28___.webp"
+      ],
       "info": {
         "weight": "0.3 kg",
         "dimentions": "15 x 10 x 1 cm",
@@ -352,11 +556,10 @@
       "availability": 4,
       "categories": "Fashion, Style",
       "sku": "12",
-      "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
-      "imagePath": {
-        "main": "https://i.postimg.cc/KY4gdncT/02.jpg",
-        "additional": []
-      },
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+      "imagePath": [
+        "https://i.postimg.cc/KY4gdncT/02.jpg"
+      ],
       "info": {
         "weight": "0.3 kg",
         "dimentions": "15 x 10 x 1 cm",
@@ -384,11 +587,10 @@
       "availability": 4,
       "categories": "Fashion, Style",
       "sku": "12",
-      "descr": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
-      "imagePath": {
-        "main": "https://i.postimg.cc/FRLkKNLs/03.jpg",
-        "additional": []
-      },
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+      "imagePath": [
+        "https://i.postimg.cc/FRLkKNLs/03.jpg"
+      ],
       "info": {
         "weight": "0.3 kg",
         "dimentions": "15 x 10 x 1 cm",
@@ -411,10 +613,10 @@
       "availability": 0,
       "categories": "Fashion, Style",
       "sku": "12",
-      "imagePath": {
-        "main": "https://i.postimg.cc/j5Hq95fN/04.jpg",
-        "additional": []
-      },
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+      "imagePath": [
+        "https://i.postimg.cc/j5Hq95fN/04.jpg"
+      ],
       "info": {
         "weight": "0.3 kg",
         "dimentions": "15 x 10 x 1 cm",
@@ -437,10 +639,10 @@
       "availability": "4",
       "categories": "Fashion, Style",
       "sku": "12",
-      "imagePath": {
-        "main": "https://i.postimg.cc/zGyzNpWq/05.jpg",
-        "additional": []
-      },
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+      "imagePath": [
+        "https://i.postimg.cc/zGyzNpWq/05.jpg"
+      ],
       "info": {
         "weight": "0.3 kg",
         "dimentions": "15 x 10 x 1 cm",
@@ -463,10 +665,10 @@
       "availability": "4",
       "categories": "Fashion, Style",
       "sku": "12",
-      "imagePath": {
-        "main": "https://i.postimg.cc/Tw6fr6sP/06.jpg",
-        "additional": []
-      },
+      "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam placerat, augue a volutpat hendrerit, sapien tortor faucibus augue, a maximus elit ex vitae libero. Sed quis mauris eget arcu facilisis consequat sed eu felis. Nunc sed porta augue. Morbi porta tempor odio, in molestie diam bibendum sed.",
+      "imagePath": [
+        "https://i.postimg.cc/Tw6fr6sP/06.jpg"
+      ],
       "info": {
         "weight": "0.3 kg",
         "dimentions": "15 x 10 x 1 cm",
@@ -482,5 +684,37 @@
       ]
     }
   ],
-  "addresses": []
+  "addresses": [],
+  "reviews": [
+    {
+      "id": "d0f9e09d-35d5-4d15-9e3b-42e1d6cf8e50",
+      "date": "14 Dec, 2023",
+      "rating": 5,
+      "name": "Vladyslav",
+      "descr": "Very good product!",
+      "email": "admin@ex.com"
+    },
+    {
+      "id": "e305e6d9-f074-4bf9-8e0b-20d17e819564",
+      "date": "15 Dec, 2023",
+      "rating": 5,
+      "descr": "Very good prod!",
+      "email": "barbariska.v44@gmail.com"
+    },
+    {
+      "id": "1c012c7d-f515-496d-8e52-9d8f76c6b8e6",
+      "date": "15 Dec, 2023",
+      "rating": 5,
+      "name": "Vladyslav Barbar",
+      "descr": "Very good product!2",
+      "email": "barbariska.v44@gmail.com"
+    }
+  ],
+  "profile": {
+    "id": "1",
+    "email": "barbariska.v44@gmail.com",
+    "first_name": "",
+    "last_name": "",
+    "phone_number": "380678671944"
+  }
 }

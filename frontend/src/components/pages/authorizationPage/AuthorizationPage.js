@@ -8,12 +8,12 @@ import cancelMarkIcon from '../../../assets/icons/cancelMark.svg';
 
 const AuthorizationPage = () => {
     const {notificationStatus} = useSelector(state => state.notification);
-    const loginText = 'Invalid email or password! Please try again!';
+    const notificationText = 'Invalid email or password! Please try again!';
 
     return (
         <>
             <Header line={true} />
-            <div className='shop__notification'>{ notificationStatus ? <Notification icon={cancelMarkIcon} text={loginText} /> : null}</div>
+            <div className='shop__notification'>{ notificationStatus ? <Notification icon={cancelMarkIcon} text={notificationText} /> : null}</div>
             <Authorization />
             <Footer />
         </>
