@@ -159,42 +159,50 @@ const ItemInfoSection = () => {
 
     const renderCounterChangePanel = () => {
         const orderedItem = orderedGoods.find((item) => item.id === id);
-        return selectedItemId.availability === 0 ? (
-            <div className='info__btns-wrapper'>
-                <span className='info__availability'>Out of stock</span>
-            </div>
-        ) : orderedItem && orderedItem.counter >= orderedItem.availability ? (
-            <div className='info__btns-wrapper'>
-                <span className='info__availability'>
-                    You have added all the available quantity of this item to the cart
-                </span>
-            </div>
-        ) : (
+        if (selectedItemId.availability === 0) {
+            return (
+                <div className='info__btns-wrapper'>
+                    <span className='info__availability'>Out of stock</span>
+                </div>
+            );
+        }
+
+        if (orderedItem && orderedItem.counter >= orderedItem.availability) {
+            return (
+                <div className='info__btns-wrapper'>
+                    <span className='info__availability'>
+                        You have added all the available quantity of this item to the cart
+                    </span>
+                </div>
+            );
+        }
+
+        return (
             <>
                 <div className='info__btns-wrapper'>
                     <div className='cart__item-counter-wrapper'>
                         <button onClick={onMinus}>-</button>
                         <div>{selectedItemId.counter}</div>
-                        {orderedItem ? (
-                            selectedItemId.counter < (orderedItem.availability - orderedItem.counter) ? (
-                                <button onClick={onPlus}>+</button>
-                            ) : null
-                        ) : selectedItemId.counter < selectedItemId.availability ? (
-                            <button onClick={onPlus}>+</button>
-                        ) : null}
+                        {orderedItem
+                            ? selectedItemId.counter < orderedItem.availability - orderedItem.counter && (
+                                  <button onClick={onPlus}>+</button>
+                              )
+                            : selectedItemId.counter < selectedItemId.availability && (
+                                  <button onClick={onPlus}>+</button>
+                              )}
                     </div>
 
                     <button onClick={onBuy} className='info__btn'>
                         ADD TO CART
                     </button>
                 </div>
-                {orderedItem ? (
-                    selectedItemId.counter >= (orderedItem.availability - orderedItem.counter) ? (
-                        <div className='item__availability-left'>Only {selectedItemId.availability} left</div>
-                    ) : null
-                ) : selectedItemId.counter >= selectedItemId.availability ? (
-                    <div className='item__availability-left'>Only {selectedItemId.availability} left</div>
-                ) : null}
+                {orderedItem
+                    ? selectedItemId.counter >= orderedItem.availability - orderedItem.counter && (
+                          <div className='item__availability-left'>Only {selectedItemId.availability} left</div>
+                      )
+                    : selectedItemId.counter >= selectedItemId.availability && (
+                          <div className='item__availability-left'>Only {selectedItemId.availability} left</div>
+                      )}
             </>
         );
     };
