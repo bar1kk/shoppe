@@ -25,7 +25,7 @@ const Cart = () => {
     };
 
     const renderCartCatalog = (orderedGoods) => {
-        const cartCatalog = orderedGoods.map(({ id, name, price, productDescription:{additional_product_description:{material}}, images, counter }) => {
+        const cartCatalog = orderedGoods.map(({ id, name, price, availability, productDescription:{additional_product_description:{material}}, images, counter }) => {
             return (
                 <CartItem
                     key={id}
@@ -33,6 +33,7 @@ const Cart = () => {
                     name={name}
                     price={price}
                     material={material}
+                    availability={availability}
                     imagePath={images[0]}
                     counter={counter}
                     onRemove={() => onRemove(id)}

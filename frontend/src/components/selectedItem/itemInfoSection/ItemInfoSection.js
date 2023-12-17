@@ -6,7 +6,8 @@ import {
     counterPlus,
     counterMinus,
     changeActiveSlideIndex,
-    resetSelectedItem
+    resetSelectedItem,
+    resetCounter
 } from '../SelectedItemSlice';
 import { fetchGoods, addCounter, addedGoods } from '../../jewelryCatalog/JewelryCatalogSlice';
 import { showNotification } from '../../notification/NotificationSlice';
@@ -19,7 +20,7 @@ const ItemInfoSection = () => {
     const dispatch = useDispatch();
     const isMounted = useRef(false);
 
-    const { goods } = useSelector((state) => state.goods);
+    const { goods, orderedGoods } = useSelector((state) => state.goods);
     const { selectedItemId, slides, activeSlideIndex } = useSelector((state) => state.item);
 
     useEffect(() => {
@@ -52,8 +53,9 @@ const ItemInfoSection = () => {
 
     const onBuy = () => {
         dispatch(showNotification(true));
-        dispatch(addedGoods(+id));
-        dispatch(addCounter({ id: +id, counter: selectedItemId.counter }));
+        dispatch(addedGoods(id));
+        dispatch(addCounter({ id: id, counter: selectedItemId.counter }));
+        dispatch(resetCounter());
 
         setTimeout(() => {
             dispatch(showNotification(false));
@@ -155,6 +157,56 @@ const ItemInfoSection = () => {
         );
     };
 
+    const renderCounterChangePanel = () => {
+        const orderedItem = orderedGoods.find((item) => item.id === id);
+        if (selectedItemId.availability === 0) {
+            return (
+                <div className='info__btns-wrapper'>
+                    <span className='info__availability'>Out of stock</span>
+                </div>
+            );
+        }
+
+        if (orderedItem && orderedItem.counter >= orderedItem.availability) {
+            return (
+                <div className='info__btns-wrapper'>
+                    <span className='info__availability'>
+                        You have added all the available quantity of this item to the cart
+                    </span>
+                </div>
+            );
+        }
+
+        return (
+            <>
+                <div className='info__btns-wrapper'>
+                    <div className='cart__item-counter-wrapper'>
+                        <button onClick={onMinus}>-</button>
+                        <div>{selectedItemId.counter}</div>
+                        {orderedItem
+                            ? selectedItemId.counter < orderedItem.availability - orderedItem.counter && (
+                                  <button onClick={onPlus}>+</button>
+                              )
+                            : selectedItemId.counter < selectedItemId.availability && (
+                                  <button onClick={onPlus}>+</button>
+                              )}
+                    </div>
+
+                    <button onClick={onBuy} className='info__btn'>
+                        ADD TO CART
+                    </button>
+                </div>
+                {orderedItem
+                    ? selectedItemId.counter >= orderedItem.availability - orderedItem.counter && (
+                          <div className='item__availability-left'>Only {selectedItemId.availability} left</div>
+                      )
+                    : selectedItemId.counter >= selectedItemId.availability && (
+                          <div className='item__availability-left'>Only {selectedItemId.availability} left</div>
+                      )}
+            </>
+        );
+    };
+
     if (Object.keys(selectedItemId).length <= 1) return <Spinner />;
 
     const {
@@ -188,22 +240,7 @@ const ItemInfoSection = () => {
                             <div className='info__review-text'>{reviews ? reviews.length : 0} customer review</div>
                         </div>
                         <div className='info__descr'>{description}</div>
-                        <div className='info__btns-wrapper'>
-                            {selectedItemId.availability === 0 ? (
-                                <span className='info__availability'>Out of stock</span>
-                            ) : (
-                                <>
-                                    <div className='cart__item-counter-wrapper'>
-                                        <button onClick={onMinus}>-</button>
-                                        <div>{selectedItemId.counter}</div>
-                                        <button onClick={onPlus}>+</button>
-                                    </div>
-                                    <button onClick={onBuy} className='info__btn'>
-                                        ADD TO CART
-                                    </button>
-                                </>
-                            )}
-                        </div>
+                        {renderCounterChangePanel()}
                         <ul className='info__catgrs'>
                             <li className='info__catgrs-key'>
                                 SKU: <span className='info__catgrs-value'>{id.substring(0, 8)}</span>

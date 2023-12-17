@@ -1,6 +1,7 @@
 import { useParams } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+
 import { fetchOrders, fetchSelectedOrder } from '../userAccount/UserAccountSlice';
 
 import './orderItem.scss';
@@ -9,27 +10,44 @@ import Spinner from '../spinner/Spinner';
 const OrderItem = () => {
     const { id } = useParams();
     const dispatch = useDispatch();
+    const isMounted = useRef(false);
     const { orders, selectedOrder } = useSelector((state) => state.userAccount);
 
     useEffect(() => {
         dispatch(fetchOrders());
-    }, [id]);
+        // eslint-disable-next-line
+    }, []);
 
     useEffect(() => {
-        const selectedOrder = orders.find((order) => order.id == id);
-        dispatch(fetchSelectedOrder(selectedOrder));
-        window.scrollTo(0, 0);
+        if (isMounted.current) {
+            const selectedOrder = orders.find((order) => order.id === id);
+            dispatch(fetchSelectedOrder(selectedOrder));
+            window.scrollTo(0, 0);
+        } else {
+            isMounted.current = true;
+        }
+        // eslint-disable-next-line
     }, [orders]);
 
-    const renderOrderItem = (selectedOrder) => {
-        if (Object.keys(selectedOrder).length === 0) return <Spinner />;
+    if (Object.keys(selectedOrder).length === 0) return <Spinner />;
 
+    const renderOrderItem = (selectedOrder) => {
         const {
             details: {
                 date,
                 paymentMethod,
                 deliveryOptions,
-                deliveryAddress: { fullName, contactsItem, localAddress, regionAddress, country }
+                deliveryAddress: {
+                    first_name,
+                    last_name,
+                    email,
+                    phone_number,
+                    country,
+                    city,
+                    street,
+                    apartment,
+                    zip_code
+                }
             },
             summary: { goods, subTotal, shippingCost, totalPrice }
         } = selectedOrder;
@@ -61,10 +79,19 @@ const OrderItem = () => {
                             <div className='order__details_wrapper'>
                                 <span className='order__details-title'>Delivery address</span>
                                 <div>
-                                    <span className='order__details-value'>{fullName}</span>
-                                    <span className='order__details-value'>{contactsItem}</span>
-                                    <span className='order__details-value'>{localAddress}</span>
-                                    <span className='order__details-value'>{regionAddress}</span>
+                                    <span className='order__details-value'>
+                                        {first_name} {last_name}
+                                    </span>
+                                    <span className='order__details-value'>
+                                        {' '}
+                                        {email} {phone_number}
+                                    </span>
+                                    <span className='order__details-value'>
+                                        {apartment} {street}
+                                    </span>
+                                    <span className='order__details-value'>
+                                        {city} {zip_code}
+                                    </span>
                                     <span className='order__details-value'>{country}</span>
                                 </div>
                             </div>
