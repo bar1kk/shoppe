@@ -27,6 +27,11 @@ const SelectedItemSlice = createSlice({
                 state.selectedItemId.counter -= 1;
             }
         },
+        resetCounter: (state) => {
+            if (state.selectedItemId) {
+                state.selectedItemId.counter = 1;
+            }
+        },
         changeFilter: (state, action) => {
             state.filter = action.payload;
         },
@@ -65,5 +70,6 @@ export const {
     changeRating,
     // changeReview,
     changeActiveSlideIndex,
-    resetSelectedItem
+    resetSelectedItem,
+    resetCounter
 } = actions;

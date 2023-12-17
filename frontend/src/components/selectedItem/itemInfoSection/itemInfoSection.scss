@@ -25,6 +25,17 @@
     column-gap: 40px;
 }
 
+.item__availability-left{
+
+    width: 102px;
+    color: red;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 18px;
+    margin-top: 5px;
+    text-align: center;
+}
+
 .info__imgs {
     display: grid;
     grid-template-rows: 120px;
