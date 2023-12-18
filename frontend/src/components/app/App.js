@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import MainPage from '../pages/MainPage';
 import AuthorizationPage from '../pages/authorizationPage/AuthorizationPage';
-import UserPage from '../pages/userPage/UserPage';
+import UserPage from '../pages/UserPage';
 import PrivateRoute from '../privateRoute/PrivateRoute';
 import Shop from '../pages/shop/Shop';
 import SelectedOrderPage from '../pages/SelectedOrderPage';
@@ -10,7 +10,7 @@ import UnloadListener from '../unloadListener/UnloadListener';
 import SelectedItemPage from '../pages/SelectedItemPage';
 import CartPage from '../pages/CartPage';
 import CheckoutPage from '../pages/CheckoutPage';
-
+import Page404 from '../pages/Page404/Page404';
 const App = () => {
 
     return (
@@ -28,6 +28,7 @@ const App = () => {
                     <Route path={'/order/:id'} element={<SelectedOrderPage />} />
                     <Route path={'/cart'} element={<CartPage />} />
                     <Route path={'/cart/checkout'} element={<PrivateRoute Component={CheckoutPage} />} />
+                    <Route path={'*'} element={<Page404 />} />
                 </Routes>
             </div>
         </Router>

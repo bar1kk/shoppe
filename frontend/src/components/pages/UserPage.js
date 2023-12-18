@@ -1,6 +1,6 @@
-import Footer from '../../footer/Footer';
-import Header from '../../header/Header';
-import UserAccount from '../../userAccount/UserAccount';
+import Footer from '../footer/Footer';
+import Header from '../header/Header';
+import UserAccount from '../userAccount/UserAccount';
 
 const UserPage = () => {
     return (
