@@ -9,12 +9,17 @@ const SimilarItems = () => {
         (state) => state.goods.goods,
         (state) => state.item.selectedItemId,
         (goods, selectedItemId) => {
-            return goods.filter(item => item.type === selectedItemId.type && item.id !== selectedItemId.id)
+            const similarGoods = goods.filter(item => item.type === selectedItemId.type && item.id !== selectedItemId.id);
+            const shuffledGoods = similarGoods.sort(() => Math.random() - 0.5);
+            return shuffledGoods.slice(0, 3);
         }
     )
-    const items = useSelector(itemsSelector);
+    const items = useSelector(itemsSelector); 
 
     const renderItemsCatalog = (similarItems) => {
+        if(similarItems.length === 0) {
+            return <div className="similar__empty">Similar items are temporarily unavailable.</div>;
+        }
         const itemsCatalog = similarItems.map(({id, name, price, images}) => {
             return(<JewelryItemPromo key={id} id={id} name={name} price={price} imagePath={images[0]} />)
         })
