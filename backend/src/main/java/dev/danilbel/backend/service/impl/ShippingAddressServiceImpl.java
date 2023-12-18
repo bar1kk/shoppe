@@ -3,6 +3,7 @@ package dev.danilbel.backend.service.impl;
 import dev.danilbel.backend.dto.address.ShippingAddressDto;
 import dev.danilbel.backend.entity.ShippingAddressEntity;
 import dev.danilbel.backend.entity.UserEntity;
+import dev.danilbel.backend.enums.ShippingAddressStatus;
 import dev.danilbel.backend.exception.NotFoundException;
 import dev.danilbel.backend.mapper.ShippingAddressMapper;
 import dev.danilbel.backend.repository.ShippingAddressRepository;
@@ -13,6 +14,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -28,7 +33,7 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
 
     private ShippingAddressEntity getShippingAddressEntityById(String id) {
 
-        ShippingAddressEntity result = shippingAddressRepository.findById(id).orElseThrow(
+        ShippingAddressEntity result = shippingAddressRepository.findByIdAndStatus(id, ShippingAddressStatus.ACTIVE).orElseThrow(
                 () -> {
                     log.error("IN ShippingAddressServiceImpl.getShippingAddressEntityById - shipping address with id '{}' not found", id);
                     return new NotFoundException(
@@ -47,6 +52,24 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
         ShippingAddressEntity shippingAddressEntity = getShippingAddressEntityById(id);
 
         return shippingAddressMapper.map(shippingAddressEntity);
+    }
+
+    @Override
+    @Transactional
+    public List<ShippingAddressDto> getAllShippingAddresses(String userEmail) {
+
+        UserEntity userEntity = userService.getUserEntityByEmail(userEmail);
+
+        Stream<ShippingAddressEntity> shippingAddressEntityStream = shippingAddressRepository
+                .streamAllByUserIdAndStatus(userEntity.getId(), ShippingAddressStatus.ACTIVE);
+
+        List<ShippingAddressDto> result = shippingAddressEntityStream
+                .map(shippingAddressMapper::map)
+                .toList();
+
+        log.info("IN ShippingAddressServiceImpl.getAllShippingAddresses - {} shipping addresses found for user with email '{}'", result.size(), userEmail);
+
+        return result;
     }
 
     @Override
@@ -69,7 +92,9 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
 
         ShippingAddressEntity shippingAddressEntity = getShippingAddressEntityById(id);
 
-        shippingAddressRepository.delete(shippingAddressEntity);
+        shippingAddressEntity.setStatus(ShippingAddressStatus.DELETED);
+
+        shippingAddressRepository.save(shippingAddressEntity);
 
         log.info("IN ShippingAddressServiceImpl.removeShippingAddress - shipping address: {} removed", shippingAddressEntity);
     }

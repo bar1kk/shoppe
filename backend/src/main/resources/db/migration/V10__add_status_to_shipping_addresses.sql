@@ -1,0 +1,2 @@
+ALTER TABLE shipping_addresses
+ADD COLUMN status VARCHAR(30) NOT NULL DEFAULT 'ACTIVE';

@@ -1,7 +1,6 @@
 package dev.danilbel.backend.dto.user;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.danilbel.backend.dto.address.ShippingAddressDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,9 +30,6 @@ public class UserDto {
     String phoneNumber;
 
     List<String> roles;
-
-    @JsonProperty("shipping_addresses")
-    List<ShippingAddressDto> shippingAddresses;
 
     String status;
 
