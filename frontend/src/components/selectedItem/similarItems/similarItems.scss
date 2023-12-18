@@ -1,6 +1,6 @@
 .similar {
     margin-top: 90px;
-    padding-bottom: 250px;
+    margin-bottom: 250px;
 }
 
 .similar__title {
@@ -14,4 +14,10 @@
     padding-top: 47px;
     display: flex;
     column-gap: 54px;
+}
+
+.similar__empty{
+    color: #000;
+    font-weight: 400;
+    line-height: 26px; 
 }
