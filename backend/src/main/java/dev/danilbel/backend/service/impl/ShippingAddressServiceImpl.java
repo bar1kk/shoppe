@@ -3,6 +3,7 @@ package dev.danilbel.backend.service.impl;
 import dev.danilbel.backend.dto.address.ShippingAddressDto;
 import dev.danilbel.backend.entity.ShippingAddressEntity;
 import dev.danilbel.backend.entity.UserEntity;
+import dev.danilbel.backend.enums.ShippingAddressStatus;
 import dev.danilbel.backend.exception.NotFoundException;
 import dev.danilbel.backend.mapper.ShippingAddressMapper;
 import dev.danilbel.backend.repository.ShippingAddressRepository;
@@ -28,7 +29,7 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
 
     private ShippingAddressEntity getShippingAddressEntityById(String id) {
 
-        ShippingAddressEntity result = shippingAddressRepository.findById(id).orElseThrow(
+        ShippingAddressEntity result = shippingAddressRepository.findByIdAndStatus(id, ShippingAddressStatus.ACTIVE).orElseThrow(
                 () -> {
                     log.error("IN ShippingAddressServiceImpl.getShippingAddressEntityById - shipping address with id '{}' not found", id);
                     return new NotFoundException(
@@ -69,7 +70,9 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
 
         ShippingAddressEntity shippingAddressEntity = getShippingAddressEntityById(id);
 
-        shippingAddressRepository.delete(shippingAddressEntity);
+        shippingAddressEntity.setStatus(ShippingAddressStatus.DELETED);
+
+        shippingAddressRepository.save(shippingAddressEntity);
 
         log.info("IN ShippingAddressServiceImpl.removeShippingAddress - shipping address: {} removed", shippingAddressEntity);
     }
