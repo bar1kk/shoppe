@@ -1,0 +1,60 @@
+.contact {
+    margin: 125px 0 250px 0;
+}
+
+.contact__wrapper {
+    margin: 0 170px;
+}
+
+.contact__tittle {
+    color: #000;
+    font-size: 33px;
+    font-weight: 500;
+    line-height: 43px;
+    text-align: center;
+}
+
+.contact__description {
+    margin: 39px auto 0 auto;
+    width: 561px;
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+}
+
+.contact__form-info{
+    margin-top: 100px;
+    display: flex;
+    column-gap: 116px;
+
+    div{
+        width: 100%;
+    }
+}
+
+.contact__form-message{
+    margin-top: 120px;
+}
+
+.contact__form-input {
+    padding-bottom: 12px;
+    width: 100%;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+
+.contact__submit-button{
+    display: block;
+    margin: 96px auto 0 auto;
+    width: 500px;
+    height: 53px;
+    border-radius: 4px;
+    border: 1px solid #FFF;
+    background: #000;
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 700;
+    text-transform: uppercase;
+}

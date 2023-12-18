@@ -11,9 +11,9 @@ const Page404 = () => {
         <div className="errorPage">
             <div className="container">
                 <h2 className="errorPage__title">404 ERROR</h2>
-                <div className="errorPage__descr">This page not found; <br /> back to home and start again</div>
+                <div className="errorPage__description">This page not found; <br /> back to home and start again</div>
                 <Link to='/'>
-                    <button className="errorPage__btn">Homepage</button>
+                    <button className="errorPage__button">Homepage</button>
                 </Link>
             </div>
         </div>
