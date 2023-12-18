@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RestController;
 import jakarta.validation.Valid;
 
 import java.security.Principal;
+import java.util.List;
 
 @RestController
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -34,9 +35,20 @@ public class ShippingAddressController {
 
     ControllerHelper controllerHelper;
 
-    private static final String SHIPPING_ADDRESS_ID = "api/v1/shipping-address/{id}";
-    private static final String SHIPPING_ADDRESS_CREATE = "api/v1/shipping-address/create";
-    private static final String SHIPPING_ADDRESS_DELETE = "api/v1/shipping-address/{id}/delete";
+    private static final String SHIPPING_ADDRESS = "api/v1/user/shipping-addresses";
+    private static final String SHIPPING_ADDRESS_ID = "api/v1/user/shipping-addresses/{id}";
+    private static final String SHIPPING_ADDRESS_CREATE = "api/v1/user/shipping-addresses/create";
+    private static final String SHIPPING_ADDRESS_DELETE = "api/v1/user/shipping-addresses/{id}/delete";
+
+    @GetMapping(SHIPPING_ADDRESS)
+    public ResponseEntity<List<ShippingAddressDto>> getAllShippingAddresses(Principal principal) {
+
+        String userEmail = principal.getName();
+
+        List<ShippingAddressDto> result = shippingAddressService.getAllShippingAddresses(userEmail);
+
+        return ResponseEntity.ok(result);
+    }
 
     @GetMapping(SHIPPING_ADDRESS_ID)
     public ResponseEntity<ShippingAddressDto> getShippingAddressById(@PathVariable("id") String id) {
