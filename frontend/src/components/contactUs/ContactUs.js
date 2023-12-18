@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { showNotification } from '../notification/NotificationSlice';
 
 import './contactUs.scss';
-import { TextInput } from '../authorization/Authorization';
+import { TextInput, TextareaInput } from '../authorization/Authorization';
 
 const ContactUs = () => {
     const dispatch = useDispatch();
@@ -83,12 +83,13 @@ const ContactUs = () => {
                                     />
                                 </div>
                                 <div className='contact__form-message'>
-                                    <TextInput
+                                    <TextareaInput
                                         id='message'
                                         name='message'
                                         type='text'
                                         placeholder='Message'
-                                        className='contact__form-input'
+                                        className='form__textarea'
+                                        rows={1}
                                     />
                                 </div>
                                 <button type='submit' className='contact__submit-button' disabled={isSubmitting}>

@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { useRef } from 'react';
 import { changeActiveBtn } from './AuthorizationSlice';
 import { showNotification } from '../notification/NotificationSlice';
 import { Formik, Form, useField } from 'formik';
@@ -52,7 +53,7 @@ const Login = () => {
                 if (
                     signIn({
                         token: data.token,
-                        expiresIn: 120,
+                        expiresIn: 30,
                         tokenType: 'Bearer',
                         authState: { email: values.email, rememberMe: values.rememberMe }
                     })
@@ -174,6 +175,23 @@ export const TextInput = ({ ...props }) => {
     return (
         <div>
             <input {...field} {...props} />
+            {meta.touched && meta.error ? <div className='error'>{meta.error}</div> : null}
+        </div>
+    );
+};
+
+export const TextareaInput = ({ ...props }) => {
+    const [field, meta] = useField(props);
+    const ref = useRef(null);
+    const handleInput = (e) => {
+        if (ref.current) {
+          ref.current.style.height = "auto";
+          ref.current.style.height = `${e.target.scrollHeight}px`;
+        }
+      };
+    return (
+        <div>
+            <textarea {...field} {...props} ref={ref} onInput={handleInput}/>
             {meta.touched && meta.error ? <div className='error'>{meta.error}</div> : null}
         </div>
     );

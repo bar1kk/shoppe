@@ -5,7 +5,7 @@ import * as Yup from 'yup';
 import { useHttp } from '../../../../hooks/http.hook';
 import { useHeader } from '../../../../hooks/header';
 
-import { TextInput } from '../../../authorization/Authorization';
+import {TextareaInput } from '../../../authorization/Authorization';
 
 const ReviewAddForm = () => {
     const { rating, selectedItemId } = useSelector((state) => state.item);
@@ -105,7 +105,7 @@ const ReviewAddForm = () => {
                     <Form className='add-review__form'>
                         <div className='add-review__form-text'>Your Review*</div>
                         <div className='input__wrapper'>
-                            <TextInput id='review' name='review' type='text' className='add-review__form-input' />
+                            <TextareaInput id='review' name='review' className='form__textarea' rows={1} />
                         </div>
                                                 <div className='add-review__form-text'>Your Rating*</div>
                         <div className='add-review__form-rating'>{renderStars()}</div>
