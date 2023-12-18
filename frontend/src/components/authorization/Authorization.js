@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProfile } from '../userAccount/UserAccountSlice';
 import { changeActiveBtn } from './AuthorizationSlice';
 import { showNotification } from '../notification/NotificationSlice';
 import { Formik, Form, useField } from 'formik';
@@ -9,7 +8,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHttp } from '../../hooks/http.hook';
 import { useNavigate } from 'react-router-dom';
-import { useSignIn, useAuthHeader } from 'react-auth-kit';
+import { useSignIn } from 'react-auth-kit';
 
 import './authorization.scss';
 

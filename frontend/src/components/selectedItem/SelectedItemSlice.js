@@ -6,7 +6,6 @@ const initialState = {
     // review: '',
     // name: '',
     rating: 0,
-    slides: 4,
     activeSlideIndex: 1
 }
 
