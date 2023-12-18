@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -17,6 +17,7 @@ import './itemInfoSection.scss';
 
 const ItemInfoSection = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const isMounted = useRef(false);
 
@@ -34,7 +35,11 @@ const ItemInfoSection = () => {
         if (isMounted.current) {
             dispatch(resetSelectedItem());
             const selectedItem = goods.find((item) => item.id === id);
-            dispatch(fetchSelectedItem(selectedItem));
+            if (!selectedItem) {
+                navigate('/404');
+            } else {
+                dispatch(fetchSelectedItem(selectedItem));
+            }
             window.scrollTo(0, 0);
         } else {
             isMounted.current = true;

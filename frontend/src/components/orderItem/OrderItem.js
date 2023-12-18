@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -9,6 +9,7 @@ import Spinner from '../spinner/Spinner';
 
 const OrderItem = () => {
     const { id } = useParams();
+    const navigate = useNavigate();
     const dispatch = useDispatch();
     const isMounted = useRef(false);
     const { orders, selectedOrder } = useSelector((state) => state.userAccount);
@@ -21,7 +22,11 @@ const OrderItem = () => {
     useEffect(() => {
         if (isMounted.current) {
             const selectedOrder = orders.find((order) => order.id === id);
-            dispatch(fetchSelectedOrder(selectedOrder));
+            if (!selectedOrder) {
+                navigate('/404');
+            } else {
+                dispatch(fetchSelectedOrder(selectedOrder));
+            }
             window.scrollTo(0, 0);
         } else {
             isMounted.current = true;
