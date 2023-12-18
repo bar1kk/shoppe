@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import './footer.scss';
 import sendIcon from '../../assets/icons/send.svg';
@@ -16,16 +17,31 @@ const Footer = () => {
                 <div className='footer__line'></div>
                 <div className='footer__wrapper'>
                     <nav>
-                        <ul className='footer__nav'>
-                            <li>CONTACT</li>
-                            <li>TERMS OF SERVICES</li>
-                            <li>SHIPPING AND RETURNS</li>
+                        <ul>
+                            <li>
+                                <NavLink
+                                    to={'/contact'}
+                                    className={({ isActive }) =>
+                                        [isActive ? 'footer__link-active' : 'footer__link'].join(' ')
+                                    }>
+                                    Contact
+                                </NavLink>
+                            </li>
+                            <li>
+                                <NavLink
+                                    to={'/terms'}
+                                    className={({ isActive }) =>
+                                        [isActive ? 'footer__link-active' : 'footer__link'].join(' ')
+                                    }>
+                                    Term of services
+                                </NavLink>
+                            </li>
                         </ul>
                     </nav>
 
                     <div className='footer-input-row'>
                         <input
-                            onChange={e => setInputValue(e.target.value)}
+                            onChange={(e) => setInputValue(e.target.value)}
                             type='text'
                             placeholder='Give a email, get the nenwsletter.'
                             className='footer__input'

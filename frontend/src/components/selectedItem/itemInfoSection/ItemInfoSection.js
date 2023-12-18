@@ -22,7 +22,7 @@ const ItemInfoSection = () => {
     const isMounted = useRef(false);
 
     const { goods, orderedGoods } = useSelector((state) => state.goods);
-    const { selectedItemId, slides, activeSlideIndex } = useSelector((state) => state.item);
+    const { selectedItemId, activeSlideIndex } = useSelector((state) => state.item);
 
     useEffect(() => {
         dispatch(fetchGoods());
@@ -123,7 +123,7 @@ const ItemInfoSection = () => {
     const renderSlider = () => {
         const sliders = [];
         const activeSlide = [];
-        for (let i = 1; i < slides + 1; i++) {
+        for (let i = 1; i < images.length + 1; i++) {
             const className = activeSlideIndex === i ? 'info__img info__img-selected' : 'info__img';
             sliders.push(
                 <img
@@ -142,7 +142,7 @@ const ItemInfoSection = () => {
             }
         }
 
-        const activeBarWidth = 100 / slides;
+        const activeBarWidth = 100 / images.length;
         const activeBarLeft = (activeSlideIndex - 1) * activeBarWidth;
         const activeBarStyle = {
             left: `${activeBarLeft}%`,

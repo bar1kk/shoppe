@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchProfile } from '../userAccount/UserAccountSlice';
+import { useRef } from 'react';
 import { changeActiveBtn } from './AuthorizationSlice';
 import { showNotification } from '../notification/NotificationSlice';
 import { Formik, Form, useField } from 'formik';
@@ -9,7 +9,7 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { useHttp } from '../../hooks/http.hook';
 import { useNavigate } from 'react-router-dom';
-import { useSignIn, useAuthHeader } from 'react-auth-kit';
+import { useSignIn } from 'react-auth-kit';
 
 import './authorization.scss';
 
@@ -53,7 +53,7 @@ const Login = () => {
                 if (
                     signIn({
                         token: data.token,
-                        expiresIn: 120,
+                        expiresIn: 30,
                         tokenType: 'Bearer',
                         authState: { email: values.email, rememberMe: values.rememberMe }
                     })
@@ -173,10 +173,27 @@ const Register = () => {
 export const TextInput = ({ ...props }) => {
     const [field, meta] = useField(props);
     return (
-        <>
+        <div>
             <input {...field} {...props} />
             {meta.touched && meta.error ? <div className='error'>{meta.error}</div> : null}
-        </>
+        </div>
+    );
+};
+
+export const TextareaInput = ({ ...props }) => {
+    const [field, meta] = useField(props);
+    const ref = useRef(null);
+    const handleInput = (e) => {
+        if (ref.current) {
+          ref.current.style.height = "auto";
+          ref.current.style.height = `${e.target.scrollHeight}px`;
+        }
+      };
+    return (
+        <div>
+            <textarea {...field} {...props} ref={ref} onInput={handleInput}/>
+            {meta.touched && meta.error ? <div className='error'>{meta.error}</div> : null}
+        </div>
     );
 };
 
