@@ -14,6 +14,10 @@ import lombok.RequiredArgsConstructor;
 import lombok.experimental.FieldDefaults;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
+import java.util.stream.Stream;
 
 @Service
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
@@ -48,6 +52,24 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
         ShippingAddressEntity shippingAddressEntity = getShippingAddressEntityById(id);
 
         return shippingAddressMapper.map(shippingAddressEntity);
+    }
+
+    @Override
+    @Transactional
+    public List<ShippingAddressDto> getAllShippingAddresses(String userEmail) {
+
+        UserEntity userEntity = userService.getUserEntityByEmail(userEmail);
+
+        Stream<ShippingAddressEntity> shippingAddressEntityStream = shippingAddressRepository
+                .streamAllByUserIdAndStatus(userEntity.getId(), ShippingAddressStatus.ACTIVE);
+
+        List<ShippingAddressDto> result = shippingAddressEntityStream
+                .map(shippingAddressMapper::map)
+                .toList();
+
+        log.info("IN ShippingAddressServiceImpl.getAllShippingAddresses - {} shipping addresses found for user with email '{}'", result.size(), userEmail);
+
+        return result;
     }
 
     @Override
