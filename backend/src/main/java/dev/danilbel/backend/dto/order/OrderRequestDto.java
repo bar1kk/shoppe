@@ -37,6 +37,7 @@ public class OrderRequestDto {
     List<OrderItemRequestDto> orderItems;
 
     @JsonProperty("shipping_address_id")
+    @NotNull(message = "Shipping address id is required")
     @NotBlank(message = "Shipping address id cannot be blank")
     @Size(min = 36, max = 36, message = "Shipping address id should be 36 characters long")
     String shippingAddressId;

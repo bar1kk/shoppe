@@ -24,6 +24,7 @@ public class OrderItemRequestDto {
     Integer quantity;
 
     @JsonProperty("product_id")
+    @NotNull(message = "Product id is required")
     @NotBlank(message = "Product id cannot be blank")
     @Size(min = 36, max = 36, message = "Product id should be 36 characters long")
     String productId;
