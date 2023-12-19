@@ -10,7 +10,7 @@ import {
     resetCounter
 } from '../SelectedItemSlice';
 import { fetchGoods, addCounter, addedGoods } from '../../jewelryCatalog/JewelryCatalogSlice';
-import { showNotification } from '../../notification/NotificationSlice';
+import { setNotificationText, activateNotification } from '../../notification/NotificationSlice';
 
 import Spinner from '../../spinner/Spinner';
 import './itemInfoSection.scss';
@@ -26,7 +26,6 @@ const ItemInfoSection = () => {
 
     useEffect(() => {
         dispatch(fetchGoods());
-        dispatch(showNotification(false));
         dispatch(changeActiveSlideIndex(1));
         // eslint-disable-next-line
     }, []);
@@ -57,14 +56,13 @@ const ItemInfoSection = () => {
     };
 
     const onBuy = () => {
-        dispatch(showNotification(true));
         dispatch(addedGoods(id));
         dispatch(addCounter({ id: id, counter: selectedItemId.counter }));
         dispatch(resetCounter());
 
-        setTimeout(() => {
-            dispatch(showNotification(false));
-        }, 2000);
+        const successMessage = 'Item added to your Shopping bag!';
+        dispatch(setNotificationText(successMessage));
+        dispatch(activateNotification());
     };
 
     const renderRatingStars = () => {
