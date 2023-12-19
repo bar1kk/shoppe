@@ -20,8 +20,7 @@ export const fetchOrders = createAsyncThunk('userAccount/fetchOrders', async () 
 
 export const fetchAddresses = createAsyncThunk('userAccount/fetchAddresses', async (header) => {
     const { request } = useHttp();
-    const profile = await request('http://localhost:9122/api/v1/user/profile', 'GET', null, header);
-    return profile?.shipping_addresses || [];
+    return await request('http://localhost:9122/api/v1/user/shipping-addresses', 'GET', null, header);
 });
 
 export const fetchProfile = createAsyncThunk('userAccount/fetchProfile', async (header) => {
