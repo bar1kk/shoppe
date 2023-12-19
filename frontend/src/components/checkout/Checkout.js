@@ -15,7 +15,7 @@ import { useHeader } from '../../hooks/header';
 import './checkout.scss';
 import payPalIcon from '../../assets/icons/paypal.svg';
 
-const Checkout = () => {
+const Checkout = ({ setNotificationText }) => {
     const { addresses, selectedAddress } = useSelector((state) => state.userAccount);
     const { orderedGoods } = useSelector((state) => state.goods);
     const dispatch = useDispatch();
@@ -38,6 +38,7 @@ const Checkout = () => {
     const handlePlaceOrder = () => {
         if (Object.keys(selectedAddress).length === 0) {
             window.scrollTo(0, 0);
+            setNotificationText('Please select an address to place an order!');
             dispatch(showNotification(true));
             setTimeout(() => {
                 dispatch(showNotification(false));
@@ -72,7 +73,14 @@ const Checkout = () => {
                     dispatch(showNotification(false));
                 }, 2000);
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+                setNotificationText(`Something went wrong. Please try again later. Error ${err.message}`);
+                window.scrollTo(0, 0);
+                dispatch(showNotification(true));
+                setTimeout(() => {
+                    dispatch(showNotification(false));
+                }, 2000);
+            });
     };
 
     const renderAddresses = (addresses) => {
