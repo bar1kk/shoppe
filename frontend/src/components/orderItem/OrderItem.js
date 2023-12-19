@@ -1,6 +1,8 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHeader } from '../../hooks/header';
+import { format } from 'date-fns';
 
 import { fetchOrders, fetchSelectedOrder } from '../userAccount/UserAccountSlice';
 
@@ -12,10 +14,11 @@ const OrderItem = () => {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const isMounted = useRef(false);
+    const { header } = useHeader();
     const { orders, selectedOrder } = useSelector((state) => state.userAccount);
 
     useEffect(() => {
-        dispatch(fetchOrders());
+        dispatch(fetchOrders(header));
         // eslint-disable-next-line
     }, []);
 
@@ -38,24 +41,15 @@ const OrderItem = () => {
 
     const renderOrderItem = (selectedOrder) => {
         const {
-            details: {
-                date,
-                paymentMethod,
-                deliveryOptions,
-                deliveryAddress: {
-                    first_name,
-                    last_name,
-                    email,
-                    phone_number,
-                    country,
-                    city,
-                    street,
-                    apartment,
-                    zip_code
-                }
-            },
-            summary: { goods, subTotal, shippingCost, totalPrice }
+            payment_method,
+            delivery_option,
+            total_price,
+            created_at,
+            order_items,
+            shipping_address: { first_name, last_name, email, phone_number, country, city, street, apartment, zip_code }
         } = selectedOrder;
+
+        const formattedDate = format(new Date(created_at), 'yyyy-MM-dd HH:mm');
 
         return (
             <div className='order__wrapper'>
@@ -69,17 +63,17 @@ const OrderItem = () => {
                             </div>
                             <div className='order__details_wrapper'>
                                 <span className='order__details-title'>Payment method</span>
-                                <span className='order__details-value'>{paymentMethod}</span>
+                                <span className='order__details-value'>{payment_method}</span>
                             </div>
                             <div className='order__details_wrapper'>
                                 <span className='order__details-title'>Order date</span>
-                                <span className='order__details-value'>{date}</span>
+                                <span className='order__details-value'>{formattedDate}</span>
                             </div>
                         </div>
                         <div className='order__details-half'>
                             <div className='order__details_wrapper'>
                                 <span className='order__details-title'>Delivery options</span>
-                                <span className='order__details-value'>{deliveryOptions}</span>
+                                <span className='order__details-value'>{delivery_option}</span>
                             </div>
                             <div className='order__details_wrapper'>
                                 <span className='order__details-title'>Delivery address</span>
@@ -110,28 +104,26 @@ const OrderItem = () => {
                             <span className='order__summary-header'>Product</span>
                             <span className='order__summary-header'>Total</span>
                         </div>
-                        {goods.map(({ name, total, quantity }) => (
-                            <div className='order__summary-item-wrapper' key={name}>
+                        {order_items.map(({ quantity, product: { id, name, price } }) => (
+                            <div className='order__summary-item-wrapper' key={id}>
                                 <span className='order__summary-item-name'>
                                     {name} <span className='order__item-quantity'>× {quantity}</span>
                                 </span>
-                                <span className='order__summary-item-price'>$ {total}</span>
+                                <span className='order__summary-item-price'>$ {quantity * price}</span>
                             </div>
                         ))}
 
                         <div className='order__summary_calcul'>
                             <span className='order__summary-calcul-name'>Subtotal</span>
-                            <span className='order__summary-item-price'>$ {subTotal}</span>
+                            <span className='order__summary-item-price'>$ {total_price}</span>
                         </div>
                         <div className='order__summary_calcul'>
                             <span className='order__summary-calcul-name'>Shipping</span>
-                            <span className='order__summary-item-price'>
-                                {shippingCost === 0 ? 'Free shipping' : shippingCost}
-                            </span>
+                            <span className='order__summary-item-price'>Free shipping</span>
                         </div>
                         <div className='order__summary_footer-wrapper'>
                             <span className='order__summary-footer'>Total</span>
-                            <span className='order__summary-footer'>$ {totalPrice}</span>
+                            <span className='order__summary-footer'>$ {total_price}</span>
                         </div>
                     </div>
                 </div>

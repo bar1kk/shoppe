@@ -10,19 +10,7 @@ const CartItem = ({
     onPlus = null,
     onMinus = null
 }) => {
-    const renderCounterChanged = () => {
-        return (
-            <div>
-                <div className='cart__item-counter-wrapper'>
-                    <button onClick={onMinus}>-</button>
-                    <div>{counter}</div>
-                    {counter < availability ? <button onClick={onPlus}>+</button> : null}
-                </div>
-                {counter >= availability ? <div className='item__availability-left'>Only {availability} left</div> : null}
-            </div>
-            
-        );
-    };
+    
     return (
         <>
             <div className='cart__item'>
@@ -35,7 +23,11 @@ const CartItem = ({
                     </div>
                 </div>
                 <div className='cart__item-wrapper'>
-                    {renderCounterChanged()}
+                    <div className='cart__item-counter-wrapper'>
+                        <button onClick={onMinus}>-</button>
+                        <div>{counter}</div>
+                        <button onClick={onPlus}>+</button>
+                    </div>
                     <div className='cart__item-close'>
                         <button onClick={onRemove}>
                             <div className='close-button'>×</div>

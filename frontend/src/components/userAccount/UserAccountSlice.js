@@ -13,9 +13,9 @@ const initialState = {
     addressesLoadingStatus: 'idle'
 };
 
-export const fetchOrders = createAsyncThunk('userAccount/fetchOrders', async () => {
+export const fetchOrders = createAsyncThunk('userAccount/fetchOrders', async (header) => {
     const { request } = useHttp();
-    return await request('http://localhost:3001/orders'); // request("http://localhost:9122/api/v1/orders", "GET", null, state.userHeader))})
+    return await request('http://localhost:9122/api/v1/user/orders', 'GET', null, header);
 });
 
 export const fetchAddresses = createAsyncThunk('userAccount/fetchAddresses', async (header) => {

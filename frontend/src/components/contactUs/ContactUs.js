@@ -22,7 +22,6 @@ const ContactUs = () => {
 
     return (
         <div className='contact'>
-            <div className='container'>
                 <div className='contact__wrapper'>
                     <h2 className='contact__tittle'>Contact Us</h2>
                     <div className='contact__description'>
@@ -100,7 +99,6 @@ const ContactUs = () => {
                     </Formik>
                 </div>
             </div>
-        </div>
     );
 };
 

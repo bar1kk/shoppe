@@ -1,22 +1,18 @@
 import { Link } from 'react-router-dom';
-import { useSelector } from 'react-redux';
 
 import './jewelryItem.scss';
-//import image from '../../assets/image/1.webp';
 
 const JewelryItemShop = ({ id, name, price, availability, imagePath, onBuy }) => {
     const status = availability === 0 ? <div className='catalog__item-status'>Sold out</div> : null;
-    const { orderedGoods } = useSelector((state) => state.goods);
-    const item = orderedGoods.find((item) => item.id === id);
 
     return (
         <div className='catalog__item'>
             <div className='catalog__item-shop-wrapper'>
                 {status}
                 <Link to={`/shop/${id}`}>
-                    <img src={imagePath} alt={name} className='catalog__item-img' />
+                    <img src={imagePath} alt={name} className='catalog__item-img'/>
                 </Link>
-                {availability === 0 ? null : item && item.counter >= availability ? null : (
+                {availability === 0 ? null : (
                     <div className='catalog__item-hover' onClick={() => onBuy(id)}>
                         <button>ADD TO CARD</button>
                     </div>
