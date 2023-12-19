@@ -9,6 +9,7 @@ import dev.danilbel.backend.entity.PaymentMethodEntity;
 import dev.danilbel.backend.entity.ProductEntity;
 import dev.danilbel.backend.entity.ShippingAddressEntity;
 import dev.danilbel.backend.entity.UserEntity;
+import dev.danilbel.backend.exception.InsufficientQuantityException;
 import dev.danilbel.backend.mapper.OrderMapper;
 import dev.danilbel.backend.repository.OrderRepository;
 import dev.danilbel.backend.service.DeliveryOptionService;
@@ -78,7 +79,7 @@ public class OrderServiceImpl implements OrderService {
 
                     if (productEntity.getAvailability() < orderItemRequestDto.getQuantity()) {
                         log.error("IN OrderServiceImpl.createOrderByUserEmail - product with id '{}' has not enough quantity", productEntity.getId());
-                        throw new IllegalArgumentException(
+                        throw new InsufficientQuantityException(
                                 String.format("Product with id '%s' has not enough quantity", productEntity.getId())
                         );
                     }
