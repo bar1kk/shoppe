@@ -15,7 +15,7 @@ const AccountDetails = () => {
     const dispatch = useDispatch();
     const { header } = useHeader();
 
-    const handleChangeDetails = (values) => {
+    const handleChangeDetails = (values, resetForm) => {
         const data = { first_name: values.firstName, last_name: values.lastName };
         if (values.phoneNumber.length !== 0) {
             data.phone_number = values.phoneNumber;
@@ -34,10 +34,11 @@ const AccountDetails = () => {
             .finally(() => {
                 window.scrollTo(0, 0);
                 dispatch(activateNotification());
+                resetForm({ values: '' });
             })
     };
 
-    const handleChangePassword = (values) => {
+    const handleChangePassword = (values, resetForm) => {
         const data = { old_password: values.currentPassword, new_password: values.newPassword };
 
         request('http://localhost:9122/api/v1/user/change-password', 'PUT', JSON.stringify(data), header)
@@ -52,6 +53,7 @@ const AccountDetails = () => {
             .finally(() => {
                 window.scrollTo(0, 0);
                 dispatch(activateNotification());
+                resetForm({ values: '' });
             })
     };
 
@@ -76,8 +78,7 @@ const AccountDetails = () => {
                             .min(12, 'Must be 12 numbers or more')
                     })}
                     onSubmit={(values, { resetForm }) => {
-                        handleChangeDetails(values);
-                        resetForm({ values: '' });
+                        handleChangeDetails(values, resetForm);
                     }}>
                     {({ isSubmitting }) => (
                         <Form>
@@ -123,8 +124,7 @@ const AccountDetails = () => {
                             .required('Passwords must match')
                     })}
                     onSubmit={(values, { resetForm }) => {
-                        handleChangePassword(values);
-                        // resetForm({ values: '' });
+                        handleChangePassword(values, resetForm);
                     }}>
                     {({ isSubmitting }) => (
                         <Form>
