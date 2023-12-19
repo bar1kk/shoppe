@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.FieldDefaults;
 
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -34,7 +35,7 @@ public class OrderRequestDto {
     @JsonProperty("order_items")
     @NotNull(message = "Order items are required")
     @Size(min = 1, message = "Order items should contain at least 1 item")
-    List<OrderItemRequestDto> orderItems;
+    List<@Valid OrderItemRequestDto> orderItems;
 
     @JsonProperty("shipping_address_id")
     @NotNull(message = "Shipping address id is required")
