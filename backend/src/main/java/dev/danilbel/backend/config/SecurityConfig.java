@@ -52,6 +52,7 @@ public class SecurityConfig {
                                 "/api/v1/products",
                                 "/api/v1/products/**",
                                 "/api/v1/images/**",
+                                "/api/v1/contacts",
                                 "/v2/api-docs",
                                 "/v3/api-docs",
                                 "/v3/api-docs/**",
