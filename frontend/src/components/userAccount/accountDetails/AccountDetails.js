@@ -1,22 +1,18 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useHeader } from '../../../hooks/header';
 import { useHttp } from '../../../hooks/http.hook';
 
-import { showNotification } from '../../notification/NotificationSlice';
+import { setNotificationText, activateNotification} from '../../notification/NotificationSlice';
 import { changeProfile } from '../UserAccountSlice';
 
 import './accountDetails.scss';
-import cancelMarkIcon from '../../../assets/icons/cancelMark.svg';
 import { TextInput, PasswordInput } from '../../authorization/Authorization';
-import Notification from '../../notification/Notification';
 
 const AccountDetails = () => {
     const { request } = useHttp();
     const dispatch = useDispatch();
-    const { notificationStatus } = useSelector((state) => state.notification);
-    const badPasswordText = 'Current password is incorrect! Please try again.';
     const { header } = useHeader();
 
     const handleChangeDetails = (values) => {
@@ -28,24 +24,35 @@ const AccountDetails = () => {
         request('http://localhost:9122/api/v1/user/details', 'PUT', JSON.stringify(data), header)
             .then((res) => {
                 dispatch(changeProfile(res));
+                const successMessage = 'Details changed successfully';
+                dispatch(setNotificationText(successMessage));
             })
             .catch((err) => {
-                console.log(err);
-            });
+                const errorMessage = 'Something went wrong! Error: ' + err.message;
+                dispatch(setNotificationText(errorMessage));
+            })
+            .finally(() => {
+                window.scrollTo(0, 0);
+                dispatch(activateNotification());
+            })
     };
 
     const handleChangePassword = (values) => {
         const data = { old_password: values.currentPassword, new_password: values.newPassword };
 
         request('http://localhost:9122/api/v1/user/change-password', 'PUT', JSON.stringify(data), header)
-            .then((res) => {})
+            .then((res) => {
+                const successMessage = 'Password changed successfully';
+                dispatch(setNotificationText(successMessage));
+            })
             .catch((err) => {
-                console.log(err);
-                dispatch(showNotification(true));
-                setTimeout(() => {
-                    dispatch(showNotification(false));
-                }, 2000);
-            });
+                const errorMessage = 'Current password is incorrect. Error: ' + err.message;
+                dispatch(setNotificationText(errorMessage));
+            })
+            .finally(() => {
+                window.scrollTo(0, 0);
+                dispatch(activateNotification());
+            })
     };
 
     return (
@@ -102,12 +109,6 @@ const AccountDetails = () => {
                     )}
                 </Formik>
                 <p className='password__change-text'>Password change</p>
-                <div className='shop__notification'>
-                    {notificationStatus ? (
-                        <Notification width={'500px'} icon={cancelMarkIcon} text={badPasswordText} />
-                    ) : null}
-                </div>
-
                 <Formik
                     initialValues={{
                         currentPassword: '',
@@ -123,7 +124,7 @@ const AccountDetails = () => {
                     })}
                     onSubmit={(values, { resetForm }) => {
                         handleChangePassword(values);
-                        resetForm({ values: '' });
+                        // resetForm({ values: '' });
                     }}>
                     {({ isSubmitting }) => (
                         <Form>
