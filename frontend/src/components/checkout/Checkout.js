@@ -7,7 +7,7 @@ import {
     resetSelectedAddress
 } from '../userAccount/UserAccountSlice';
 import { resetOrderedGoods } from '../jewelryCatalog/JewelryCatalogSlice';
-import { showNotification } from '../notification/NotificationSlice';
+import { setNotificationText, activateNotification } from '../notification/NotificationSlice';
 import { useNavigate } from 'react-router-dom';
 import { useHttp } from '../../hooks/http.hook';
 import { useHeader } from '../../hooks/header';
@@ -15,7 +15,7 @@ import { useHeader } from '../../hooks/header';
 import './checkout.scss';
 import payPalIcon from '../../assets/icons/paypal.svg';
 
-const Checkout = ({ setNotificationText }) => {
+const Checkout = () => {
     const { addresses, selectedAddress } = useSelector((state) => state.userAccount);
     const { orderedGoods } = useSelector((state) => state.goods);
     const dispatch = useDispatch();
@@ -38,11 +38,8 @@ const Checkout = ({ setNotificationText }) => {
     const handlePlaceOrder = () => {
         if (Object.keys(selectedAddress).length === 0) {
             window.scrollTo(0, 0);
-            setNotificationText('Please select an address to place an order!');
-            dispatch(showNotification(true));
-            setTimeout(() => {
-                dispatch(showNotification(false));
-            }, 2000);
+            dispatch(setNotificationText('Please select an address to place an order!'));
+            dispatch(activateNotification());
             return;
         }
 
@@ -60,26 +57,23 @@ const Checkout = ({ setNotificationText }) => {
             shipping_address_id: selectedAddress.id
         };
 
-        console.log(order);
-
         request('http://localhost:9122/api/v1/user/orders', 'POST', JSON.stringify(order), header)
             .then((data) => {
+                const successMessage = 'Your order has been placed successfully!';
                 dispatch(addedNewOrder(data));
                 dispatch(resetSelectedAddress());
-                navigate(`/order/${data.id}`);
-                dispatch(showNotification(true));
                 dispatch(resetOrderedGoods());
-                setTimeout(() => {
-                    dispatch(showNotification(false));
-                }, 2000);
+
+                navigate(`/order/${data.id}`);
+                dispatch(setNotificationText(successMessage));
             })
             .catch((err) => {
-                setNotificationText(`Something went wrong. Please try again later. Error ${err.message}`);
+                const errorMessage = `An error occurred while placing your order. Please try again later. Error: ${err.message}`;
+                dispatch(setNotificationText(errorMessage));
+            })
+            .finally(() => {
                 window.scrollTo(0, 0);
-                dispatch(showNotification(true));
-                setTimeout(() => {
-                    dispatch(showNotification(false));
-                }, 2000);
+                dispatch(activateNotification());
             });
     };
 
