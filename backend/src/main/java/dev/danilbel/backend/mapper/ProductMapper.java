@@ -1,6 +1,7 @@
 package dev.danilbel.backend.mapper;
 
 import dev.danilbel.backend.dto.product.ProductDto;
+import dev.danilbel.backend.dto.product.ProductSummaryDto;
 import dev.danilbel.backend.entity.ProductEntity;
 import org.mapstruct.Mapper;
 
@@ -8,4 +9,6 @@ import org.mapstruct.Mapper;
 public interface ProductMapper {
 
     ProductDto map(ProductEntity productEntity);
+
+    ProductSummaryDto toSummaryDto(ProductEntity productEntity);
 }
