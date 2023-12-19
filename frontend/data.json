@@ -89,6 +89,41 @@
         "shippingCost": 0,
         "totalPrice": 160
       }
+    },
+    {
+      "id": "91f3406c-1cac-4800-8d3c-6e2ccc0afaf0",
+      "details": {
+        "date": "19 Dec, 2023",
+        "status": "Processing",
+        "paymentMethod": "Cash on delivery",
+        "deliveryOptions": "Standard Delivery",
+        "deliveryAddress": {
+          "id": "3e4217bc-e396-4866-adf0-7ea5990879e7",
+          "country": "Europe",
+          "city": "Głogów Małopolski",
+          "street": "Hanover 96",
+          "apartment": "21",
+          "email": "sportbet.ua@gmail.com",
+          "first_name": "Vladyslav",
+          "last_name": "User",
+          "zip_code": "78934",
+          "phone_number": "380991239045"
+        }
+      },
+      "summary": {
+        "goods": [
+          {
+            "id": "3ec6f386-b25b-42bc-8196-53663319bc15",
+            "name": "Hal Earrings",
+            "price": 20,
+            "quantity": 1,
+            "total": 20
+          }
+        ],
+        "subTotal": 20,
+        "shippingCost": 0,
+        "totalPrice": 20
+      }
     }
   ],
   "names": [

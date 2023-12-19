@@ -39,7 +39,7 @@ const Address = () => {
             delete newAddress.apartment;
         }
 
-        request('http://localhost:9122/api/v1/shipping-address/create', 'POST', JSON.stringify(newAddress), header)
+        request('http://localhost:9122/api/v1/user/shipping-addresses/create', 'POST', JSON.stringify(newAddress), header)
             .then((data) => {
                 dispatch(addedNewAddress(data));
             })
@@ -47,7 +47,7 @@ const Address = () => {
     };
 
     const handleRemoveAddress = (id) => {
-        request(`http://localhost:9122/api/v1/shipping-address/${id}/delete`, 'DELETE', null, header)
+        request(`http://localhost:9122/api/v1/user/shipping-addresses/${id}/delete`, 'DELETE', null, header)
             .then((data) => {
                 dispatch(removeAddress(id));
             })
@@ -110,7 +110,7 @@ const Address = () => {
                             postcode: Yup.string().required('Required field'),
                             phoneNumber: Yup.string()
                                 .matches(/^\d+$/, 'Must be only numbers')
-                                .min(12, 'Must be 12 numbers or more')
+                                .length(12, 'Must be 12 numbers including country code')
                                 .required('Required field'),
                             city: Yup.string().required('Required field'),
                             email: Yup.string().email('Invalid email address').required('Required field')
