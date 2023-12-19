@@ -14,7 +14,7 @@ export const activateNotification = createAsyncThunk(
         setTimeout(() => {
           dispatch(hideNotification());
           resolve();
-        }, 2000);
+        }, 3000);
       });
     }
   );
