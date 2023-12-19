@@ -8,8 +8,6 @@ import {
 } from '../userAccount/UserAccountSlice';
 import { resetOrderedGoods } from '../jewelryCatalog/JewelryCatalogSlice';
 import { showNotification } from '../notification/NotificationSlice';
-import { v4 as uuidv4 } from 'uuid';
-import { format } from 'date-fns';
 import { useNavigate } from 'react-router-dom';
 import { useHttp } from '../../hooks/http.hook';
 import { useHeader } from '../../hooks/header';
@@ -24,9 +22,6 @@ const Checkout = () => {
     const { request } = useHttp();
     const { header } = useHeader();
     const navigate = useNavigate();
-
-    const currentDate = new Date();
-    const formattedDate = format(currentDate, 'd MMM, yyyy');
 
     const subTotal = orderedGoods.reduce((acc, { counter, price }) => acc + counter * price, 0);
 
@@ -50,37 +45,27 @@ const Checkout = () => {
             return;
         }
 
-        const boughtGoods = orderedGoods.map(({ id, name, counter, price }) => {
+        const orderItems = orderedGoods.map(({ id, counter }) => {
             return {
-                id: id,
-                name: name,
-                price: price,
-                quantity: counter,
-                total: counter * price
+                product_id: id,
+                quantity: counter
             };
         });
 
         const order = {
-            id: uuidv4(),
-            details: {
-                date: formattedDate,
-                status: 'Processing',
-                paymentMethod: 'Cash on delivery',
-                deliveryOptions: 'Standard Delivery',
-                deliveryAddress: selectedAddress
-            },
-            summary: {
-                goods: boughtGoods,
-                subTotal,
-                shippingCost: 0,
-                totalPrice: subTotal
-            }
+            payment_method_id: 1,
+            delivery_option_id: 1,
+            order_items: orderItems,
+            shipping_address_id: selectedAddress.id
         };
-        request('http://localhost:3001/orders', 'POST', JSON.stringify(order))
+
+        console.log(order);
+
+        request('http://localhost:9122/api/v1/user/orders', 'POST', JSON.stringify(order), header)
             .then((data) => {
-                dispatch(addedNewOrder(order));
+                dispatch(addedNewOrder(data));
                 dispatch(resetSelectedAddress());
-                navigate(`/order/${order.id}`);
+                navigate(`/order/${data.id}`);
                 dispatch(showNotification(true));
                 dispatch(resetOrderedGoods());
                 setTimeout(() => {
