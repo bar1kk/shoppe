@@ -31,7 +31,8 @@ public class ShippingAddressServiceImpl implements ShippingAddressService {
 
     ShippingAddressMapper shippingAddressMapper;
 
-    private ShippingAddressEntity getShippingAddressEntityById(String id) {
+    @Override
+    public ShippingAddressEntity getShippingAddressEntityById(String id) {
 
         ShippingAddressEntity result = shippingAddressRepository.findByIdAndStatus(id, ShippingAddressStatus.ACTIVE).orElseThrow(
                 () -> {
