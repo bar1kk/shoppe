@@ -34,7 +34,7 @@ const Slider = () => {
                         Iconic & fine jewelry, <br />
                         for every woman.
                     </div>
-                    <div className='slider-paragraph'>
+                    <div className='slider-text-small'>
                         Every woman deserves to feel confident. Discover our unique jewelry, crafted with <br /> premium
                         stainless steel and 18K gold plated.
                     </div>

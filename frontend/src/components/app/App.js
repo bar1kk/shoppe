@@ -11,7 +11,8 @@ import SelectedItemPage from '../pages/SelectedItemPage';
 import CartPage from '../pages/CartPage';
 import CheckoutPage from '../pages/CheckoutPage';
 import Page404 from '../pages/Page404/Page404';
-import ContactUs from '../pages/ContactUsPage';
+import ContactUsPage from '../pages/ContactUsPage';
+import AboutPage from '../pages/AboutPage';
 
 
 const App = () => {
@@ -32,7 +33,8 @@ const App = () => {
                     <Route path={'/cart'} element={<CartPage />} />
                     <Route path={'/cart/checkout'} element={<PrivateRoute Component={CheckoutPage} />} />
                     <Route path={'*'} element={<Page404 />} />
-                    <Route path={'/contact'} element={<ContactUs />} />
+                    <Route path={'/contact'} element={<ContactUsPage />} />
+                    <Route path={'/about'} element={<AboutPage />} />
                 </Routes>
             </div>
         </Router>

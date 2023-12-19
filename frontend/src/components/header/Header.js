@@ -27,9 +27,9 @@ const Header = ({ line }) => {
                                 </li>
                                 <li>
                                     <NavLink
-                                        to={'/story'}
+                                        to={'/about'}
                                         className={({ isActive }) => [isActive ? 'header__link-active' : ''].join(' ')}>
-                                        Our Story
+                                        About
                                     </NavLink>
                                 </li>
                             </ul>
