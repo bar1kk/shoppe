@@ -12,7 +12,7 @@ const MainPage = () => {
             <Slider/>
             <div className="container">
                 <div className="wrapper">
-                    <div className="title">Shop The Latest</div>
+                    <div className="title">Shop The Most Popular</div>
                     <Link to="/shop" className="view-all">View All</Link>
                 </div>
                 <JewelryCatalogPromo />

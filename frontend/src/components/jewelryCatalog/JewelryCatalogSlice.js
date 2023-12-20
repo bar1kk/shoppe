@@ -2,19 +2,21 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { useHttp } from '../../hooks/http.hook';
 
 const initialState = {
+    promoGoodsId: [],
     promoGoods: [],
     goods: [],
+    orderedGoods: [], 
     goodsLoadingStatus: 'idle',
-    orderedGoods: [],
+    promoGoodsLoadingStatus: 'idle',
     // orderedCounters: [],
     // selectedItemId: 0
 }
 
-export const fetchPromoGoods = createAsyncThunk(
-    'goods/fetchPromoGoods',
+export const fetchPromoGoodsId = createAsyncThunk(
+    'goods/fetchPromoGoodsId',
     async () => {
         const { request } = useHttp();
-        return await request('http://localhost:3001/promoGoods', 'GET');
+        return await request('http://localhost:9122/api/v1/products/best-selling', 'GET');
     }
 );
 
@@ -40,6 +42,9 @@ const JewelryCatalogSlice = createSlice({
                     state.orderedGoods.push({ ...newItem, counter: 0 });
                 }
             }
+        },
+        fetchPromoGoods: (state, action) => {
+            state.promoGoods = action.payload;
         },
         removeGoods: (state, action) => {
             const itemIdToRemove = action.payload;
@@ -86,12 +91,12 @@ const JewelryCatalogSlice = createSlice({
                 state.goods = action.payload;
             })
             .addCase(fetchGoods.rejected, state => {state.goodsLoadingStatus = 'error'})
-            .addCase(fetchPromoGoods.pending, state => {state.goodsLoadingStatus = 'loading'})
-            .addCase(fetchPromoGoods.fulfilled, (state, action) => {
-                state.goodsLoadingStatus = 'idle';
-                state.promoGoods = action.payload;
+            .addCase(fetchPromoGoodsId.pending, state => {state.promoGoodsLoadingStatus = 'loading'})
+            .addCase(fetchPromoGoodsId.fulfilled, (state, action) => {
+                state.promoGoodsLoadingStatus = 'idle';
+                state.promoGoodsId = action.payload;
             })
-            .addCase(fetchPromoGoods.rejected, state => {state.goodsLoadingStatus = 'error'})
+            .addCase(fetchPromoGoodsId.rejected, state => {state.promoGoodsLoadingStatus = 'error'})
             .addDefaultCase(() => {})
     }
 });
@@ -107,5 +112,6 @@ export const {
     minusCounter,
     addCounter,
     // fetchSelectedItem
+    fetchPromoGoods,
     resetOrderedGoods
 } = actions;
