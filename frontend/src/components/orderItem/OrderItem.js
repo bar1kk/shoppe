@@ -30,7 +30,6 @@ const OrderItem = () => {
             } else {
                 dispatch(fetchSelectedOrder(selectedOrder));
             }
-            window.scrollTo(0, 0);
         } else {
             isMounted.current = true;
         }

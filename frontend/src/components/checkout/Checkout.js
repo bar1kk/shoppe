@@ -83,7 +83,6 @@ const Checkout = () => {
                 dispatch(setNotificationText(errorMessage));
             })
             .finally(() => {
-                window.scrollTo(0, 0);
                 dispatch(activateNotification());
             });
     };
