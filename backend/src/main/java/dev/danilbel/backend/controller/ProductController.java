@@ -1,6 +1,8 @@
 package dev.danilbel.backend.controller;
 
 import dev.danilbel.backend.dto.product.ProductDto;
+import dev.danilbel.backend.dto.product.view.BestSellingProductDto;
+import dev.danilbel.backend.service.BestSellingProductService;
 import dev.danilbel.backend.service.ProductService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
@@ -22,9 +24,11 @@ import java.util.List;
 public class ProductController {
 
     private static final String PRODUCTS = "api/v1/products";
+    private static final String PRODUCT_BEST_SELLING = "api/v1/products/best-selling";
     private static final String PRODUCT = "api/v1/products/{id}";
 
     ProductService productService;
+    BestSellingProductService bestSellingProductService;
 
     @GetMapping(PRODUCTS)
     public ResponseEntity<List<ProductDto>> getAllProducts() {
@@ -38,6 +42,14 @@ public class ProductController {
     public ResponseEntity<ProductDto> getProductById(@PathVariable("id") String id) {
 
         ProductDto result = productService.getProductById(id);
+
+        return ResponseEntity.ok(result);
+    }
+
+    @GetMapping(PRODUCT_BEST_SELLING)
+    public ResponseEntity<List<BestSellingProductDto>> getBestSellingProducts() {
+
+        List<BestSellingProductDto> result = bestSellingProductService.getBestSellingProducts();
 
         return ResponseEntity.ok(result);
     }
