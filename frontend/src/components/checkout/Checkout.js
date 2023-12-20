@@ -11,6 +11,8 @@ import { setNotificationText, activateNotification } from '../notification/Notif
 import { useNavigate } from 'react-router-dom';
 import { useHttp } from '../../hooks/http.hook';
 import { useHeader } from '../../hooks/header';
+import { useIsAuthenticated } from 'react-auth-kit';
+
 
 import './checkout.scss';
 import payPalIcon from '../../assets/icons/paypal.svg';
@@ -22,6 +24,8 @@ const Checkout = () => {
     const { request } = useHttp();
     const { header } = useHeader();
     const navigate = useNavigate();
+    const isAuthenticated = useIsAuthenticated()
+
 
     const subTotal = orderedGoods.reduce((acc, { counter, price }) => acc + counter * price, 0);
 
@@ -29,6 +33,13 @@ const Checkout = () => {
         dispatch(fetchAddresses(header));
         // eslint-disable-next-line
     }, []);
+
+    useEffect(() => {
+        if (!isAuthenticated()) {
+            navigate('/auth');
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isAuthenticated()]);
 
     const handleSelectedAddress = (id) => {
         const selectedAddress = addresses.find((address) => address.id === id);

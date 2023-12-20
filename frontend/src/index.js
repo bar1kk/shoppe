@@ -9,15 +9,15 @@ import store from './store';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Provider store={store}>
-        <AuthProvider
-            authType={'cookie'}
-            authName={'_auth'}
-            cookieDomain={window.location.hostname}
-            cookieSecure={window.location.protocol === 'https:'}>
+    <AuthProvider
+        authType={'cookie'}
+        authName={'_auth'}
+        cookieDomain={window.location.hostname}
+        cookieSecure={false}>
+        <Provider store={store}>
             {/* <React.StrictMode> */}
-                <App />
+            <App />
             {/* </React.StrictMode> */}
-        </AuthProvider>
-    </Provider>
+        </Provider>
+    </AuthProvider>
 );
