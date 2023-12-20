@@ -12,8 +12,8 @@ import { TextInput, PasswordInput } from '../../authorization/Authorization';
 
 const AccountDetails = () => {
     const { request } = useHttp();
-    const dispatch = useDispatch();
     const { header } = useHeader();
+    const dispatch = useDispatch();
 
     const handleChangeDetails = (values, resetForm) => {
         const data = { first_name: values.firstName, last_name: values.lastName };
