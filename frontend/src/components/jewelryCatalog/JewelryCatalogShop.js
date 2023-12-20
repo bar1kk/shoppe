@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import { fetchGoods, addedGoods, plusCounter } from './JewelryCatalogSlice';
-import { showNotification } from '../notification/NotificationSlice';
+import { setNotificationText, activateNotification } from '../notification/NotificationSlice';
 
 import JewelryItemShop from '../jewelryItem/JewelryItemShop';
 import './jewelryCatalog.scss';
@@ -50,7 +50,6 @@ const JewelryCatalogShop = () => {
 
     useEffect(() => {
         dispatch(fetchGoods());
-        dispatch(showNotification(false));
         // eslint-disable-next-line
     }, []);
 
@@ -59,13 +58,11 @@ const JewelryCatalogShop = () => {
     };
 
     const onBuy = (id) => {
+        const successMessage = 'The item added to your Shopping bag!';
         dispatch(addedGoods(id));
-        dispatch(showNotification(true));
         dispatch(plusCounter(id));
-
-        setTimeout(() => {
-            dispatch(showNotification(false));
-        }, 2000);
+        dispatch(setNotificationText(successMessage));
+        dispatch(activateNotification());
     };
 
     const renderCatalog = (goods) => {

@@ -11,12 +11,11 @@ import checkMarkIcon from '../../assets/icons/checkMark.svg';
 
 const SelectedItemPage = () => {
     const { notificationStatus } = useSelector((state) => state.notification);
-    const notificationText = 'Item added to your Shopping bag!';
     return (
         <>
             <Header line={true} />
             <div className='shop__notification'>
-                {notificationStatus ? <Notification icon={checkMarkIcon} text={notificationText} link={true}/> : null}
+                {notificationStatus ? <Notification icon={checkMarkIcon} link={true}/> : null}
             </div>
             <ItemInfoSection />
             <ItemInfoNav />

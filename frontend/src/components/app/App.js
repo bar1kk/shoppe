@@ -4,7 +4,7 @@ import MainPage from '../pages/MainPage';
 import AuthorizationPage from '../pages/authorizationPage/AuthorizationPage';
 import UserPage from '../pages/UserPage';
 import PrivateRoute from '../privateRoute/PrivateRoute';
-import Shop from '../pages/shop/Shop';
+import ShopPage from '../pages/shopPage/ShopPage';
 import SelectedOrderPage from '../pages/SelectedOrderPage';
 import UnloadListener from '../unloadListener/UnloadListener';
 import SelectedItemPage from '../pages/SelectedItemPage';
@@ -27,7 +27,7 @@ const App = () => {
                     <Route path={'/auth'} element={<AuthorizationPage />} />
                     <Route path={'/user'} element={<PrivateRoute Component={UserPage} />} />
                     <Route path={'/user/order/:id'} element={<SelectedOrderPage />} />
-                    <Route path={'/shop'} element={<Shop />} />
+                    <Route path={'/shop'} element={<ShopPage />} />
                     <Route path={'/shop/:id'} element={<SelectedItemPage />} />
                     <Route path={'/order/:id'} element={<SelectedOrderPage />} />
                     <Route path={'/cart'} element={<CartPage />} />

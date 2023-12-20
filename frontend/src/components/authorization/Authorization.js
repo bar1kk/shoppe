@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from 'react-redux';
 import { useRef } from 'react';
 import { changeActiveBtn } from './AuthorizationSlice';
-import { showNotification } from '../notification/NotificationSlice';
+import { setNotificationText, activateNotification } from '../notification/NotificationSlice';
 import { Formik, Form, useField } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
@@ -62,10 +62,9 @@ const Login = () => {
                 }
             })
             .catch((err) => {
-                dispatch(showNotification(true));
-                setTimeout(() => {
-                    dispatch(showNotification(false));
-                }, 2000);
+                const errorMessage = 'Invalid email or password! Please try again! Error: ' + err.message;
+                dispatch(setNotificationText(errorMessage));
+                dispatch(activateNotification());
             });
     };
 
@@ -123,13 +122,18 @@ const Login = () => {
 };
 
 const Register = () => {
+    const dispatch = useDispatch();
     const { request } = useHttp();
 
     const handleRegister = (values) => {
         const data = { email: values.email, password: values.password };
         request('http://localhost:9122/api/v1/auth/registration', 'POST', JSON.stringify(data))
-            .then((data) => console.log(data))
-            .catch((err) => console.log(err));
+            .then()
+            .catch((err) => {
+                const errorMessage = 'Something went wrong, please try again later! Error: ' + err.message;
+                dispatch(setNotificationText(errorMessage));
+                dispatch(activateNotification());
+            });
     };
 
     return (
@@ -185,13 +189,13 @@ export const TextareaInput = ({ ...props }) => {
     const ref = useRef(null);
     const handleInput = (e) => {
         if (ref.current) {
-          ref.current.style.height = "auto";
-          ref.current.style.height = `${e.target.scrollHeight}px`;
+            ref.current.style.height = 'auto';
+            ref.current.style.height = `${e.target.scrollHeight}px`;
         }
-      };
+    };
     return (
         <div>
-            <textarea {...field} {...props} ref={ref} onInput={handleInput}/>
+            <textarea {...field} {...props} ref={ref} onInput={handleInput} />
             {meta.touched && meta.error ? <div className='error'>{meta.error}</div> : null}
         </div>
     );

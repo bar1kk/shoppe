@@ -6,18 +6,17 @@ import JewelryFilterBar from '../../jewelryFilterBar/JewelryFilterBar';
 import JewelryCatalogShop from '../../jewelryCatalog/JewelryCatalogShop';
 import Notification from '../../notification/Notification';
 
-import './shop.scss';
+import './shopPage.scss';
 import checkMarkIcon from '../../../assets/icons/checkMark.svg';
 
-const Shop = () => {
+const ShopPage = () => {
     const {notificationStatus} = useSelector(state => state.notification);
-    const addedGoodText = 'The item added to your Shopping bag!';    
     
     return (
         <>
             <Header line={true}/>
             <div className="shop__notification">
-                {notificationStatus ? <Notification text={addedGoodText} icon={checkMarkIcon} link={true}/>  : null}
+                {notificationStatus ? <Notification icon={checkMarkIcon} link={true}/>  : null}
             </div>
             <div className="container">
                 <div className='shop__wrapper'>
@@ -30,4 +29,4 @@ const Shop = () => {
     );
 };
 
-export default Shop;
+export default ShopPage;

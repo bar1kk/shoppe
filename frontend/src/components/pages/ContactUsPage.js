@@ -8,13 +8,12 @@ import checkMarkIcon from "../../assets//icons/checkMark.svg";
 
 const ContactUsPage = () => {
     const { notificationStatus } = useSelector((state) => state.notification);
-    const notificationText = 'Your message has been sent successfully!';
-    
+        
     return (
         <>
             <Header line={true} />
             <div className='shop__notification'>
-                {notificationStatus ? <Notification icon={checkMarkIcon} text={notificationText}/> : null}
+                {notificationStatus ? <Notification icon={checkMarkIcon}/> : null}
             </div>
             <ContactUs />
             <Footer />

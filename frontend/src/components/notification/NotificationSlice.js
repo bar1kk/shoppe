@@ -1,15 +1,37 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 
 const initialState = {
-    notificationStatus: false
+    notificationStatus: false,
+    notificationText: ''
 }
+
+export const activateNotification = createAsyncThunk(
+    'notification/activateNotification',
+    async (_, { dispatch }) => {
+      dispatch(showNotification());
+  
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          dispatch(hideNotification());
+          resolve();
+        }, 3000);
+      });
+    }
+  );
 
 const NotificationSlice = createSlice({
     name: 'notification',
     initialState,
     reducers: {
-        showNotification: (state, action) => {
-            state.notificationStatus = action.payload
+        showNotification: (state) => {
+            state.notificationStatus = true;
+        },
+        hideNotification: (state) => {
+            state.notificationStatus = false;
+        },
+
+        setNotificationText: (state, action) => {
+            state.notificationText = action.payload
         }
     },
 });
@@ -19,5 +41,7 @@ const {actions, reducer} = NotificationSlice;
 export default reducer;
 
 export const {
-    showNotification
+    showNotification,
+    setNotificationText,
+    hideNotification
 } = actions;
