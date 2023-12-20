@@ -12,8 +12,16 @@ const ContactUs = () => {
     const dispatch = useDispatch();
     const { request } = useHttp();
 
-    const handleSubmit = (values) => {
-        request('http://localhost:9122/api/v1/user/feedback', 'POST', JSON.stringify(values))
+    const handleSubmit = (values, resetForm) => {
+        const data = {
+            email: values.email,
+            subject: values.subject,
+            message: values.message,
+            first_name: values.firstName,
+            last_name: values.lastName
+        };
+
+        request('http://localhost:9122/api/v1/contacts', 'POST', JSON.stringify(data))
             .then(() => {
                 const successMessage = 'Your message has been sent successfully';
                 dispatch(setNotificationText(successMessage));
@@ -23,7 +31,9 @@ const ContactUs = () => {
                 dispatch(setNotificationText(errorMessage));
             })
             .finally(() => {
+                window.scrollTo(0, 0);
                 dispatch(activateNotification());
+                resetForm({ values: '' });
             });
     };
 
@@ -50,8 +60,7 @@ const ContactUs = () => {
                         message: Yup.string().min(10, 'Must be 10 characters or more').required('Required field')
                     })}
                     onSubmit={(values, { resetForm }) => {
-                        handleSubmit(values);
-                        resetForm({ values: '' });
+                        handleSubmit(values, resetForm);
                     }}>
                     {({ isSubmitting }) => (
                         <Form>
