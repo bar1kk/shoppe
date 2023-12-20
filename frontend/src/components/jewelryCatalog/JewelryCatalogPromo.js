@@ -35,8 +35,8 @@ const JewelryCatalogPromo = () => {
             items = shuffledGoods.slice(0, 3);
         }
 
-        const itemsList = items.map(({ id, name, price, images }) => {
-            return <JewelryItemPromo name={name} price={price} imagePath={images[0]} key={id} id={id} />;
+        const itemsList = items.map(({ id, name, price, availability, images }) => {
+            return <JewelryItemPromo key={id} id={id} name={name} price={price} availability={availability} imagePath={images[0]}  />;
         });
 
         return itemsList;
