@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useIsAuthenticated } from 'react-auth-kit';
 import { useHeader } from '../../../../hooks/header';
 import { format } from 'date-fns';
+import { motion } from 'framer-motion';
 
 import { fetchProfile } from '../../../userAccount/UserAccountSlice';
 
@@ -39,40 +40,52 @@ const Reviews = () => {
 
     if (selectedItemId && Array.isArray(selectedItemId.reviews) && selectedItemId.reviews.length > 0) {
         return (
-            <div className='reviews'>
-                <div className='reviews__wrapper'>
-                    <div className='reviews__items'>
-                        <div className='reviews__title'>
-                            {reviews.length} Reviews for {name}
+            <motion.main
+                className='main__container'
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}>
+                <div className='reviews'>
+                    <div className='reviews__wrapper'>
+                        <div className='reviews__items'>
+                            <div className='reviews__title'>
+                                {reviews.length} Reviews for {name}
+                            </div>
+                            {reviews.map(({ id, user: { first_name, last_name }, rating, description, created_at }) => {
+                                const formattedDate = format(new Date(created_at), 'yyyy-MM-dd HH:mm');
+                                return (
+                                    <ReviewItem
+                                        key={id}
+                                        firstName={first_name}
+                                        lastName={last_name}
+                                        rating={rating}
+                                        description={description}
+                                        date={formattedDate}
+                                    />
+                                );
+                            })}
                         </div>
-                        {reviews.map(({ id, user: { first_name, last_name }, rating, description, created_at }) => {
-                            const formattedDate = format(new Date(created_at), 'yyyy-MM-dd HH:mm');
-                            return (
-                                <ReviewItem
-                                    key={id}
-                                    firstName={first_name}
-                                    lastName={last_name}
-                                    rating={rating}
-                                    description={description}
-                                    date={formattedDate}
-                                />
-                            );
-                        })}
+                        {renderReviewForm()}
                     </div>
-                    {renderReviewForm()}
                 </div>
-            </div>
+            </motion.main>
         );
     } else {
         return (
-            <div className='reviews'>
-                <div className='reviews__wrapper'>
-                    <div className='reviews__items'>
-                        <div className='reviews__title'>No Reviews for {name}</div>
+            <motion.main
+                className='main__container'
+                initial={{ y: -20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}>
+                <div className='reviews'>
+                    <div className='reviews__wrapper'>
+                        <div className='reviews__items'>
+                            <div className='reviews__title'>No Reviews for {name}</div>
+                        </div>
+                        {renderReviewForm()}
                     </div>
-                    {renderReviewForm()}
                 </div>
-            </div>
+            </motion.main>
         );
     }
 };
