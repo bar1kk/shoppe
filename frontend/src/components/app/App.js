@@ -1,4 +1,6 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { Routes, Route, useLocation } from 'react-router-dom';
+import { AnimatePresence } from "framer-motion";
+
 
 import MainPage from '../pages/MainPage';
 import AuthorizationPage from '../pages/authorizationPage/AuthorizationPage';
@@ -14,15 +16,14 @@ import Page404 from '../pages/Page404/Page404';
 import ContactUsPage from '../pages/ContactUsPage';
 import AboutPage from '../pages/AboutPage';
 
-
 const App = () => {
-
+    const location = useLocation();
     return (
-        
-        <Router>
+        <>
             <UnloadListener />
             <div className='App'>
-                <Routes>
+            <AnimatePresence wait>
+                <Routes location={location} key={location.pathname}>
                     <Route path={'/'} element={<MainPage />} />
                     <Route path={'/auth'} element={<AuthorizationPage />} />
                     <Route path={'/user'} element={<PrivateRoute Component={UserPage} />} />
@@ -36,8 +37,9 @@ const App = () => {
                     <Route path={'/contact'} element={<ContactUsPage />} />
                     <Route path={'/about'} element={<AboutPage />} />
                 </Routes>
+                </AnimatePresence>
             </div>
-        </Router>
+        </>
     );
 };
 

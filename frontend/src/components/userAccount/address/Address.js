@@ -4,6 +4,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useHttp } from '../../../hooks/http.hook';
 import { useHeader } from '../../../hooks/header';
+import { motion } from 'framer-motion';
 
 import { fetchAddresses, removeAddress, addedNewAddress } from '../UserAccountSlice';
 
@@ -39,7 +40,12 @@ const Address = () => {
             delete newAddress.apartment;
         }
 
-        request('http://localhost:9122/api/v1/user/shipping-addresses/create', 'POST', JSON.stringify(newAddress), header)
+        request(
+            'http://localhost:9122/api/v1/user/shipping-addresses/create',
+            'POST',
+            JSON.stringify(newAddress),
+            header
+        )
             .then((data) => {
                 dispatch(addedNewAddress(data));
             })
@@ -85,127 +91,133 @@ const Address = () => {
     const addressesList = renderAddresses(addresses);
 
     return (
-        <div className='address'>
-            <div className='address__wrapper'>
-                <div className='address__details'>
-                    <h2 className='address__title'>Shipping Address</h2>
-                    <Formik
-                        initialValues={{
-                            firstName: '',
-                            lastName: '',
-                            country: '',
-                            city: '',
-                            street: '',
-                            apartment: '',
-                            postcode: '',
-                            phoneNumber: '',
-                            email: ''
-                        }}
-                        validationSchema={Yup.object({
-                            firstName: Yup.string().required('Required field'),
-                            lastName: Yup.string().required('Required field'),
-                            country: Yup.string().required('Required field'),
-                            street: Yup.string().required('Required field'),
-                            apartment: Yup.string().matches(/^\d+$/, 'Must be only numbers'),
-                            postcode: Yup.string().required('Required field'),
-                            phoneNumber: Yup.string()
-                                .matches(/^\d+$/, 'Must be only numbers')
-                                .length(12, 'Must be 12 numbers including country code')
-                                .required('Required field'),
-                            city: Yup.string().required('Required field'),
-                            email: Yup.string().email('Invalid email address').required('Required field')
-                        })}
-                        onSubmit={(values, { resetForm }) => {
-                            resetForm({ values: '' });
-                            handleAddAddress(values);
-                        }}>
-                        {({ isSubmitting }) => (
-                            <Form>
-                                <div className='address__details-wrapper'>
-                                    <div>
-                                        <TextInput
-                                            id='firstName'
-                                            name='firstName'
-                                            type='text'
-                                            placeholder='First name*'
-                                            className='address__details-input'
-                                        />
+        <motion.main
+            className='main__container'
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}>
+            <div className='address'>
+                <div className='address__wrapper'>
+                    <div className='address__details'>
+                        <h2 className='address__title'>Shipping Address</h2>
+                        <Formik
+                            initialValues={{
+                                firstName: '',
+                                lastName: '',
+                                country: '',
+                                city: '',
+                                street: '',
+                                apartment: '',
+                                postcode: '',
+                                phoneNumber: '',
+                                email: ''
+                            }}
+                            validationSchema={Yup.object({
+                                firstName: Yup.string().required('Required field'),
+                                lastName: Yup.string().required('Required field'),
+                                country: Yup.string().required('Required field'),
+                                street: Yup.string().required('Required field'),
+                                apartment: Yup.string().matches(/^\d+$/, 'Must be only numbers'),
+                                postcode: Yup.string().required('Required field'),
+                                phoneNumber: Yup.string()
+                                    .matches(/^\d+$/, 'Must be only numbers')
+                                    .length(12, 'Must be 12 numbers including country code')
+                                    .required('Required field'),
+                                city: Yup.string().required('Required field'),
+                                email: Yup.string().email('Invalid email address').required('Required field')
+                            })}
+                            onSubmit={(values, { resetForm }) => {
+                                resetForm({ values: '' });
+                                handleAddAddress(values);
+                            }}>
+                            {({ isSubmitting }) => (
+                                <Form>
+                                    <div className='address__details-wrapper'>
+                                        <div>
+                                            <TextInput
+                                                id='firstName'
+                                                name='firstName'
+                                                type='text'
+                                                placeholder='First name*'
+                                                className='address__details-input'
+                                            />
+                                        </div>
+                                        <div>
+                                            <TextInput
+                                                id='lastName'
+                                                name='lastName'
+                                                type='text'
+                                                placeholder='Last name*'
+                                                className='address__details-input'
+                                            />
+                                        </div>
                                     </div>
-                                    <div>
-                                        <TextInput
-                                            id='lastName'
-                                            name='lastName'
-                                            type='text'
-                                            placeholder='Last name*'
-                                            className='address__details-input'
-                                        />
-                                    </div>
-                                </div>
-                                <TextInput
-                                    id='country'
-                                    name='country'
-                                    type='text'
-                                    placeholder='Country*'
-                                    className='address__details-input'
-                                />
-                                <TextInput
-                                    id='street'
-                                    name='street'
-                                    type='text'
-                                    placeholder='Street Address*'
-                                    className='address__details-input'
-                                />
-                                <TextInput
-                                    id='apartment'
-                                    name='apartment'
-                                    type='text'
-                                    placeholder='Apartment, suite, unit etc. (optional)'
-                                    className='address__details-input'
-                                />
-                                <TextInput
-                                    id='postcode'
-                                    name='postcode'
-                                    type='text'
-                                    placeholder='Postcode / ZIP*'
-                                    className='address__details-input'
-                                />
-                                <TextInput
-                                    id='city'
-                                    name='city'
-                                    type='text'
-                                    placeholder='City*'
-                                    className='address__details-input'
-                                />
-                                <TextInput
-                                    id='phoneNumber'
-                                    name='phoneNumber'
-                                    type='text'
-                                    placeholder='Phone*'
-                                    className='address__details-input'
-                                />
-                                <TextInput
-                                    id='email'
-                                    name='email'
-                                    type='text'
-                                    placeholder='Email*'
-                                    className='address__details-input'
-                                />
-                                <button
-                                    className='address__details-submit-button'
-                                    type='submit'
-                                    disabled={isSubmitting}>
-                                    Save Address
-                                </button>
-                            </Form>
-                        )}
-                    </Formik>
-                </div>
-                <div className='address__list'>
-                    <h2 className='address__title'>Your Addresses</h2>
-                    {addressesList}
+                                    <TextInput
+                                        id='country'
+                                        name='country'
+                                        type='text'
+                                        placeholder='Country*'
+                                        className='address__details-input'
+                                    />
+                                    <TextInput
+                                        id='street'
+                                        name='street'
+                                        type='text'
+                                        placeholder='Street Address*'
+                                        className='address__details-input'
+                                    />
+                                    <TextInput
+                                        id='apartment'
+                                        name='apartment'
+                                        type='text'
+                                        placeholder='Apartment, suite, unit etc. (optional)'
+                                        className='address__details-input'
+                                    />
+                                    <TextInput
+                                        id='postcode'
+                                        name='postcode'
+                                        type='text'
+                                        placeholder='Postcode / ZIP*'
+                                        className='address__details-input'
+                                    />
+                                    <TextInput
+                                        id='city'
+                                        name='city'
+                                        type='text'
+                                        placeholder='City*'
+                                        className='address__details-input'
+                                    />
+                                    <TextInput
+                                        id='phoneNumber'
+                                        name='phoneNumber'
+                                        type='text'
+                                        placeholder='Phone*'
+                                        className='address__details-input'
+                                    />
+                                    <TextInput
+                                        id='email'
+                                        name='email'
+                                        type='text'
+                                        placeholder='Email*'
+                                        className='address__details-input'
+                                    />
+                                    <button
+                                        className='address__details-submit-button'
+                                        type='submit'
+                                        disabled={isSubmitting}>
+                                        Save Address
+                                    </button>
+                                </Form>
+                            )}
+                        </Formik>
+                    </div>
+                    <div className='address__list'>
+                        <h2 className='address__title'>Your Addresses</h2>
+                        {addressesList}
+                    </div>
                 </div>
             </div>
-        </div>
+        </motion.main>
     );
 };
 
