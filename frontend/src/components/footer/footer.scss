@@ -41,7 +41,7 @@
 
 .footer__input {
     width: 396px;
-    padding-bottom: 13px;
+    padding-bottom: 4px;
     border-bottom: 1px solid #000;
 }
 
@@ -59,10 +59,11 @@
 .footer-input-row {
     position: relative;
 
-    span {
+    button {
         position: absolute;
+        display: inline;
         right: 0;
-        bottom: 5px;
+        bottom: 0;
         cursor: pointer;
     }
 }

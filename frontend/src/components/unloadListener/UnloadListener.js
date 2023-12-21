@@ -17,6 +17,7 @@ const UnloadListener = () => {
                 window.removeEventListener('unload', handleUnload);
             };
         }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isAuthenticated, auth]);
 
     return null;
