@@ -1,5 +1,5 @@
 import { NavLink, Link } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Form, Field, Formik } from 'formik';
 import * as Yup from 'yup';
@@ -7,15 +7,11 @@ import emailjs from '@emailjs/browser';
 
 import { setNotificationText, activateNotification } from '../notification/NotificationSlice';
 
-import Notification from '../notification/Notification';
 import sendIcon from '../../assets/icons/send.svg';
-import checkMarkIcon from '../../assets/icons/checkMark.svg';
 import './footer.scss';
 
 const Footer = () => {
     const dispatch = useDispatch();
-
-    const { notificationStatus } = useSelector((state) => state.notification);
 
     const PUBLIC_KEY = 'UADwziFQWVeoyD7Bg';
     const SERVICE_ID = 'service_33fsfm5';
@@ -37,6 +33,7 @@ const Footer = () => {
                 dispatch(setNotificationText(errorMessage));
             })
             .finally(() => {
+                window.scrollTo(0, 0);
                 dispatch(activateNotification());
                 resetForm({ values: '' });
             });
@@ -84,9 +81,6 @@ const Footer = () => {
 
     return (
         <footer className='footer'>
-            <div className='shop__notification'>
-                {notificationStatus ? <Notification icon={checkMarkIcon} /> : null}
-            </div>
             <div className='container'>
                 <div className='footer__line'></div>
                 <div className='footer__wrapper'>
