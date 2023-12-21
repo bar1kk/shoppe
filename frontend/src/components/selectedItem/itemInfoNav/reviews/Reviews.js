@@ -19,7 +19,6 @@ const Reviews = () => {
     const isAuthenticated = useIsAuthenticated();
 
     useEffect(() => {
-        console.log(isAuthenticated());
         if (isAuthenticated()) {
             dispatch(fetchProfile(header));
         }

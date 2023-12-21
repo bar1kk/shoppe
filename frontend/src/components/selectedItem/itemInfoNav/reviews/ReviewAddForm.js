@@ -5,6 +5,8 @@ import * as Yup from 'yup';
 import { useHttp } from '../../../../hooks/http.hook';
 import { useHeader } from '../../../../hooks/header';
 
+import { setNotificationText, activateNotification } from '../../../notification/NotificationSlice';
+
 import {TextareaInput } from '../../../authorization/Authorization';
 
 const ReviewAddForm = () => {
@@ -26,7 +28,10 @@ const ReviewAddForm = () => {
                 dispatch(changeRating(0));
             })
             .catch((err) => {
-                console.log(err);
+                const errorMessge = 'Something went wrong, please try again later. Error: ' + err.message;
+                window.scrollTo(0, 0);
+                dispatch(setNotificationText(errorMessge));
+                dispatch(activateNotification());
             });
     };
 
