@@ -112,11 +112,6 @@ const Login = () => {
                     </Form>
                 )}
             </Formik>
-            <div className='authorization__link-container'>
-                <a href='#!' className='authorization__link'>
-                    Have you forgotten your password?
-                </a>
-            </div>
         </>
     );
 };
