@@ -26,9 +26,6 @@ const Checkout = () => {
     const navigate = useNavigate();
     const isAuthenticated = useIsAuthenticated()
 
-
-    const subTotal = orderedGoods.reduce((acc, { counter, price }) => acc + counter * price, 0);
-
     useEffect(() => {
         dispatch(fetchAddresses(header));
         // eslint-disable-next-line
@@ -129,6 +126,8 @@ const Checkout = () => {
         ));
     };
 
+    const subtotal = orderedGoods.reduce((acc, { counter, price }) => acc + counter * price, 0).toFixed(2);
+
     return (
         <div className='checkout'>
             <div className='container'>
@@ -148,15 +147,15 @@ const Checkout = () => {
                             {renderOrderList(orderedGoods)}
                             <div className='order__summary_calcul'>
                                 <span className='order__summary-calcul-name'>Subtotal</span>
-                                <span className='order__summary-item-price'>$ {subTotal}</span>
+                                <span className='order__summary-item-price'>$ {subtotal}</span>
                             </div>
                             <div className='order__summary_calcul'>
                                 <span className='order__summary-calcul-name'>Shipping</span>
-                                <span className='order__summary-item-price'>0</span>
+                                <span className='order__summary-item-price'>$ 0</span>
                             </div>
                             <div className='order__summary_footer-wrapper'>
                                 <span className='order__summary-footer'>Total</span>
-                                <span className='order__summary-footer'>$ {subTotal}</span>
+                                <span className='order__summary-footer'>$ {subtotal}</span>
                             </div>
                             <div className='order__summary-payment-wrapper'>
                                 <div className='order__summary-payment'>

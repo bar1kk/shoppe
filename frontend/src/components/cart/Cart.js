@@ -25,30 +25,37 @@ const Cart = () => {
     };
 
     const renderCartCatalog = (orderedGoods) => {
-        const cartCatalog = orderedGoods.map(({ id, name, price, availability, productDescription:{additional_product_description:{material}}, images, counter }) => {
-            return (
-                <CartItem
-                    key={id}
-                    id={id}
-                    name={name}
-                    price={price}
-                    material={material}
-                    availability={availability}
-                    imagePath={images[0]}
-                    counter={counter}
-                    onRemove={() => onRemove(id)}
-                    onPlus={() => onPlus(id)}
-                    onMinus={() => onMinus(id)}
-                />
-            );
-        });
+        const cartCatalog = orderedGoods.map(
+            ({
+                id,
+                name,
+                price,
+                availability,
+                productDescription: {
+                    additional_product_description: { material }
+                },
+                images,
+                counter
+            }) => {
+                return (
+                    <CartItem
+                        key={id}
+                        id={id}
+                        name={name}
+                        price={price}
+                        material={material}
+                        availability={availability}
+                        imagePath={images[0]}
+                        counter={counter}
+                        onRemove={() => onRemove(id)}
+                        onPlus={() => onPlus(id)}
+                        onMinus={() => onMinus(id)}
+                    />
+                );
+            }
+        );
         return <>{cartCatalog}</>;
     };
-
-    let totalPrice = 0;
-    orderedGoods.forEach((item) => {
-        totalPrice += item.price * item.counter;
-    });
 
     const content =
         orderedGoods.length === 0 ? (
@@ -62,6 +69,8 @@ const Cart = () => {
             renderCartCatalog(orderedGoods)
         );
 
+    const subtotal = orderedGoods.reduce((acc, { counter, price }) => acc + counter * price, 0).toFixed(2);
+
     return (
         <div className='cart'>
             <div className='container'>
@@ -72,7 +81,7 @@ const Cart = () => {
                         <div className='cart__info-main-title'>Cart totals</div>
                         <div className='cart__info-wrapper'>
                             <div className='cart__info-subtotal'>SUBTOTAL</div>
-                            <div className='cart__info-descr'>$ {totalPrice}</div>
+                            <div className='cart__info-descr'>$ {subtotal}</div>
                         </div>
                         <div className='cart__info-wrapper'>
                             <div className='cart__info-title'>SHIPPING</div>
@@ -85,7 +94,7 @@ const Cart = () => {
                         <div className='cart__line'></div>
                         <div className='cart__total-wrapper'>
                             <div className='cart__total'>TOTAl</div>
-                            <div className='cart__total'>$ {totalPrice}</div>
+                            <div className='cart__total'>$ {subtotal}</div>
                         </div>
                         {orderedGoods.length > 0 ? (
                             <Link to='/cart/checkout'>
