@@ -1,7 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
-import { fetchGoods, addedGoods, plusCounter } from './JewelryCatalogSlice';
+import { addedGoods, plusCounter } from './JewelryCatalogSlice';
 import { setNotificationText, activateNotification } from '../notification/NotificationSlice';
 
 import JewelryItemShop from '../jewelryItem/JewelryItemShop';
@@ -47,11 +47,6 @@ const JewelryCatalogShop = () => {
     const { goodsLoadingStatus } = useSelector((state) => state.goods);
 
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(fetchGoods());
-        // eslint-disable-next-line
-    }, []);
 
     const loadMoreItems = () => {
         setDisplayedItems((prev) => prev + ITEMS_PER_PAGE);
