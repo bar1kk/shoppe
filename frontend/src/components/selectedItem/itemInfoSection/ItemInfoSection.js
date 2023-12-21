@@ -39,7 +39,6 @@ const ItemInfoSection = () => {
             } else {
                 dispatch(fetchSelectedItem(selectedItem));
             }
-            window.scrollTo(0, 0);
         } else {
             isMounted.current = true;
         }

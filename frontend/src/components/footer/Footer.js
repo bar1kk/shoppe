@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 
 import './footer.scss';
 import sendIcon from '../../assets/icons/send.svg';
@@ -20,7 +20,7 @@ const Footer = () => {
                         <ul>
                             <li>
                                 <NavLink
-                                    to={'/contact'}
+                                    to={'/contact-us'}
                                     className={({ isActive }) =>
                                         [isActive ? 'footer__link-active' : 'footer__link'].join(' ')
                                     }>
@@ -29,7 +29,7 @@ const Footer = () => {
                             </li>
                             <li>
                                 <NavLink
-                                    to={'/terms'}
+                                    to={'/terms-of-use'}
                                     className={({ isActive }) =>
                                         [isActive ? 'footer__link-active' : 'footer__link'].join(' ')
                                     }>
@@ -53,8 +53,8 @@ const Footer = () => {
                 </div>
                 <div className='footer__wrapper'>
                     <div className='footer__text'>
-                        <span className='footer__text-black'>© 2021 Shelly.</span> Terms of use{' '}
-                        <span className='footer__text-black'>and</span> privacy policy.
+                       © 2021 Shelly. <Link to={'/terms-of-use'}>Terms of use</Link>{' '}
+                        and  <Link to={'/privacy-policy'}>privacy policy</Link>.
                     </div>
                     <div className='footer__links'></div>
                 </div>
