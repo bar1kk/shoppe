@@ -21,8 +21,8 @@ import jakarta.persistence.Table;
 @AllArgsConstructor
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE)
 @Entity
-@Table(name = "contacts")
-public class ContactEntity {
+@Table(name = "feedback")
+public class FeedbackEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

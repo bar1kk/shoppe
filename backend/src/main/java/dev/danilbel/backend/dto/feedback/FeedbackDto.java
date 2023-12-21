@@ -1,4 +1,4 @@
-package dev.danilbel.backend.dto.contact;
+package dev.danilbel.backend.dto.feedback;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
@@ -16,7 +16,7 @@ import jakarta.validation.constraints.NotNull;
 @NoArgsConstructor
 @AllArgsConstructor
 @FieldDefaults(level = lombok.AccessLevel.PRIVATE)
-public class ContactDto {
+public class FeedbackDto {
 
     Integer id;
 

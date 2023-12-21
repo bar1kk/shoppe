@@ -1,8 +1,8 @@
 package dev.danilbel.backend.controller;
 
 import dev.danilbel.backend.controller.helper.ControllerHelper;
-import dev.danilbel.backend.dto.contact.ContactDto;
-import dev.danilbel.backend.service.ContactService;
+import dev.danilbel.backend.dto.feedback.FeedbackDto;
+import dev.danilbel.backend.service.FeedbackService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AccessLevel;
 import lombok.RequiredArgsConstructor;
@@ -20,22 +20,22 @@ import jakarta.validation.Valid;
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 @RequiredArgsConstructor
 @Slf4j
-@Tag(name = "Contact")
-public class ContactController {
+@Tag(name = "Feedback")
+public class FeedbackController {
 
-    private static final String CONTACT = "api/v1/contacts";
+    private static final String CONTACT = "api/v1/feedback";
 
-    ContactService contactService;
+    FeedbackService feedbackService;
 
     ControllerHelper controllerHelper;
 
     @PostMapping(CONTACT)
-    public ResponseEntity<ContactDto> createContact(@RequestBody @Valid ContactDto contactDto,
-                                                    BindingResult bindingResult) {
+    public ResponseEntity<FeedbackDto> createFeedback(@RequestBody @Valid FeedbackDto feedbackDto,
+                                                     BindingResult bindingResult) {
 
-        controllerHelper.checkBindingResultElseThrowException(bindingResult, "ContactController.createContact");
+        controllerHelper.checkBindingResultElseThrowException(bindingResult, "FeedbackController.createContact");
 
-        ContactDto result = contactService.createContact(contactDto);
+        FeedbackDto result = feedbackService.createFeedback(feedbackDto);
 
         return ResponseEntity.ok(result);
     }
