@@ -22,10 +22,10 @@ const AdditionalInfo = () => {
             transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}>
             <ul className='item__info'>
                 <li className='info__catgrs-key'>
-                    Weight: <span className='info__catgrs-value'>{weight} gram</span>
+                    Weight: <span className='info__catgrs-value'>{weight}</span>
                 </li>
                 <li className='info__catgrs-key'>
-                    Dimention: <span className='info__catgrs-value'>{size} </span>
+                    Dimention: <span className='info__catgrs-value'>{size}</span>
                 </li>
                 <li className='info__catgrs-key'>
                     Colour: <span className='info__catgrs-value'>{color}</span>
