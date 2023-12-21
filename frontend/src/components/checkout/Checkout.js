@@ -13,7 +13,6 @@ import { useHttp } from '../../hooks/http.hook';
 import { useHeader } from '../../hooks/header';
 import { useIsAuthenticated } from 'react-auth-kit';
 
-
 import './checkout.scss';
 import payPalIcon from '../../assets/icons/paypal.svg';
 
@@ -24,7 +23,7 @@ const Checkout = () => {
     const { request } = useHttp();
     const { header } = useHeader();
     const navigate = useNavigate();
-    const isAuthenticated = useIsAuthenticated()
+    const isAuthenticated = useIsAuthenticated();
 
     useEffect(() => {
         dispatch(fetchAddresses(header));
@@ -120,7 +119,7 @@ const Checkout = () => {
                 <span className='order__summary-item-name'>
                     {name} <span className='order__item-quantity'>× {counter}</span>
                 </span>
-                <span className='order__summary-item-price'>$ {counter * price}</span>
+                <span className='order__summary-item-price'>$ {(counter * price).toFixed(2)}</span>
             </div>
         ));
     };
