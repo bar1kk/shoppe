@@ -1,7 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 
 import './header.scss';
-import searchIcon from '../../assets/icons/search.svg';
 import cartIcon from '../../assets/icons/cart.svg';
 import profileIcon from '../../assets/icons/profile.svg';
 
@@ -35,11 +34,7 @@ const Header = ({ line }) => {
                             </ul>
                         </nav>
                         <div className='header__btns'>
-                            <NavLink
-                                to={'/search'}
-                                className={({ isActive }) => [isActive ? 'header__link-active' : ''].join(' ')}>
-                                <img src={searchIcon} alt='search' />
-                            </NavLink>
+                           
                             <NavLink
                                 to={'/cart'}
                                 className={({ isActive }) => [isActive ? 'header__link-active' : ''].join(' ')}>
