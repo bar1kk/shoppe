@@ -9,7 +9,8 @@ import { setNotificationText, activateNotification } from '../../notification/No
 import { changeProfile } from '../UserAccountSlice';
 
 import './accountDetails.scss';
-import { TextInput, PasswordInput } from '../../authorization/Authorization';
+import TextInput from '../../inputFields/textInput/TextInput';
+import PasswordInput from '../../inputFields/passwordInput/PasswordInput';
 
 const AccountDetails = () => {
     const { request } = useHttp();

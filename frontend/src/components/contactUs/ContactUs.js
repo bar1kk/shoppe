@@ -6,7 +6,8 @@ import { useHttp } from '../../hooks/http.hook';
 import { setNotificationText, activateNotification } from '../notification/NotificationSlice';
 
 import './contactUs.scss';
-import { TextInput, TextareaInput } from '../authorization/Authorization';
+import TextInput from '../inputFields/textInput/TextInput';
+import TextareaInput from '../inputFields/textareaInput/TextareaInput'
 
 const ContactUs = () => {
     const dispatch = useDispatch();
