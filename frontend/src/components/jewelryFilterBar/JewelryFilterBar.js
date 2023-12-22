@@ -118,16 +118,16 @@ const JewelryFilterBar = () => {
             </div>
 
             <div>
-                <select className='filterbar__sorting' onChange={(e) => changeFilterShopBy(e.target.value)}>
-                    <option value='default' className='filterbar__sorting-option' selected>
+                <select className='filterbar__sorting' defaultValue={'default'} onChange={(e) => changeFilterShopBy(e.target.value)}>
+                    <option value='default' className='filterbar__sorting-option'>
                         Shop By
                     </option>
                     {optionsByType}
                 </select>
             </div>
             <div>
-                <select className='filterbar__sorting' onChange={(e) => changeFilterSortBy(e.target.value)}>
-                    <option value='default' className='filterbar__sorting-option' selected>
+                <select className='filterbar__sorting' defaultValue={'default'} onChange={(e) => changeFilterSortBy(e.target.value)}>
+                    <option value='default' className='filterbar__sorting-option'>
                         Sort By
                     </option>
                     <option value='minToMax'>Min to Max</option>
