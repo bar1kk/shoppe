@@ -21,7 +21,7 @@ const ContactUs = () => {
             last_name: values.lastName
         };
 
-        request('http://localhost:9122/api/v1/contacts', 'POST', JSON.stringify(data))
+        request('http://localhost:9122/api/v1/feedback', 'POST', JSON.stringify(data))
             .then(() => {
                 const successMessage = 'Your message has been sent successfully';
                 dispatch(setNotificationText(successMessage));
