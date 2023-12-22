@@ -1,9 +1,8 @@
 import { NavLink, Link } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
-import { useEffect } from 'react';
 import { Form, Field, Formik } from 'formik';
+import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
-import emailjs from '@emailjs/browser';
+import { useHttp } from '../../hooks/http.hook';
 
 import { setNotificationText, activateNotification } from '../notification/NotificationSlice';
 
@@ -12,18 +11,10 @@ import './footer.scss';
 
 const Footer = () => {
     const dispatch = useDispatch();
-
-    const PUBLIC_KEY = 'UADwziFQWVeoyD7Bg';
-    const SERVICE_ID = 'service_33fsfm5';
-    const TEMPLATE_ID = 'template_yveiy59';
-
-    useEffect(() => emailjs.init(PUBLIC_KEY), []);
+    const { request } = useHttp();
 
     const handleSandEmail = (values, resetForm) => {
-        emailjs
-            .send(SERVICE_ID, TEMPLATE_ID, {
-                recipient: values.email
-            })
+        request(`http://localhost:9122/api/v1/subscribe?email=${values.email}`, 'POST')
             .then((res) => {
                 const successMessage = 'Thank you for subscribing to our newsletter!';
                 dispatch(setNotificationText(successMessage));
