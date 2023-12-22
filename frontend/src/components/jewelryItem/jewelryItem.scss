@@ -67,6 +67,9 @@
     font-size: 20px;
     font-weight: 400;
     line-height: 26px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .catalog__item-price {
@@ -76,4 +79,3 @@
     font-weight: 500;
     line-height: 26px; 
 }
-
