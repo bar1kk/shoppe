@@ -11,7 +11,7 @@ const Notification = (props) => {
                 <div className='notification__wrapper'>
                     <div className='notification__info'>
                         <div className='notification__img'>
-                            <img src={props.icon} alt="check mark icon" />
+                            {props.icon ? <img src={props.icon} alt="check mark icon" />: null}
                         </div>
                         <div className='notification__text'>{notificationText}</div>
                     </div>

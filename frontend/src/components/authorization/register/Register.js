@@ -4,7 +4,7 @@ import { Formik, Form } from 'formik';
 import * as Yup from 'yup';
 import { useHttp } from '../../../hooks/http.hook';
 
-import PasswordInput from '../../inputFields/passwordInput/PasswordInput'
+import PasswordInput from '../../inputFields/passwordInput/PasswordInput';
 import TextInput from '../../inputFields/textInput/TextInput';
 
 const Register = () => {
@@ -14,10 +14,15 @@ const Register = () => {
     const handleRegister = (values) => {
         const data = { email: values.email, password: values.password };
         request('http://localhost:9122/api/v1/auth/registration', 'POST', JSON.stringify(data))
-            .then()
+            .then((res) => {
+                const successMessage = 'You have successfully registered!';
+                dispatch(setNotificationText(successMessage));
+            })
             .catch((err) => {
                 const errorMessage = 'Something went wrong, please try again later! Error: ' + err.message;
                 dispatch(setNotificationText(errorMessage));
+            })
+            .finally(() => {
                 dispatch(activateNotification());
             });
     };

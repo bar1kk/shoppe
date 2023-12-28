@@ -12,7 +12,8 @@
 
 .similar__items {
     padding-top: 47px;
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 380px);
     column-gap: 54px;
 }
 

@@ -27,7 +27,7 @@ const Login = () => {
                         authState: { email: values.email, rememberMe: values.rememberMe }
                     })
                 ) {
-                    navigate('/');
+                    navigate(-1);
                 }
             })
             .catch((err) => {

@@ -8,8 +8,6 @@ const initialState = {
     orderedGoods: [], 
     goodsLoadingStatus: 'idle',
     promoGoodsLoadingStatus: 'idle',
-    // orderedCounters: [],
-    // selectedItemId: 0
 }
 
 export const fetchPromoGoodsId = createAsyncThunk(
@@ -81,7 +79,6 @@ const JewelryCatalogSlice = createSlice({
         resetOrderedGoods: (state) => {
             state.orderedGoods = [];
         }
-        // fetchSelectedItem: (state, action) => {state.selectedItemId = action.payload}
     },
     extraReducers: (builder) => {
         builder
@@ -111,7 +108,6 @@ export const {
     plusCounter,
     minusCounter,
     addCounter,
-    // fetchSelectedItem
     fetchPromoGoods,
     resetOrderedGoods
 } = actions;

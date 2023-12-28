@@ -5,7 +5,6 @@ import Authorization from '../../authorization/Authorization';
 import Footer from '../../footer/Footer';
 import Header from '../../header/Header';
 import Notification from '../../notification/Notification';
-import cancelMarkIcon from '../../../assets/icons/cancelMark.svg';
 
 const AuthorizationPage = () => {
     const { notificationStatus } = useSelector((state) => state.notification);
@@ -18,7 +17,7 @@ const AuthorizationPage = () => {
             transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}>
             <Header line={true} />
             <div className='shop__notification'>
-                {notificationStatus ? <Notification icon={cancelMarkIcon} /> : null}
+                {notificationStatus ? <Notification /> : null}
             </div>
             <Authorization />
             <Footer />
