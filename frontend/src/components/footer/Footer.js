@@ -101,7 +101,7 @@ const Footer = () => {
                 </div>
                 <div className='footer__wrapper'>
                     <div className='footer__text'>
-                        © 2021 Shelly. <Link to={'/terms-of-use'}>Terms of use</Link> and{' '}
+                        © 2023 BarbarBilyi. <Link to={'/terms-of-use'}>Terms of use</Link> and{' '}
                         <Link to={'/privacy-policy'}>privacy policy</Link>.
                     </div>
                     <div className='footer__links'></div>

@@ -7,7 +7,7 @@ import { useHeader } from '../../../../hooks/header';
 
 import { setNotificationText, activateNotification } from '../../../notification/NotificationSlice';
 
-import {TextareaInput } from '../../../authorization/Authorization';
+import TextareaInput from '../../../inputFields/textareaInput/TextareaInput';
 
 const ReviewAddForm = () => {
     const { rating, selectedItemId } = useSelector((state) => state.item);

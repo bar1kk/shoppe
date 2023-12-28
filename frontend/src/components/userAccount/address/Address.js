@@ -10,7 +10,7 @@ import { fetchAddresses, removeAddress, addedNewAddress } from '../UserAccountSl
 
 import './address.scss';
 import removeIcon from '../../../assets/icons/remove.svg';
-import { TextInput } from '../../authorization/Authorization';
+import TextInput from '../../inputFields/textInput/TextInput';
 
 const Address = () => {
     const { addresses } = useSelector((state) => state.userAccount);

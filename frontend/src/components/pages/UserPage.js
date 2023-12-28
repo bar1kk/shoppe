@@ -9,8 +9,6 @@ import Header from '../header/Header';
 import UserAccount from '../userAccount/UserAccount';
 import Notification from '../notification/Notification';
 
-import cancelMarkIcon from '../../assets/icons/cancelMark.svg';
-
 const UserPage = () => {
     const navigate = useNavigate();
     const isAuthenticated = useIsAuthenticated();
@@ -31,7 +29,7 @@ const UserPage = () => {
             transition={{ duration: 0.7, ease: [0.6, -0.05, 0.01, 0.99] }}>
             <Header line={true} />
             <div className='shop__notification'>
-                {notificationStatus ? <Notification icon={cancelMarkIcon} /> : null}
+                {notificationStatus ? <Notification/> : null}
             </div>
             <UserAccount />
             <Footer />
