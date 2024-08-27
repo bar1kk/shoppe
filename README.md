@@ -44,7 +44,7 @@ export MAIL_PASSWORD=your_password
 
 5. Run backend:
 ```shell
-./backend/gradlew run
+./gradlew run
 ```
 
 6. Go to the project frontend directory:
@@ -54,12 +54,12 @@ cd ../frontend
 
 7. Build frontend:
 ```shell
-./frontend/npm install
+npm install
 ```
 
 8. Run frontend:
 ```shell
-./frontend/npm start
+npm start
 ```
 
 After that, the application will be available at `http://localhost:3000/` and the API documentation at `http://localhost:9122/swagger-ui.html`.
