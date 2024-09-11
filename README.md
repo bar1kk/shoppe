@@ -23,7 +23,7 @@ Internet store for the sale of jewelry.
 
 1. Clone the repository:
 ```shell
-git clone 
+git clone https://github.com/Danilbel/shoppe.git
 ```
 
 2. Go to the project backend directory:
