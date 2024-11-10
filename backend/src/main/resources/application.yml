@@ -3,15 +3,15 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/shoppe
-    username: postgres
-    password: postgres
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/shoppe}
+    username: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
     driver-class-name: org.postgresql.Driver
   flyway:
-    url: jdbc:postgresql://localhost:5432/shoppe
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/shoppe}
     locations: classpath:db/migration
-    user: postgres
-    password: postgres
+    user: ${DB_USERNAME:postgres}
+    password: ${DB_PASSWORD:postgres}
   mail:
     host: smtp.gmail.com
     port: 587
@@ -38,6 +38,6 @@ cors:
 
 app:
   image:
-    bucket: D:\MyProjects\shoppe\images
+    bucket: ${APP_IMAGE_BUCKET_PATH:D:\MyProjects\shoppe\images}
     api:
       url: http://localhost:9122/api/v1/images/

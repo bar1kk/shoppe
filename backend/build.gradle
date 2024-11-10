@@ -1,11 +1,16 @@
 plugins {
     id 'java'
+    id 'application'
     id 'org.springframework.boot' version "$springBootVersion"
     id 'io.spring.dependency-management' version "$springDependencyManagementVersion"
 }
 
 group = 'dev.danilbel'
 version = '1.0.0'
+
+application {
+    mainClass = 'dev.danilbel.backend.BackendApplication'
+}
 
 java {
     sourceCompatibility = '17'
