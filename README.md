@@ -38,8 +38,20 @@ cd shoppe/backend
 
 4. The project uses mailing of messages through mail. To specify the password and mail from which the mailing will take place, it is necessary to enter environment variables
 ```shell
-export MAIL_USERNAME=your_mail
-export MAIL_PASSWORD=your_password
+export MAIL_USERNAME=<your_mail>
+export MAIL_PASSWORD=<your_password>
+```
+
+5. To configure the PostgeSQL database, you must specify the following environment variables
+```shell
+export DB_URL=jdbc:postgresql://localhost:5432/<your_name_db>
+export DB_USERNAME=<your_username>
+export DB_PASSWORD=<your_password>
+```
+
+6. To display images, specify the path to the `images` folder
+```shell
+export APP_IMAGE_BUCKET_PATH=<your_path>
 ```
 
 5. Run backend:
