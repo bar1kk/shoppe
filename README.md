@@ -54,22 +54,22 @@ export DB_PASSWORD=<your_password>
 export APP_IMAGE_BUCKET_PATH=<your_path>
 ```
 
-5. Run backend:
+7. Run backend:
 ```shell
 ./gradlew run
 ```
 
-6. Go to the project frontend directory:
+8. Go to the project frontend directory:
 ```shell
 cd ../frontend
 ```
 
-7. Build frontend:
+9. Build frontend:
 ```shell
 npm install
 ```
 
-8. Run frontend:
+10. Run frontend:
 ```shell
 npm start
 ```
